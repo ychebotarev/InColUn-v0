@@ -1,17 +1,21 @@
-import {DOM} from '../utils/DOM';
-import {Resizer} from './Resizer';
-import {DomElement} from './DomElement';
+import {DomElement} from '../core/DomElement';
+import {ResizeType, RisizerProps, Resizer} from './Resizer';
 
-class Box implements DomElement{
+class Box extends DomElement{
     private content: HTMLElement;
     private domBox:HTMLElement;
+    
     private horzResize:Resizer;
+    private vertResize:Resizer;
+    private bothResize:Resizer;
     
     public constructor(){
+        super();
+        this.tag = 'div'
+        this.horzResize = new Resizer({ type:ResizeType.Horz });
     }
     
-    public Render(container:HTMLElement){
-        this.domBox = DOM.Create("div");
+    protected RenderSelf(self:HTMLElement){
     }
 }
 

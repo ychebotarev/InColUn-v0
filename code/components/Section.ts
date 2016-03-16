@@ -1,17 +1,19 @@
-import {DomElement} from './DomElement';
-import {DOM} from '../utils/DOM';
+import {DomElement} from '../core/DomElement';
 import {Box} from './Box';
 
-class Section implements DomElement{
+class Section extends DomElement{
     public id:string;
     public title:string;
     private boxes:Box[];
     
-    public Render(canvas:HTMLElement){
-        var root = DOM.Create("div");
-        this.RenderHeader(root);
-        this.boxes.forEach(box => box.Render(root));
-        canvas.appendChild(root);
+    constructor(){
+        super();
+        this.tag = 'div'
+    }
+    
+    protected RenderSelf(self:HTMLElement){
+        this.RenderHeader(self);
+        this.boxes.forEach(box => box.Render(self));
     }    
     
     private RenderHeader(root:HTMLElement){

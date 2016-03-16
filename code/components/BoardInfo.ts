@@ -1,24 +1,20 @@
-import {DOM} from '../utils/DOM'; 
-import {DomElement} from './DomElement';
+import {DomElement} from '../core/DomElement';
+import {BoardProps} from './BoardProps'
 
-export class BoardInfoProps{
-    title:string;
-    guid:string;
-    created:Date;
-    modified:Date;
-    timestamp:string;
-}
-
-export class BoardInfo implements DomElement{
-    private props:BoardInfoProps;
+export class BoardInfo extends DomElement{
+    private props:BoardProps;
     
-    constructor(props:BoardInfoProps){
+    constructor(props:BoardProps){
+        super();
         this.props = props;
+        this.tag = 'div'
     }
     
-    Render(renderTarget:DocumentFragment){
-        var element = DOM.Create("div");
-        renderTarget.appendChild(element);
+    getGuid():string{
+        return this.props.guid;
     }
+    
+    protected RenderSelf(self: HTMLElement){
         
+    }    
 }

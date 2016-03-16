@@ -1,4 +1,4 @@
-import {DOM} from '../utils/dom';
+import {DomElement} from '../core/DomElement';
 
 export enum ResizeType{
     Horz,
@@ -6,15 +6,19 @@ export enum ResizeType{
     Both
 }
 
-export class RisizerProps{
-    onResizeStart:(clientX:number, clientY:number)=>void;
+export interface RisizerProps{
     type:ResizeType;
+    onResizeStart?:(clientX:number, clientY:number)=>void;
 }
 
-export class Resizer{
+export class Resizer extends DomElement{
     private props:RisizerProps;
+    
     constructor(props) {
+        super();
         this.props = props;
+        this.style = this.getStyle();
+        this.className = this.getClass();  
     }
     
     onTouchStart  = (event:TouchEvent) =>{
@@ -26,7 +30,7 @@ export class Resizer{
         this.props.onResizeStart(event.clientX, event.clientY);
     }
     
-    getClass(){
+    getClass():string {
         switch(this.props.type){
             case ResizeType.Horz:
                 return 'resizer_horz';
@@ -66,10 +70,8 @@ export class Resizer{
             }; 
     }
 
-    Render(container:HTMLElement) {
-        var style=this.getStyle();
-        var r = DOM.Create("div");//,{"style" = style});
-        r.onmousedown = this.onResizeStart;
-        r.ontouchstart = this.onTouchStart;
+    RenderSelf(self:HTMLElement) {
+        self.onmousedown = this.onResizeStart;
+        self.ontouchstart = this.onTouchStart;
     }
 }
