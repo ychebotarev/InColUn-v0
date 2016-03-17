@@ -1,14 +1,13 @@
-import {DomElement} from '../core/DomElement';
-import {BoardProps} from './BoardProps'
+import {DomElementBase} from '../core/DomElementBase';
+import {DocumentProps} from './DocumentProps'
 import {Section} from './Section';
 
-class Board extends DomElement{
+class Board extends DomElementBase{
     private sections: {[key:string]:Section};
     private activeSectionId:string;
     
     constructor(){
-        super();
-        this.tag = 'div'
+        super({tag:'div'});
     }
     
     public getID():string{

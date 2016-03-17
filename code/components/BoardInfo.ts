@@ -1,20 +1,16 @@
 import {DomElement} from '../core/DomElement';
-import {BoardProps} from './BoardProps'
+import {DocumentProps} from './DocumentProps'
 
 export class BoardInfo extends DomElement{
-    private props:BoardProps;
+    private docProps:DocumentProps;
     
-    constructor(props:BoardProps){
-        super();
-        this.props = props;
-        this.tag = 'div'
+    constructor(docProps:DocumentProps){
+        super({tag:'div'});
+        this.docProps = docProps;
     }
     
     getGuid():string{
-        return this.props.guid;
+        return this.docProps.guid;
     }
     
-    protected RenderSelf(self: HTMLElement){
-        
-    }    
 }

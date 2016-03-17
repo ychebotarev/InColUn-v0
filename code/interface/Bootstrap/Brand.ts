@@ -1,20 +1,12 @@
-import {DomElement} from '../../core/DomElement';
+import {DomElementBase} from '../../core/DomElementBase';
 import {classNames} from '../../lib/classNames';
 
-class BootstrapBrand extends DomElement{
+export class Brand extends DomElementBase{
     constructor(){
-        super();
-        this.tag = 'button';
-        this.className = classNames('navbar-brand'); 
-        this.attributes = {
-            'data-toggle':'collapse',
-            'data-target':"#bs-example-navbar-collapse-1",
-            'aria-expanded':"false"
-        }
+        super({tag:'a', className:'navbar-brand'});
     }
     
     protected RenderSelf(self:HTMLElement){
+        self.innerText= 'InColUn';
     }
 }
-
-export {BootstrapBrand}

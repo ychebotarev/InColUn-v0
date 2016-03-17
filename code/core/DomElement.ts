@@ -1,30 +1,13 @@
-import {DOM} from '../lib/DOM';
+import {DomElementProps, DomElementBase} from './DomElementBase';
 
-interface DomDescription{
-    tag:         string;
-    className?:  string;
-    style?:      {};
-    attributes?: {};
-}
-
-class DomElement implements DomDescription{
-    tag:        string;
-    className:  string;
-    style:      {};
-    attributes: {};
-
-    protected RenderSelf(self:HTMLElement){
+class DomElement extends DomElementBase{
+    constructor(props:DomElementProps){
+        super(props);
     }
     
-    public Render(canvas:DocumentFragment | HTMLElement){
-        if(!this.tag){
-            return;
-        }
-        var element = DOM.Create(this.tag, this.className, this.style, this.attributes);
+    protected RenderSelf(renderTo:HTMLElement){
         
-        this.RenderSelf(element); 
-        canvas.appendChild(element);
-    }    
+    }
 }
 
-export {DomDescription,DomElement}
+export {DomElement}

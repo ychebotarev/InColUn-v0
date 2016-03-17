@@ -1,5 +1,5 @@
 class DOM{
-    public static Create(tag:string, className:string, attributes?:{}, style?: {}):HTMLElement{
+    public static Create(tag:string, className?:string, style?: {}, attributes?:{}):HTMLElement{
         var element = document.createElement(tag);
         if (className){
             element.className = className;

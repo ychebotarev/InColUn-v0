@@ -1,14 +1,13 @@
-import {DomElement} from '../core/DomElement';
+import {DomElementBase} from '../core/DomElementBase';
 import {Box} from './Box';
 
-class Section extends DomElement{
+class Section extends DomElementBase{
     public id:string;
     public title:string;
     private boxes:Box[];
     
     constructor(){
-        super();
-        this.tag = 'div'
+        super({tag:'div'});
     }
     
     protected RenderSelf(self:HTMLElement){

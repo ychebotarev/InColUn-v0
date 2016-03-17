@@ -1,10 +1,8 @@
 import {DomElement} from '../../core/DomElement';
 
-export class HeaderBlock extends DomElement{
+export class BoardsInfoBlock extends DomElement{
     constructor(){
-        super();
-        this.tag = 'div';
-        this.className = 'HeaderBlock';        
+        super({tag:'div', className : 'BoardsInfoBlock'});
     }
     
     protected RenderSelf(self:DocumentFragment){

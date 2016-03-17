@@ -1,14 +1,10 @@
-import {DomElement} from './DomElement';
+import {DomElementProps} from './DomElementBase';
+import {DomContainerBase} from './DomContainerBase';
 
-class DomContainer extends DomElement{
-    children:DomElement[];
-    public AddChild(child:DomElement){
-        this.children.push(child);
+class DomContainer extends DomContainerBase{
+    constructor(props:DomElementProps){
+        super(props);
     }
-    
-    protected RenderSelf(self:HTMLElement){
-        this.children.forEach( c=>c.Render(self));            
-    };
 }
 
 export {DomContainer}
