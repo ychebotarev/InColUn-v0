@@ -1,4 +1,3 @@
-import {DomContainerBase} from '../../core/DomContainerBase';
 import {DomContainer} from '../../core/DomContainer';
 import {DomElement} from '../../core/DomElement';
 import {Menu} from '../bootstrap/Menu'
@@ -7,11 +6,12 @@ import {MenuItemDivider} from '../bootstrap/MenuItemDivider'
 import {GlyphIcon} from '../bootstrap/glyphicon'
 import {DomElementText} from '../../core/DomElementText';
 
-export class NavbarSearch extends DomContainerBase{
+export class NavbarSearch extends DomContainer{
     constructor(){
         super( { tag : 'div',  className : 'col-sm-4 col-md-4 navbar-right'});
         var searchForm = new DomContainer({tag:'form', className:'navbar-form', attributes : {role:'search'}});
         this.AddChild(searchForm);
+        
         var inputGroup = new DomContainer({ tag:'div',className : 'input-group'});
             var div_search_panel = new DomContainer({ tag:'div',className : 'input-group-btn search-panel'});
                 var button = new DomContainer({ 
@@ -26,10 +26,10 @@ export class NavbarSearch extends DomContainerBase{
             div_search_panel.AddChild(button);
         
                 var menu = new Menu("dropdown-menu");
-                    menu.AddChild(new MenuItemLink({ commandInfo:{ command:"SearchOoptionMyBoards"}, title:'My Boards'}));
-                    menu.AddChild(new MenuItemLink({ commandInfo:{ command:"SearchOoptionMyBoards"}, title:'Shared Boards'}));
+                    menu.AddChild(new MenuItemLink({ commandInfo:{ command:"SearchOptionMyBoards"}, title:'My Boards'}));
+                    menu.AddChild(new MenuItemLink({ commandInfo:{ command:"SearchOptionMyBoards"}, title:'Shared Boards'}));
                     menu.AddChild(new MenuItemDivider());
-                    menu.AddChild(new MenuItemLink({ commandInfo:{ command:"SearchOoptionMyBoards"}, title:'Public Boards'}));
+                    menu.AddChild(new MenuItemLink({ commandInfo:{ command:"SearchOptionMyBoards"}, title:'Public Boards'}));
             div_search_panel.AddChild(menu);
         inputGroup.AddChild(div_search_panel);
         

@@ -1,12 +1,12 @@
-import {DomElementBase} from '../../core/DomElementBase';
-import {DOM} from '../../lib/dom';
+import {Dom} from '../../core/dom';
+import {DomElement} from '../../core/DomElement';
 
 export class NavBarToggleProps{
     toggle:string;
     target:string;
 }
 
-export class NavBarToggle extends DomElementBase{
+export class NavBarToggle extends DomElement{
     constructor(toggle_props:NavBarToggleProps){
         super({
             tag : 'button', 
@@ -19,8 +19,8 @@ export class NavBarToggle extends DomElementBase{
     }
     
     protected RenderSelf(self:DocumentFragment){
-        self.appendChild(DOM.Create('span','icon-bar'));
-        self.appendChild(DOM.Create('span','icon-bar'));
-        self.appendChild(DOM.Create('span','icon-bar'));
+        self.appendChild(Dom.element('span','icon-bar'));
+        self.appendChild(Dom.element('span','icon-bar'));
+        self.appendChild(Dom.element('span','icon-bar'));
     }
 }

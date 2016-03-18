@@ -1,9 +1,9 @@
-import {DomElementBase} from '../../core/DomElementBase';
+import {DomElement} from '../../core/DomElement';
 import {RenderNavbarHeader} from './NavbarHeader';
 import {RenderNavbarMain} from './NavbarMain';
 
 
-export class HeaderBlock extends DomElementBase{
+export class HeaderBlock extends DomElement{
     constructor(){
         super({tag:'div',className: 'navbar navbar-custom navbar-fixed-top'});        
     }

@@ -1,7 +1,6 @@
-import {DOM} from '../../core/dom';
+import {Dom} from '../../core/dom';
 import {classNames} from '../../lib/classNames';
 import {UIElement} from '../../core/UIElement';
-import {DomContainer} from '../../core/DomContainer';
 import {TreeNodeData} from './TreeNodeData'
 import {TreeNode} from './TreeNode'
 
@@ -18,19 +17,15 @@ export class TreeContainer extends UIElement{
     }
     
     protected CreateDom():HTMLElement{
-        return DOM.Create('div','treeContainer');
+        return Dom.div('treeContainer');
     }
     
-    protected RenderSelf(self:HTMLElement){
-        
-        var ul = new DomContainer({ tag:'ul',className : 'treenodes top'});
-        
+    protected RenderSelf(self:HTMLElement){        
+        var ul = Dom.ul('treenodes top');        
         this.nodes.forEach(node =>{
             node.Render(ul);
         });
-        
-        
+                
         self.appendChild(ul);
     }
 }
-

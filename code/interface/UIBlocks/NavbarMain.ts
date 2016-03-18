@@ -1,11 +1,11 @@
-import {DOM} from '../../lib/dom';
+import {Dom} from '../../core/dom';
 import {classNames} from '../../lib/classNames';
-import {DomElementBase} from '../../core/DomElementBase';
+import {DomElement} from '../../core/DomElement';
 import {Menu} from '../bootstrap/Menu'
 import {MenuItemLink} from '../bootstrap/MenuItemLink'
 import {NavbarSearch} from './NavbarSearch';
 
-export class NavbarMain extends DomElementBase{
+export class NavbarMain extends DomElement{
     constructor(class_name:string){
         super({tag : 'div', className : classNames('navbar-collapse','collapse')});
     }

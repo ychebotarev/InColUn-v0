@@ -1,8 +1,8 @@
 import {DomElementProps} from './DomElementProps';
 
-class DOM{
+class Dom{
     public static CreateFromProps(props:DomElementProps):HTMLElement{
-        return DOM.Create(props.tag, props.className, props.style, props.attributes);
+        return Dom.Create(props.tag, props.className, props.style, props.attributes);
     }
     
     public static Create(tag:string, className?:string, style?: {}, attributes?:{}):HTMLElement{
@@ -31,6 +31,32 @@ class DOM{
         }
         return element;
     }
+    
+    public static element(tag:string, className?:string, style?: {}, attributes?:{}):HTMLElement{
+        return Dom.Create(tag, className, style, attributes);
+    }
+    
+    public static a(className?:string, style?: {}, attributes?:{}):HTMLAnchorElement{
+        return <HTMLAnchorElement>Dom.Create('a', className, style, attributes);
+    }
+    
+    public static div(className?:string, style?: {}, attributes?:{}):HTMLElement{
+        return Dom.Create('div', className, style, attributes);
+    }
+    
+    public static ul(className?:string, style?: {}, attributes?:{}):HTMLElement{
+        return Dom.Create('ul', className, style, attributes);
+    }
+    public static li(className?:string, style?: {}, attributes?:{}):HTMLElement{
+        return Dom.Create('li', className, style, attributes);
+    }
+    
+    public static text(content:string, tag:string,className?:string, style?: {}, attributes?:{}):HTMLElement{
+        var el = Dom.Create(tag, className, style, attributes);
+        el.innerText = content;
+        return el;
+    }
 }
 
-export {DOM};
+
+export {Dom};

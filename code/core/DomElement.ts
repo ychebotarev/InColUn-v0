@@ -1,4 +1,4 @@
-import {DOM} from './dom'
+import {Dom} from './dom'
 import {DomElementProps} from './DomElementProps';
 
 class DomElement {
@@ -17,8 +17,10 @@ class DomElement {
             return;
         }
         
-        var element = DOM.CreateFromProps(this.props);
-
+        var element = Dom.CreateFromProps(this.props);
+        
+        this.RenderSelf(element);    
+            
         if (renderTo){
             renderTo.appendChild(element);
         }

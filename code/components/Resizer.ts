@@ -1,4 +1,4 @@
-import {DomElementBase} from '../core/DomElementBase';
+import {DomElement} from '../core/DomElement';
 
 export enum ResizeType{
     Horz,
@@ -11,7 +11,7 @@ export interface RisizerProps{
     onResizeStart?:(clientX:number, clientY:number)=>void;
 }
 
-export class Resizer extends DomElementBase{
+export class Resizer extends DomElement{
     private resizerProps:RisizerProps;
     
     constructor(resizerProps:RisizerProps) {

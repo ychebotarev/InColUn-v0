@@ -1,7 +1,6 @@
-import {DomElementBase} from '../../core/DomElementBase';
-import {classNames} from '../../lib/classNames';
+import {DomElement} from '../../core/DomElement';
 
-export class Brand extends DomElementBase{
+export class Brand extends DomElement{
     constructor(){
         super({tag:'a', className:'navbar-brand'});
     }

@@ -1,5 +1,5 @@
+import {Dom} from '../../core/dom';
 import {DomElement} from '../../core/DomElement';
-import {DOM} from '../../lib/dom';
 import {classNames} from '../../lib/classNames';
 import {NavBarToggleProps, NavBarToggle} from '../Bootstrap/NavBarToggle'
 import {Brand} from '../Bootstrap/Brand'
@@ -12,16 +12,17 @@ export class NavbarHeader extends DomElement{
         this.navbar_collapse_target = navbar_collapse_target;        
     }
     
-    protected RenderSelf(self:DocumentFragment){
-        (new Brand).Render(self);
-        (new NavBarToggle({
+    protected RenderSelf(self:HTMLElement){
+        self.appendChild(Dom.text('InColUn','a','navbar-brand'));
+        var navBarToggle = new NavBarToggle({
             toggle:'collapse',
             target:this.navbar_collapse_target
-        })).Render(self);
+        });
+        navBarToggle.Render(self);
     }
 }
 
 export function RenderNavbarHeader(navbar_collapse_target:string, renderTo:HTMLElement){
     var navbarHeader = new NavbarHeader(navbar_collapse_target);
     navbarHeader.Render(renderTo);
-} 
+}

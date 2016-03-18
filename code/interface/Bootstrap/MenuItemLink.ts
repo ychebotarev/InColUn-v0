@@ -1,5 +1,5 @@
-import {DOM} from '../../lib/dom';
-import {DomElementBase} from '../../core/DomElementBase';
+import {Dom} from '../../core/dom';
+import {DomElement} from '../../core/DomElement';
 import {application} from '../../App';
 import {RenderGlyphIcon} from './glyphicon';
 import {CommandInfo} from '../../core/CommandInfo' 
@@ -10,7 +10,7 @@ export interface MenuItemLinkProps{
     icon?:string;
 }
 
-export class MenuItemLink extends DomElementBase{
+export class MenuItemLink extends DomElement{
     itemprops:MenuItemLinkProps;
     
     constructor(itemprops:MenuItemLinkProps){
@@ -20,7 +20,7 @@ export class MenuItemLink extends DomElementBase{
     
     protected RenderSelf(renderTo:HTMLElement){
         if (this.itemprops.commandInfo){
-            var a = <HTMLAnchorElement>DOM.Create('a');
+            var a = Dom.a();
             a.href='#';
             a.onclick = (ev:MouseEvent) => {application.onClick(this.itemprops.commandInfo)};
             this.RenderInnerHtml(a);
@@ -32,12 +32,12 @@ export class MenuItemLink extends DomElementBase{
     }
     
     protected RenderInnerHtml(renderTo:HTMLElement){
-            if (this.itemprops.icon){
-                RenderGlyphIcon(this.itemprops.icon,renderTo);                 
-            }
-            else{
-                renderTo.innerText = this.itemprops.title;
-            }
+        if (this.itemprops.icon){
+            RenderGlyphIcon(this.itemprops.icon,renderTo);                 
+        }
+        else{
+            renderTo.innerText = this.itemprops.title;
+        }
     }
 }
 
