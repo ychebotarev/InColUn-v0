@@ -1,13 +1,14 @@
-import {DomElementProps, DomElementBase} from './DomElementBase';
+import {DomElement} from './DomElement';
+import {DomElementProps} from './DomElementProps';
 
-class DomElementText extends DomElementBase{
+class DomElementText extends DomElement{
     
     constructor(public text:string, props:DomElementProps){
         super(props);
     }
     
-    protected RenderSelf(renderTo:HTMLElement){
-        renderTo.innerText = this.text;
+    protected RenderSelf(self:HTMLElement){
+        self.innerText = this.text;
     }        
 }
 

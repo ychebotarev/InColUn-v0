@@ -2,9 +2,10 @@ import {DOM} from '../../lib/dom';
 import {DomElementBase} from '../../core/DomElementBase';
 import {application} from '../../App';
 import {RenderGlyphIcon} from './glyphicon';
+import {CommandInfo} from '../../core/CommandInfo' 
 
 export interface MenuItemLinkProps{
-    command:string;
+    commandInfo?:CommandInfo;
     title?:string;
     icon?:string;
 }
@@ -18,10 +19,10 @@ export class MenuItemLink extends DomElementBase{
     }
     
     protected RenderSelf(renderTo:HTMLElement){
-        if (this.itemprops.command){
+        if (this.itemprops.commandInfo){
             var a = <HTMLAnchorElement>DOM.Create('a');
             a.href='#';
-            a.onclick = (ev:MouseEvent) => {application.onClick(this.itemprops.command)};
+            a.onclick = (ev:MouseEvent) => {application.onClick(this.itemprops.commandInfo)};
             this.RenderInnerHtml(a);
             renderTo.appendChild(a);
         }

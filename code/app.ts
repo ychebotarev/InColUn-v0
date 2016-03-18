@@ -1,6 +1,7 @@
 
 import {Board} from './components/Board';
 import {HeaderBlock} from './interface/UIBlocks/HeaderBlock'
+import {CommandInfo} from './core/CommandInfo'
 
 class App{
     private root:HTMLElement;
@@ -14,8 +15,8 @@ class App{
         this.header = new  HeaderBlock();   
     }
     
-    public onClick(command:string){
-        console.log(command);
+    public onClick(command:CommandInfo){
+        console.log(command.command);
     }
     
     public SetRoot(root:HTMLElement){

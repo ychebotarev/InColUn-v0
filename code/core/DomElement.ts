@@ -1,13 +1,35 @@
-import {DomElementProps, DomElementBase} from './DomElementBase';
+import {DOM} from './dom'
+import {DomElementProps} from './DomElementProps';
 
-class DomElement extends DomElementBase{
+class DomElement {
+    props:DomElementProps;
+    
     constructor(props:DomElementProps){
-        super(props);
+        this.props = props;
     }
     
-    protected RenderSelf(renderTo:HTMLElement){
+    protected RenderSelf(self:HTMLElement){
         
+    }
+    
+    public Render(renderTo:HTMLElement):HTMLElement{
+        if(!this.props.tag){
+            return;
+        }
+        
+        var element = DOM.CreateFromProps(this.props);
+
+        if (renderTo){
+            renderTo.appendChild(element);
+        }
+        
+        return element;
     }
 }
 
-export {DomElement}
+function RenderDomElement(props:DomElementProps,renderTo:HTMLElement):HTMLElement{
+    var element = new DomElement(props);
+    return element.Render(renderTo);
+}
+
+export {DomElement, RenderDomElement}

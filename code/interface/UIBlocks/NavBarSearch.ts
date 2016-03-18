@@ -26,10 +26,10 @@ export class NavbarSearch extends DomContainerBase{
             div_search_panel.AddChild(button);
         
                 var menu = new Menu("dropdown-menu");
-                    menu.AddChild(new MenuItemLink({ command:"SearchOoptionMyBoards", title:'My Boards'}));
-                    menu.AddChild(new MenuItemLink({ command:"SearchOoptionMyBoards", title:'Shared Boards'}));
+                    menu.AddChild(new MenuItemLink({ commandInfo:{ command:"SearchOoptionMyBoards"}, title:'My Boards'}));
+                    menu.AddChild(new MenuItemLink({ commandInfo:{ command:"SearchOoptionMyBoards"}, title:'Shared Boards'}));
                     menu.AddChild(new MenuItemDivider());
-                    menu.AddChild(new MenuItemLink({ command:"SearchOoptionMyBoards", title:'Public Boards'}));
+                    menu.AddChild(new MenuItemLink({ commandInfo:{ command:"SearchOoptionMyBoards"}, title:'Public Boards'}));
             div_search_panel.AddChild(menu);
         inputGroup.AddChild(div_search_panel);
         

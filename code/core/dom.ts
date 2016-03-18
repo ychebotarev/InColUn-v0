@@ -1,4 +1,10 @@
+import {DomElementProps} from './DomElementProps';
+
 class DOM{
+    public static CreateFromProps(props:DomElementProps):HTMLElement{
+        return DOM.Create(props.tag, props.className, props.style, props.attributes);
+    }
+    
     public static Create(tag:string, className?:string, style?: {}, attributes?:{}):HTMLElement{
         var element = document.createElement(tag);
         if (className){
