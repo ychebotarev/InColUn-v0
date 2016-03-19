@@ -43,6 +43,9 @@ class Dom{
     public static div(className?:string, style?: {}, attributes?:{}):HTMLElement{
         return Dom.Create('div', className, style, attributes);
     }
+    public static span(className?:string, style?: {}, attributes?:{}):HTMLElement{
+        return Dom.Create('span', className, style, attributes);
+    }
     
     public static ul(className?:string, style?: {}, attributes?:{}):HTMLElement{
         return Dom.Create('ul', className, style, attributes);
@@ -55,6 +58,11 @@ class Dom{
         var el = Dom.Create(tag, className, style, attributes);
         el.innerText = content;
         return el;
+    }
+    
+    public static bootstrap_icon(icon:string){
+        var cn:string = 'glyphicon glyphicon-'+icon;
+        return Dom.Create('span', cn);
     }
 }
 

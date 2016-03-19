@@ -42,10 +42,13 @@ export class TreeNode extends UIElement{
         if(this.nodes){
             //create expandable element
             var divWrapper = Dom.div('treenodes leaf');
-            var divHeader =  RenderDomElement({ tag:'div',className : 'treenodes header'},divWrapper);
+            var divHeader =  Dom.span('treenodes header');
             divHeader.innerText = this.info.title;
             divWrapper.appendChild(divHeader);
             if (this.open){
+                
+                var icon = Dom.bootstrap_icon('menu-up');
+                divWrapper.appendChild(icon);
                 var ul =  RenderDomElement({ tag:'ul',className : 'treenodes leaf'},divWrapper);
                 this.RenderSubnodes(ul);
                 divWrapper.appendChild(ul);
