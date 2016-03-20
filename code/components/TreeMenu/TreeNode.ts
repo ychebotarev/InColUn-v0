@@ -27,15 +27,49 @@ export class TreeNode extends UIElement{
         }
     }
     
+    public Toggle(target:EventTarget){
+        var node = document.getElementById(this.info.guid);
+        if (!node){
+            return;
+        }
+        
+        this.open = !this.open;
+        
+        node.
+    }http://jsfiddle.net/R6EAW/3495/
+    
     protected CreateDom():HTMLElement{
-        return Dom.Create('div','treeNode');
+        var node = Dom.Create('div','treenode'); 
+        node.id = this.info.guid;
+        return node;
     }
     
     protected RenderSelf(self:HTMLElement){
-        var li = Dom.li('treenodes leaf');
-        var node =this.RenderNode();
-        li.appendChild(node);
-        self.appendChild(li);
+        var header = this.RenderHeader();
+        var childs = this.RenderChilds();
+        
+        self.appendChild(header);
+        self.appendChild(childs);
+    }
+    
+    private RenderHeader(){
+        var treeheader = Dom.div('treeheader');
+        treeheader.appendChild(
+            Dom.element('i', "treeitem-icon glyphicon glyphicon-file  pull-left", {color:'rgb(241,202,93)'}));
+        treeheader.appendChild(
+            Dom.text(this.info.title,'span'));
+        if(this.nodes)
+        {
+            var icon = Dom.element('i', 'tree-toggle glyphicon glyphicon-chevron-'+this.open ? 'up':'down', {color:'grey'})
+            icon.onclick = (ev:MouseEvent) => {
+                this.Toggle(ev.target);
+            }
+            treeheader.appendChild(icon);
+        }   
+    }
+    
+    private RenderChilds(){
+        
     }
     
     private RenderNode():HTMLElement{

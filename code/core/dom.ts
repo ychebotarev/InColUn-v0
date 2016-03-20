@@ -62,7 +62,7 @@ class Dom{
     
     public static bootstrap_icon(icon:string){
         var cn:string = 'glyphicon glyphicon-'+icon;
-        return Dom.Create('span', cn);
+        return Dom.Create('i', cn);
     }
 }
 

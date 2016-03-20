@@ -17,15 +17,15 @@ export class TreeContainer extends UIElement{
     }
     
     protected CreateDom():HTMLElement{
-        return Dom.div('treeContainer');
+        return Dom.div('treecontainer');
     }
     
     protected RenderSelf(self:HTMLElement){        
-        var ul = Dom.ul('treenodes top');        
+        var treelist = Dom.div('treelist');        
         this.nodes.forEach(node =>{
-            node.Render(ul);
+            node.Render(treelist);
         });
                 
-        self.appendChild(ul);
+        self.appendChild(treelist);
     }
 }
