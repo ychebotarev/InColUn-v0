@@ -35,8 +35,13 @@ export class TreeNode extends UIElement{
         
         this.open = !this.open;
         
-        node.
-    }http://jsfiddle.net/R6EAW/3495/
+        var treelist = document.getElementById('tl_'+this.info.guid);
+        if (!treelist){
+            return;
+        }
+        
+        treelist.style.display = this.open? 'block':'none';
+    }
     
     protected CreateDom():HTMLElement{
         var node = Dom.Create('div','treenode'); 
@@ -52,7 +57,7 @@ export class TreeNode extends UIElement{
         self.appendChild(childs);
     }
     
-    private RenderHeader(){
+    private RenderHeader():HTMLElement{
         var treeheader = Dom.div('treeheader');
         treeheader.appendChild(
             Dom.element('i', "treeitem-icon glyphicon glyphicon-file  pull-left", {color:'rgb(241,202,93)'}));
@@ -65,48 +70,25 @@ export class TreeNode extends UIElement{
                 this.Toggle(ev.target);
             }
             treeheader.appendChild(icon);
-        }   
+        }
+        
+        return treeheader;
     }
     
     private RenderChilds(){
-        
-    }
-    
-    private RenderNode():HTMLElement{
-        if(this.nodes){
-            //create expandable element
-            var divWrapper = Dom.div('treenodes leaf');
-            var divHeader =  Dom.span('treenodes header');
-            divHeader.innerText = this.info.title;
-            divWrapper.appendChild(divHeader);
-            if (this.open){
-                
-                var icon = Dom.bootstrap_icon('menu-up');
-                divWrapper.appendChild(icon);
-                var ul =  RenderDomElement({ tag:'ul',className : 'treenodes leaf'},divWrapper);
-                this.RenderSubnodes(ul);
-                divWrapper.appendChild(ul);
-            }
-            
-            return divWrapper;
-        }
-        else{
-            //create simple link with onClick sending command to app
-            var a = Dom.a();
-            a.href='#';
-            a.onclick = (ev:MouseEvent) => {application.onClick(this.info.command)};
-            a.innerText = this.info.title;
-            return a;
-        }
-    }
-    private RenderSubnodes(renderTo:HTMLElement){
-        if(!this.nodes){
+        if(!this.nodes)
+        {
             return;
         }
+        
+        var treelist = Dom.div('treelist');
+        treelist.id = 'tl_'+this.info.guid;
+        this.nodes.forEach(node =>{ node.Render(treelist)});
         
         if(!this.open){
-            return;
+            treelist.style.display='none'
         }
-        this.nodes.forEach(node =>{ node.Render(renderTo)});
-    }
+        
+        return treelist;
+    }    
 }

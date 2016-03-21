@@ -2,6 +2,7 @@
 import {Board} from './components/Board';
 import {HeaderBlock} from './interface/UIBlocks/HeaderBlock'
 import {CommandInfo} from './core/CommandInfo'
+import {Dom} from './core/Dom'
 import {SideBar} from './interface/UIBlocks/SideBar'
 
 class App{
@@ -19,26 +20,26 @@ class App{
         
         var nodes = [
                 {
-                    info:{title:'level1'}
+                    info:{title:'level1', guid:'level1'}
                 },
                 {
-                    info:{title:'level1_with_childs - a'},
+                    info:{title:'level1_with_childs - a', guid:'level1_with_childs - a'},
                     subNodes:[
-                        {info:{title:'level2_a'}},
-                        {info:{title:'level2_b'}}
+                        {info:{title:'level2_a', guid:'level2_a'}},
+                        {info:{title:'level2_b', guid:'level2_b'}}
                     ]
                 },
                 {
-                    info:{title:'level1_with_childs - b'},
+                    info:{title:'level1_with_childs - b', guid:'level1_with_childs - b'},
                     subNodes:[
                         {
-                            info:{title:'level2_a_with_childs'},
+                            info:{title:'level2_a_with_childs', guid:'level2_a_with_childs'},
                             subNodes:[
-                                {info:{title:'level3_a'}},
-                                {info:{title:'level3_b'}}
+                                {info:{title:'level3_a', guid:'level3_a'}},
+                                {info:{title:'level3_b', guid:'level3_b'}}
                             ]
                         },
-                        {info:{title:'level2_b'}}
+                        {info:{title:'level2_b', guid:'level2_b'}}
                     ]
                 }
             ]; 
@@ -63,6 +64,7 @@ class App{
     
     public Render(){
         this.header.Render(this.root);
+        var content=Dom.
         this.sidebar.Render(this.root);
     }
 }
