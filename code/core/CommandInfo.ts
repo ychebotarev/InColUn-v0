@@ -3,3 +3,5 @@ export interface CommandInfo{
     param1?:{}
     param2?:{}
 }
+
+export interface OnCommandCallback{ (param1:{}, param2:{}):void }

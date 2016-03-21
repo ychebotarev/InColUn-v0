@@ -56,3 +56,42 @@ body{
   bottom: '-5px';
   cursor: 'nw-resize';
 }
+.treecontainer{
+  border: 1px solid blue;
+  width:280px;
+  background-color:#F2F4F5;
+  cursor:default;
+}
+
+.treeitem-icon{
+  padding-right:5px;
+}
+
+.tree-toggle{
+  position:absolute;
+  right:0.6em;
+  font-size:0.6em;
+  top:0.8em;
+  cursor:pointer;
+}
+.tree-toggle:hover{
+  background-color:c5c2c5;
+}
+
+.treelist{
+  padding-left:1em;
+}
+
+.treeheader{
+  position: relative;
+  padding:2px;
+  padding-right:2em;
+  font-size:1.2em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.treeheader:hover{
+  background-color:#F5F2F5;
+}
