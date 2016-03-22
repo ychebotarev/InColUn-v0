@@ -27,25 +27,28 @@ export class TreeNode extends UIElement{
         }
     }
     
-    public Toggle(target:EventTarget){
-        var node = document.getElementById(this.info.guid);
-        if (!node){
+    public ToggleSubTree(){
+        var treenode = document.getElementById('tn_'+this.info.guid);
+        if (!treenode){
+            return;
+        }
+        var toggle_icon = <HTMLElement>(treenode.getElementsByClassName('tree-toggle')[0]);
+        var treelist = <HTMLElement>(treenode.getElementsByClassName('treelist')[0]);
+        if(!toggle_icon || !treelist){
+            console.log('error getting childs for id:'+this.info.guid);
             return;
         }
         
         this.open = !this.open;
         
-        var treelist = document.getElementById('tl_'+this.info.guid);
-        if (!treelist){
-            return;
-        }
-        
         treelist.style.display = this.open? 'block':'none';
+        toggle_icon.className = 'tree-toggle glyphicon glyphicon-chevron-'+(this.open ? 'up':'down');
+        treelist.style.display = this.open? 'block' : 'none';
     }
     
     protected CreateDom():HTMLElement{
         var node = Dom.Create('div','treenode'); 
-        node.id = this.info.guid;
+        node.id = 'tn_'+this.info.guid;
         return node;
     }
     
@@ -54,7 +57,9 @@ export class TreeNode extends UIElement{
         var childs = this.RenderChilds();
         
         self.appendChild(header);
-        self.appendChild(childs);
+        if (childs != undefined){
+            self.appendChild(childs);
+        }
     }
     
     private RenderHeader():HTMLElement{
@@ -63,32 +68,32 @@ export class TreeNode extends UIElement{
             Dom.element('i', "treeitem-icon glyphicon glyphicon-file  pull-left", {color:'rgb(241,202,93)'}));
         treeheader.appendChild(
             Dom.text(this.info.title,'span'));
-        if(this.nodes)
+        if(this.nodes && this.nodes.length > 0)
         {
-            var icon = Dom.element('i', 'tree-toggle glyphicon glyphicon-chevron-'+this.open ? 'up':'down', {color:'grey'})
+            var icon = Dom.element('i', 'tree-toggle glyphicon glyphicon-chevron-'+(this.open ? 'up':'down'), {color:'grey'})
             icon.onclick = (ev:MouseEvent) => {
-                this.Toggle(ev.target);
+                this.ToggleSubTree();
             }
             treeheader.appendChild(icon);
         }
-        
+        if(this.level > 0){
+            treeheader.style.cursor='pointer';
+            treeheader.onclick = (ev:MouseEvent) => {
+                application.onClick({command:'OpenPage', param1:{guid:this.info.guid}});
+            }
+        }   
         return treeheader;
     }
     
     private RenderChilds(){
-        if(!this.nodes)
-        {
-            return;
+        if(!this.nodes ||  this.nodes.length == 0){
+            return undefined;
         }
         
         var treelist = Dom.div('treelist');
-        treelist.id = 'tl_'+this.info.guid;
         this.nodes.forEach(node =>{ node.Render(treelist)});
-        
-        if(!this.open){
-            treelist.style.display='none'
-        }
-        
+        treelist.style.display = this.open? 'block' : 'none';        
         return treelist;
-    }    
+    }
+    
 }

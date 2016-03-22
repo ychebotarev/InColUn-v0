@@ -1,10 +1,17 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path');
 
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
       	title: 'My App',
       	filename: '../index.html',
-		template: 'views/index.html'
+	template: 'views/index.html'
     })
+
+const PATHS = {
+  entry: path.join(__dirname, './code/main.ts'),
+  build: path.join(__dirname, './wwwroot/app/build')
+};
+
 
 module.exports = {
 	resolve: {
