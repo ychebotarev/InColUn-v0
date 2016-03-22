@@ -13,6 +13,30 @@
     },
     "chai/chai.d.ts": {
       "commit": "9f0f926a12026287b5a4a229e5672c01e7549313"
+    },
+    "express/express.d.ts": {
+      "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
+    },
+    "serve-static/serve-static.d.ts": {
+      "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
+    },
+    "mime/mime.d.ts": {
+      "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
+    },
+    "node/node.d.ts": {
+      "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
+    },
+    "express-serve-static-core/express-serve-static-core.d.ts": {
+      "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
+    },
+    "errorhandler/errorhandler.d.ts": {
+      "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
+    },
+    "morgan/morgan.d.ts": {
+      "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
+    },
+    "body-parser/body-parser.d.ts": {
+      "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
     }
   }
 }

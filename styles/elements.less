@@ -98,6 +98,7 @@
 .scale(@ratio:1.5){
   .transform(scale(@ratio));
 }
+
 .transition(@duration:0.2s, @ease:ease-out) {
   -webkit-transition: all @duration @ease;
   -moz-transition: all @duration @ease;
@@ -153,4 +154,12 @@
   -moz-background-clip: @argument;
   -webkit-background-clip: @argument;
   background-clip: @argument;
+}
+
+.is-unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

@@ -5,11 +5,19 @@
     "args": [],
     "tasks": [
         {
-            "taskName": "clean-ts"
+            "taskName": "build frontend code",
+            "isBuildCommand": true
         },
         {
-            "taskName": "build code",
+            "taskName": "build server code",
             "isBuildCommand": true
+        },
+        {
+            "taskName": "build styles",
+            "isBuildCommand": true
+        },
+        {
+            "taskName": "clean-ts"
         }
     ]
 }

@@ -1,11 +1,14 @@
+@primary-color: #F2F4F5;
+@hover-color:#c5c2c5;
+
 .treecontainer{
   border: 1px solid blue;
   width:280px;
-  background-color:#F2F4F5;
+  background-color:@primary-color;
   cursor:default;
 }
 
-.treenodeicon{
+.treeitem-icon{
   padding-right:5px;
 }
 
@@ -15,9 +18,7 @@
   font-size:0.6em;
   top:0.8em;
   cursor:pointer;
-}
-.tree-toggle:hover{
-  background-color:c5c2c5;
+  &:hover {background-color:@hover-color;}
 }
 
 .treelist{
@@ -32,8 +33,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  &:hover {background-color:darken(@hover-color,20%);}
 }
 
-.treeheader:hover{
-  background-color:#F5F2F5;
-}

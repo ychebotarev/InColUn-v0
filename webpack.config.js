@@ -1,15 +1,8 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path');
 
-var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-      	title: 'My App',
-      	filename: '../index.html',
-	template: 'views/index.html'
-    })
-
 const PATHS = {
-  entry: path.join(__dirname, './code/main.ts'),
-  build: path.join(__dirname, './wwwroot/app/build')
+  entry_file: path.join(__dirname, './src/frontend/main.ts'),
+  output_dir: path.join(__dirname, './wwwroot/app/build')
 };
 
 
@@ -17,10 +10,10 @@ module.exports = {
 	resolve: {
     	extensions: ['', '.js', '.ts', '.tsx']
   	},
-	entry: './code/main.ts',
+	entry: PATHS.entry_file,
 	output: {
 		filename: 'bundle.js',
-		path: './wwwroot/app/build'
+		path: PATHS.output_dir
 	},
 	externals: {
     	"react": "React",
