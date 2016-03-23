@@ -11,7 +11,7 @@ var minifyCSS = require('gulp-minify-css');
 gulp.task('build styles', function () {
   return gulp.src('./styles/main.less')
     .pipe(less())
-    .pipe(minifyCSS())
+    //.pipe(minifyCSS())
     .pipe(gulp.dest('./wwwroot/app'));
 });
 

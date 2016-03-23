@@ -32,7 +32,7 @@ export class TreeNode extends UIElement{
         if (!treenode){
             return;
         }
-        var toggle_icon = <HTMLElement>(treenode.getElementsByClassName('tree-toggle')[0]);
+        var toggle_icon = <HTMLElement>(treenode.getElementsByClassName('tree-toggle-icon')[0]);
         var treelist = <HTMLElement>(treenode.getElementsByClassName('treelist')[0]);
         if(!toggle_icon || !treelist){
             console.log('error getting childs for id:'+this.info.guid);
@@ -42,7 +42,7 @@ export class TreeNode extends UIElement{
         this.open = !this.open;
         
         treelist.style.display = this.open? 'block':'none';
-        toggle_icon.className = 'tree-toggle glyphicon glyphicon-chevron-'+(this.open ? 'up':'down');
+        toggle_icon.className = 'tree-toggle-icon fa fa fa-stack-1x fa-chevron-'+(this.open ? 'up':'down');
         treelist.style.display = this.open? 'block' : 'none';
     }
     
@@ -62,19 +62,33 @@ export class TreeNode extends UIElement{
         }
     }
     
+    private getIconClass(){
+        if(this.nodes && this.nodes.length > 0){
+            return 'fa fa-book';
+        }
+        return 'fa fa-file-text-o';
+    }
+    
     private RenderHeader():HTMLElement{
         var treeheader = Dom.div('treeheader');
+        
         treeheader.appendChild(
-            Dom.element('i', "treeitem-icon glyphicon glyphicon-file  pull-left", {color:'rgb(241,202,93)'}));
+            Dom.element('i', "treeitem-icon "+ this.getIconClass(), {color:'rgb(241,202,93)'}));
         treeheader.appendChild(
             Dom.text(this.info.title,'span'));
         if(this.nodes && this.nodes.length > 0)
         {
-            var icon = Dom.element('i', 'tree-toggle glyphicon glyphicon-chevron-'+(this.open ? 'up':'down'), {color:'grey'})
-            icon.onclick = (ev:MouseEvent) => {
+            
+            var span = Dom.span("tree-toggle fa-stack fa-lg");
+            span.appendChild(Dom.element('i',"tree-toggle-bgnd fa fa-circle fa-stack-2x"));
+            var icon = Dom.element('i', 'tree-toggle-icon fa fa-stack-1x fa-chevron-'+(this.open ? 'up':'down'), {color:'grey'})
+            span.appendChild(icon);
+            
+            
+            span.onclick = (ev:MouseEvent) => {
                 this.ToggleSubTree();
             }
-            treeheader.appendChild(icon);
+            treeheader.appendChild(span);
         }
         if(this.level > 0){
             treeheader.style.cursor='pointer';

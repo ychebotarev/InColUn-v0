@@ -5,11 +5,12 @@
   	<title>InColUn</title>
   	<meta name="description" content="Test.">
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="main.css">
   </head>
 <body>
-<div class="flex-fullpage">
-    <div class="header flex-row">
+<div class="flex-fullpage" id='app'>
+    <div class="header flex-row" id='header'>
       <div class="flex-grid-cell">InColUn
       </div>
 	    <div class="search-box flex-grid-cell flex-right">
@@ -25,31 +26,18 @@
       </div> 
     </div>
     
-    <div class="content flex-row flexbox-item-grow" id='treemenu'>
-      <div style="padding:1em; color:red;overflow: auto;width:300px;">
-      hello overflow: auto;
-        <ul>
-          <li>test menu 1</li>
-          <li>test menu 0</li>
-          <li>1</li>
-          <li>test menu 0</li>
-          <li>1</li>
-
-
-          <li>test menu 0</li>
-          <li>1</li>
-          <li>1</li><li>test menu 1</li>
-          <li>test menu 1</li>
-        </ul>        
+    <div class="content flex-row flexbox-item-grow" id='mainarea' style="align-items:stretch">
+      <div class="flex-grid-cell" style="padding:1em; color:red; background-color:grey; overflow: auto;width:300px; align-self: stretch" id='sidebarmenu'>
       </div>
-      <div style="padding:1em;" id='content'>
-      
+      <div class="flex-grid-cell" style="padding:1em; flex:1; align-self: stretch" id='mainpage'>
+            Page content
       </div>
     </div>
     
     <div class="footer" id='footer'>
         Footer
     </div>
-</div>  
+  </div>  
 </body>
+    <script src="build/bundle.js"></script></body>
 </html>

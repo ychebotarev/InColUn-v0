@@ -1,9 +1,9 @@
 
 import {Board} from './components/Board';
-import {HeaderBlock} from './interface/UIBlocks/HeaderBlock'
 import {Dom} from './core/Dom'
 import {CommandInfo,OnCommandCallback} from './core/CommandInfo'
 import {SideBar} from './interface/UIBlocks/SideBar'
+import {ContentArea} from './interface/UIBlocks/ContentArea'
 
 class App{
     private root:HTMLElement;
@@ -13,12 +13,12 @@ class App{
     private boards:Board[];
     private activeBoardId:string;
     
-    private header:HeaderBlock;
     private sidebar:SideBar;
+    private contentArea:ContentArea;
     
     constructor(){
-        this.header = new HeaderBlock();
         this.sidebar = new SideBar();
+        this.contentArea = new ContentArea();
         
         var nodes = [
                 {
@@ -51,7 +51,7 @@ class App{
     }
     
     public openpage(guid:string){
-        
+        console.log('Opening page '+guid);
     }
     
     public setCommandProcesor(key:string, command:OnCommandCallback){
@@ -84,10 +84,24 @@ class App{
     }
     
     public Render(){
-        this.header.Render(this.root);
-        //var content=Dom.
-        this.sidebar.Render(this.root);
-        //this.mainpage.Render(this.root);
+        var sidebar = document.getElementById('sidebarmenu');
+        console.log('rendering');
+        if (sidebar != undefined){
+            this.sidebar.Render(sidebar);
+        }
+        else{
+            console.log("can't find sidebar");
+        }
+        
+        var mainpage = document.getElementById('mainpage');
+        if (mainpage != undefined){
+            this.contentArea.Render(mainpage);
+        }
+        else{
+            console.log("can't find mainpage");
+        }
+        
+        
     }
 }
 
