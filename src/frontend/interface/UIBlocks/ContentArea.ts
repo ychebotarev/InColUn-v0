@@ -5,7 +5,8 @@ import {UIElement} from '../../core/UIElement'
 
 export class ContentArea extends UIElement{
     protected CreateDom():HTMLElement{
-        return Dom.div();
+        var canvas = Dom.div('hello-world');
+        return canvas;
     }
     
     protected RenderSelf(self:HTMLElement){

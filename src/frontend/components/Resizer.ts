@@ -24,11 +24,15 @@ export class Resizer extends DomElement{
     
     onTouchStart  = (event:TouchEvent) =>{
         var te=event.touches[0];  
-        this.resizerProps.onResizeStart(te.clientX, te.clientY);
+        if (this.resizerProps.onResizeStart){
+            this.resizerProps.onResizeStart(te.clientX, te.clientY);
+        }
     }
     
     onResizeStart = (event:MouseEvent) =>{
-        this.resizerProps.onResizeStart(event.clientX, event.clientY);
+        if (this.resizerProps.onResizeStart){
+            this.resizerProps.onResizeStart(event.clientX, event.clientY);
+        }
     }
     
     protected static getClass(type:ResizeType):string {
