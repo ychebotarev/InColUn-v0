@@ -10,7 +10,10 @@ export class ContentArea extends UIElement{
     }
     
     protected RenderSelf(self:HTMLElement){
-        var box = new Box({x:100,y:100,w:200,h:300});
-        box.Render(self);
+        var box1 = new Box({guid:'box1'}, {x:100,y:100,w:200,h:300});
+        box1.Render(self);
+
+        var box2 = new Box({guid:'box2'},{x:160,y:300,w:200,h:150});
+        box2.Render(self);
     }
 } 

@@ -1,23 +1,23 @@
 import {DomElement} from '../core/DomElement';
 
-export enum ResizeType{
+export enum ResizeDirection{
     Horz,
     Vert,
     Both
 }
 
 export interface RisizerProps{
-    type:ResizeType;
-    onResizeStart?:(clientX:number, clientY:number)=>void;
+    direction:ResizeDirection;
+    onResizeStart?:(direction:ResizeDirection, clientX:number, clientY:number)=>void;
 }
 
-export class Resizer extends DomElement{
+export class BoxResizer extends DomElement{
     private resizerProps:RisizerProps;
     
     constructor(resizerProps:RisizerProps) {
         super({
             tag:'div', 
-            className: Resizer.getClass(resizerProps.type)
+            className: BoxResizer.getClass(resizerProps.direction)
         });
         this.resizerProps = resizerProps;
     }
@@ -25,23 +25,23 @@ export class Resizer extends DomElement{
     onTouchStart  = (event:TouchEvent) =>{
         var te=event.touches[0];  
         if (this.resizerProps.onResizeStart){
-            this.resizerProps.onResizeStart(te.clientX, te.clientY);
+            this.resizerProps.onResizeStart(this.resizerProps.direction, te.clientX, te.clientY);
         }
     }
     
     onResizeStart = (event:MouseEvent) =>{
         if (this.resizerProps.onResizeStart){
-            this.resizerProps.onResizeStart(event.clientX, event.clientY);
+            this.resizerProps.onResizeStart(this.resizerProps.direction, event.clientX, event.clientY);
         }
     }
     
-    protected static getClass(type:ResizeType):string {
+    protected static getClass(type:ResizeDirection):string {
         switch(type){
-            case ResizeType.Horz:
+            case ResizeDirection.Horz:
                 return 'resizer_horz';
-            case ResizeType.Vert:
+            case ResizeDirection.Vert:
                 return 'resizer_vert';
-            case ResizeType.Both:
+            case ResizeDirection.Both:
                 return 'resizer_both';
         }
     }
