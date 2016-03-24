@@ -8,36 +8,36 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="main.css">
   </head>
-<body>
-<div class="flex-fullpage" id='app'>
-    <div class="header flex-row" id='header'>
-      <div class="flex-grid-cell">InColUn
-      </div>
-	    <div class="search-box flex-grid-cell flex-right">
-		    <div class="search-container">
-			    <input type="search" id="search" placeholder="Search...">
-			    <button class="icon">
-            <i class="fa fa-search"></i>
-          </button>
-		    </div>
+<body> 
+<div class="flex-column" style='min-height:100vh;height:100%;' id='app'>
+    <header class="flex-row" id='header' style="align-items:center">
+      <div>InColUn</div>
+      <div class="flex-fill"></div>
+	  <div class="search-box">
+        <div class="search-container">
+            <input type="search" id="search" placeholder="Search...">
+			<button class="icon">
+                <i class="fa fa-search"></i>
+            </button>
 	    </div>
-      <div class="flex-grid-cell flex-right" style="width:10px;">
-        <i class="fa fa-ellipsis-v"></i>
+	  </div>
+      <div style="width:30px;"> 
+          <span class="fa-stack">
+            <i class="tree-toggle-bgnd fa fa-stack-2x fa-circle"></i>
+            <i class="fa fa-stack-1x fa-ellipsis-v"></i>
+          </span>      
       </div> 
-    </div>
+    </header>
     
-    <div class="content flex-row flexbox-item-grow" id='mainarea' style="align-items:stretch">
-      <div class="flex-grid-cell" style="padding:1em; color:red; background-color:grey; overflow: auto;width:300px; align-self: stretch" id='sidebarmenu'>
-      </div>
-      <div class="flex-grid-cell" style="padding:1em; flex:1; align-self: stretch" id='mainpage'>
+    <div class="mainblock flex-row flex-fill" id='mainarea'>
+      <div class="sidebar" id='sidebarmenu'></div>
+      <div class="flex-fill" style="padding:1em" id='mainpage'>
             Page content
       </div>
     </div>
-    
-    <div class="footer" id='footer'>
-        Footer
-    </div>
+    <footer id='footer'>Footer</footer>
   </div>  
 </body>
-    <script src="build/bundle.js"></script></body>
+
+<script src="build/bundle.js"></script></body>
 </html>

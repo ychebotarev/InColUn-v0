@@ -35,7 +35,11 @@ export class BoxResizer extends DomElement{
         }
     }
     
-    protected static getClass(type:ResizeDirection):string {
+    public GetDirection():ResizeDirection{
+        return this.resizerProps.direction
+    }
+    
+    public static getClass(type:ResizeDirection):string {
         switch(type){
             case ResizeDirection.Horz:
                 return 'resizer_horz';

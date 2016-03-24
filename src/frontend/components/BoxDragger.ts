@@ -10,10 +10,14 @@ export class BoxDragger extends DomElement{
     constructor(draggerProps:BoxDraggerProps) {
         super({
             tag:'div', 
-            className: 'box-dragger'
+            className: BoxDragger.getClass()
         });
         
         this.draggerProps = draggerProps;
+    }
+    
+    public static getClass():string{
+        return 'box_dragger';
     }
     
     onTouchStart  = (event:TouchEvent) =>{
@@ -23,14 +27,16 @@ export class BoxDragger extends DomElement{
         }
     }
     
-    onResizeStart = (event:MouseEvent) =>{
+    onDragStart = (event:MouseEvent) =>{
+        console.log('onDragStart');
         if (this.draggerProps.onDragStart){
+            console.log('firing dragStart');
             this.draggerProps.onDragStart(event.clientX, event.clientY);
         }
     }
     
     RenderSelf(self:HTMLElement) {
-        self.onmousedown = this.onResizeStart;
+        self.onmousedown = this.onDragStart;
         self.ontouchstart = this.onTouchStart;
     }
 }

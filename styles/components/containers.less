@@ -2,13 +2,13 @@
 
 .flex-row
 {
-    .is-flex;
+    .display-flex;
     flex-direction: row;   
 }
 
 .flex-column
 {
-    .is-flex;
+    .display-flex;
     flex-direction: column;
 }
 
@@ -31,18 +31,27 @@
     .flex-column;
 }
 
-.flexbox-item-grow
+.flex-fill
 {
     flex: 1; /* same as flex: 1 1 auto; */
 }
 
-.header
+.content-area
 {
-    padding:8px;
-    background: rgba(255, 0, 0, .1);
+  position: relative;
+  border: 1px solid blue;
 }
-.footer
-{
-    padding:8px;
-    background: rgba(0, 255, 0, .1);
+
+.mainblock{
+    align-items:stretch;
 }
+
+.sidebar{
+	padding:0em; 
+    padding-left: 1em;
+	color:red; 
+	background-color:grey; 
+	overflow: auto;
+	width:300px; 
+	align-self: stretch;
+}	

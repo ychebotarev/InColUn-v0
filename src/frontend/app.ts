@@ -100,8 +100,6 @@ class App{
         else{
             console.log("can't find mainpage");
         }
-        
-        
     }
 }
 

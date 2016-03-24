@@ -3,45 +3,62 @@ import {UIElement} from '../core/UIElement';
 import {ResizeDirection, RisizerProps, BoxResizer} from './BoxResizer';
 import {BoxDraggerProps, BoxDragger} from './BoxDragger';
 
-enum BoxAction{
-    none,
-    resize,
-    drag
-} 
-
-class BoxDimentions{
+export interface BoxDimentions{
     x:number;
     y:number;
     w:number; 
     h:number;
 }
 
-class BoxInfo{
+export interface BoxInfo{
     guid:string;
 }
+
+export interface BoxCallbacks{
+    boxActivated?:(guid:string) => void;
+    boxDeactivated?:(guid:string) => void;
+    sizeChanged?:(guid:string, dimentions:BoxDimentions) => void;
+    contentChanged?:(guid:string) => void;
+}
+
+export interface BoxProps{
+    dimention:BoxDimentions;
+    info:BoxInfo;
+    callbacks:BoxCallbacks;
+} 
+
+enum BoxAction{
+    none,
+    resize,
+    drag
+} 
 
 class BoxState{
     dimentions:BoxDimentions;
     original:BoxDimentions;
     action:BoxAction;
     direction:ResizeDirection;
+    activated:boolean;
 }
 
-class Box extends UIElement{
+export class Box extends UIElement{
     private info:BoxInfo;
     private state:BoxState;
+    private callback:BoxCallbacks;
     
     private dragger:BoxDragger;
     private horzResize:BoxResizer;
     
     private content: HTMLElement;
     
-    public constructor(info:BoxInfo, dimention:BoxDimentions){
+    public constructor(props:BoxProps){
         super();
-        this.info=info;
+        this.info=props.info;
         this.state = new BoxState();
-        this.state.dimentions = dimention;
+        this.state.dimentions = props.dimention;
         this.state.action = BoxAction.none;
+        this.state.activated = false;
+        this.callback = props.callbacks;
         
         let onResizeStart = (direction:ResizeDirection, clientX:number, clientY: number) => {
                 this.OnResizeStart(direction, clientX, clientY)
@@ -57,12 +74,48 @@ class Box extends UIElement{
         let onMouseUp = (ev: MouseEvent) => {this.OnMouseUp(ev);};            
         
         this.horzResize = new BoxResizer({ direction:ResizeDirection.Horz, onResizeStart});
-        this.dragger = new BoxDragger(onDragStart);
+        this.dragger = new BoxDragger({onDragStart});
         
         window.addEventListener('mouseup', onMouseUp);
         window.addEventListener('mousemove', onMouseMove);
         window.addEventListener('touchmove', onTouchMove);
         window.addEventListener('touchend', onMouseUp);
+    }
+    
+    public activate(){
+        if(this.state.activated == true){
+            return;
+        }
+        this.setActivatedState(true);
+    }
+    
+    public deactivate(){
+        this.setActivatedState(false);
+    }
+    
+    protected setActivatedState(activated:boolean){
+        this.state.activated = activated;
+        this.changeActivationState();
+        if (this.state.activated == true && this.callback.boxActivated){
+            this.callback.boxActivated(this.info.guid);
+        }
+        if (this.state.activated == false && this.callback.boxDeactivated){
+            this.callback.boxDeactivated(this.info.guid);
+        }
+    }
+    
+    protected changeActivationState(){
+        var resizer = <HTMLElement>this.content.getElementsByClassName(BoxResizer.getClass(this.horzResize.GetDirection()))[0];
+        if(resizer != undefined){
+            resizer.style.display = this.state.activated?'block':'none'; 
+        }
+        
+        var dragger = <HTMLElement>this.content.getElementsByClassName(BoxDragger.getClass())[0];
+        if(dragger != undefined){
+            dragger.style.display = this.state.activated?'block':'none'; 
+        }
+        
+        this.content.style.border = this.state.activated? '1px solid grey':'none';
     }
     
     protected OnTouchMove(ev: TouchEvent){
@@ -72,7 +125,7 @@ class Box extends UIElement{
     protected OnResize(clientX:number, clientY:number){
         const { dimentions, original, action, direction } = this.state;
         
-        console.log('OnMouseMove at'+clientX+':'+clientY+',box: ' +this.info.guid);
+        console.log('OnResize at'+clientX+':'+clientY+',box: ' +this.info.guid);
         let newWidth = original.w;
         let newHeight = original.h;
         
@@ -94,7 +147,22 @@ class Box extends UIElement{
     }
     
     protected OnDrag(clientX:number, clientY:number){
+        const { dimentions, original, action, direction } = this.state;
+
+        console.log('OnDrag at'+clientX+':'+clientY+',box: ' +this.info.guid);
+        let newX = dimentions.x + clientX - original.x;
+        let newY = dimentions.y + clientY - original.y;
         
+        if(newX == dimentions.x && newY == dimentions.y){
+            return;
+        }
+        this.state.dimentions.x = newX;
+        this.state.dimentions.y = newY;
+
+        this.state.original.x = clientX;
+        this.state.original.y = clientY;
+        
+        this.SetDimentions();
     }
 
     protected OnMouseMove(clientX:number, clientY:number){
@@ -117,15 +185,25 @@ class Box extends UIElement{
         }
         console.log('OnMouseUp at'+ev.clientX+':'+ev.clientY+',box: ' +this.info.guid);
         
+        if(this.state.action == BoxAction.resize && this.callback.sizeChanged){
+            this.callback.sizeChanged(this.info.guid, this.state.dimentions);
+        }
+        
+        if(this.state.action == BoxAction.drag && this.callback.sizeChanged){
+            this.callback.sizeChanged(this.info.guid, this.state.dimentions);
+        }
+        
         this.state.action = BoxAction.none;
     }
     
     protected OnMouseEnter(){
-        
+        console.log('OnMouseEnter: '+this.info.guid); 
+        this.activate();   
     }
     
     protected OnMouseLeave(){
-        
+        console.log('OnMouseLeave: '+this.info.guid);
+        this.deactivate();    
     }
     
     protected SetDimentions(){
@@ -169,5 +247,3 @@ class Box extends UIElement{
         this.state.original = {x : clientX, y : clientY, w : this.state.dimentions.w, h : this.state.dimentions.h}
     }
 }
-
-export {Box, BoxInfo, BoxDimentions}

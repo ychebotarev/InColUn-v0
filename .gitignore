@@ -7,3 +7,4 @@ code/*.js
 code/**/*.js.map
 wwwroot/app/build/*
 wwwroot/app/lib/*
+wwwroot/app/main.css
