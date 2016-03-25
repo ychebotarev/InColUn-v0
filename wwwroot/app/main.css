@@ -74,7 +74,8 @@ footer {
   align-items: stretch;
 }
 .sidebar {
-  padding: 1em;
+  padding: 0em;
+  padding-left: 1em;
   color: red;
   background-color: grey;
   overflow: auto;

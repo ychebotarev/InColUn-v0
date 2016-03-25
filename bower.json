@@ -2,6 +2,7 @@
   "name": "InColUn",
   "private": true,
   "dependencies": {
-    "jquery": "^2.2.1"
+    "jquery": "^2.2.1",
+    "enscroll": "^0.6.0"
   }
 }

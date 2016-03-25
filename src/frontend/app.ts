@@ -43,8 +43,38 @@ class App{
                         },
                         {info:{title:'child_level2_b', guid:'t_level2_b'}}
                     ]
+                },
+                {
+                    info:{title:'level1', guid:'level1'}
+                },
+                {
+                    info:{title:'level1_with_childs - a', guid:'level1_with_childs - a'},
+                    subNodes:[
+                        {info:{title:'child_level2_a', guid:'level2_a'}},
+                        {info:{title:'child_level2_b', guid:'level2_b'}}
+                    ]
+                },
+                            {
+                    info:{title:'level1', guid:'level1'}
+                },
+                {
+                    info:{title:'level1_with_childs - a', guid:'level1_with_childs - a'},
+                    subNodes:[
+                        {info:{title:'child_level2_a', guid:'level2_a'}},
+                        {info:{title:'child_level2_b', guid:'level2_b'}}
+                    ]
+                },
+                {
+                    info:{title:'level1', guid:'level1'}
+                },
+                {
+                    info:{title:'level1_with_childs - a', guid:'level1_with_childs - a'},
+                    subNodes:[
+                        {info:{title:'child_level2_a', guid:'level2_a'}},
+                        {info:{title:'child_level2_b', guid:'level2_b'}}
+                    ]
                 }
-            ]; 
+        ]; 
         this.sidebar.LoadTreeContainer(nodes);
         let openPageCallback:OnCommandCallback = (param1:{}, param2:{}) =>{ this.openpage(param1['guid'])}
         this.setCommandProcesor('OpenPage', openPageCallback);

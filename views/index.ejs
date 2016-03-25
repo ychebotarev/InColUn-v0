@@ -7,6 +7,9 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="lib/nanoscroller.css">
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/jquery.nanoscroller.js"></script> 
   </head>
 <body> 
 <div class="flex-column" style='min-height:100vh;height:100%;' id='app'>
@@ -29,7 +32,7 @@
       </div> 
     </header>
     
-    <div class="mainblock flex-row flex-fill" id='mainarea'>
+    <div class="mainblock flex-row flex-fill" id='app'>
       <div class="sidebar" id='sidebarmenu'></div>
       <div class="flex-fill" style="padding:1em" id='mainpage'>
             Page content
@@ -38,6 +41,15 @@
     <footer id='footer'>Footer</footer>
   </div>  
 </body>
-
-<script src="build/bundle.js"></script></body>
+    <script src="build/bundle.js"></script>
+<!--        <script>
+        $(".nano").nanoScroller();
+    </script>
+    <script>
+        $('#sidebarmenu').enscroll({
+            showOnHover: true,
+            verticalTrackClass: 'track3',
+            verticalHandleClass: 'handle3'
+        });        
+    </script>-->
 </html>

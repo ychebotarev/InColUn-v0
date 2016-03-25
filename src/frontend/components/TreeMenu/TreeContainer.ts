@@ -6,6 +6,7 @@ import {TreeNode} from './TreeNode'
 
 export class TreeContainer extends UIElement{
     nodes:TreeNode[];
+    
     constructor(nodes:TreeNodeData[]){
         super();
         this.nodes = [];
@@ -16,16 +17,22 @@ export class TreeContainer extends UIElement{
         );
     }
     
-    protected CreateDom():HTMLElement{
+    public AddNode(node:TreeNodeData){
+        this.nodes.push(new TreeNode(node, 0));
+        
+    }
+    
+    protected CreateDomImpl():HTMLElement{
         return Dom.div('treecontainer');
     }
     
-    protected RenderSelf(self:HTMLElement){        
+    protected RenderSelf(){        
         var treelist = Dom.div('treelist');        
         this.nodes.forEach(node =>{
             node.Render(treelist);
         });
                 
-        self.appendChild(treelist);
+        this.self.appendChild(treelist);
     }
+    
 }

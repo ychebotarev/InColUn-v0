@@ -11,13 +11,13 @@ class Section extends UIElement{
         super();
     }
     
-    protected CreateDom():HTMLElement{
+    protected CreateDomImpl():HTMLElement{
         return Dom.div();
     }
     
-    protected RenderSelf(self:HTMLElement){
-        this.RenderHeader(self);
-        this.boxes.forEach(box => box.Render(self));
+    protected RenderSelf(){
+        this.RenderHeader(this.self);
+        this.boxes.forEach(box => box.Render(this.self));
     }    
     
     private RenderHeader(root:HTMLElement){

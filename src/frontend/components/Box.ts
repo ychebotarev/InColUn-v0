@@ -49,8 +49,6 @@ export class Box extends UIElement{
     private dragger:BoxDragger;
     private horzResize:BoxResizer;
     
-    private content: HTMLElement;
-    
     public constructor(props:BoxProps){
         super();
         this.info=props.info;
@@ -105,17 +103,17 @@ export class Box extends UIElement{
     }
     
     protected changeActivationState(){
-        var resizer = <HTMLElement>this.content.getElementsByClassName(BoxResizer.getClass(this.horzResize.GetDirection()))[0];
+        var resizer = <HTMLElement>this.self.getElementsByClassName(BoxResizer.getClass(this.horzResize.GetDirection()))[0];
         if(resizer != undefined){
             resizer.style.display = this.state.activated?'block':'none'; 
         }
         
-        var dragger = <HTMLElement>this.content.getElementsByClassName(BoxDragger.getClass())[0];
+        var dragger = <HTMLElement>this.self.getElementsByClassName(BoxDragger.getClass())[0];
         if(dragger != undefined){
             dragger.style.display = this.state.activated?'block':'none'; 
         }
         
-        this.content.style.border = this.state.activated? '1px solid grey':'none';
+        this.self.style.border = this.state.activated? '1px solid grey':'none';
     }
     
     protected OnTouchMove(ev: TouchEvent){
@@ -207,29 +205,29 @@ export class Box extends UIElement{
     }
     
     protected SetDimentions(){
-        this.content.style.left = String(this.state.dimentions.x)+'px';
-        this.content.style.top = String(this.state.dimentions.y)+'px';
+        this.self.style.left = String(this.state.dimentions.x)+'px';
+        this.self.style.top = String(this.state.dimentions.y)+'px';
         
-        this.content.style.width = String(this.state.dimentions.w)+'px';
-        this.content.style.height = String(this.state.dimentions.h)+'px';
+        this.self.style.width = String(this.state.dimentions.w)+'px';
+        this.self.style.height = String(this.state.dimentions.h)+'px';
     }
     
-    protected CreateDom():HTMLElement{
-        this.content = Dom.div('internal-box');
-        this.content.style.position='absolute';
+    protected CreateDomImpl():HTMLElement{
+        var content = Dom.div('internal-box');
+        content.style.position='absolute';
         
-        this.content.style.border='1px solid red';
-        this.content.style.backgroundColor = "green";
-        this.content.onmouseenter = (ev:MouseEvent) => { this.OnMouseEnter();}
-        this.content.onmouseleave = (ev:MouseEvent) => { this.OnMouseLeave();}
+        content.style.border='1px solid red';
+        content.style.backgroundColor = "green";
+        content.onmouseenter = (ev:MouseEvent) => { this.OnMouseEnter();}
+        content.onmouseleave = (ev:MouseEvent) => { this.OnMouseLeave();}
         
+        return this.self;
+    }
+    
+    protected RenderSelf(){
         this.SetDimentions();
-        return this.content;
-    }
-    
-    protected RenderSelf(self:HTMLElement){
-        this.horzResize.Render(self);
-        this.dragger.Render(self);
+        this.horzResize.Render(this.self);
+        this.dragger.Render(this.self);
     }
     
     protected OnDragStart(clientX:number, clientY: number){

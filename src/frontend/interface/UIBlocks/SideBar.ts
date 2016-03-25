@@ -14,11 +14,15 @@ export class SideBar extends UIElement{
         this.treeContainer = new TreeContainer(nodes);
     }
     
-    protected CreateDom():HTMLElement{
+    public AddTreeNode(node:TreeNodeData){
+        this.treeContainer.AddNode(node);
+    }
+    
+    protected CreateDomImpl():HTMLElement{
         return Dom.div();
     }
     
-    protected RenderSelf(self:HTMLElement){
-        this.treeContainer.Render(self);
+    protected RenderSelf(){
+        this.treeContainer.Render(this.self);
     }
 }

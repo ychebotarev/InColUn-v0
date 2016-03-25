@@ -36,9 +36,8 @@ export class ContentArea extends UIElement{
                 contentChanged:onBoxContentChanged}});
     }
     
-    protected CreateDom():HTMLElement{
-        var canvas = Dom.div('content-area');
-        return canvas;
+    protected CreateDomImpl():HTMLElement{
+        return Dom.div('content-area');
     }
     
     private OnBoxActivated(guid:string){
@@ -53,9 +52,9 @@ export class ContentArea extends UIElement{
         
     }
 
-    protected RenderSelf(self:HTMLElement){
+    protected RenderSelf(){
         for(var guid in this.boxes){
-            this.boxes[guid].Render(self);
+            this.boxes[guid].Render(this.self);
         }
     }
 } 

@@ -46,19 +46,19 @@ export class TreeNode extends UIElement{
         treelist.style.display = this.open? 'block' : 'none';
     }
     
-    protected CreateDom():HTMLElement{
+    protected CreateDomImpl():HTMLElement{
         var node = Dom.Create('div','treenode'); 
         node.id = 'tn_'+this.info.guid;
         return node;
     }
     
-    protected RenderSelf(self:HTMLElement){
+    protected RenderSelf(){
         var header = this.RenderHeader();
         var childs = this.RenderChilds();
         
-        self.appendChild(header);
+        this.self.appendChild(header);
         if (childs != undefined){
-            self.appendChild(childs);
+            this.self.appendChild(childs);
         }
     }
     

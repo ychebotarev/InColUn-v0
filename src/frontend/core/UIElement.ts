@@ -1,23 +1,27 @@
 abstract class UIElement {
     constructor(){
     }
-
-    protected abstract CreateDom():HTMLElement;
-    protected abstract RenderSelf(self:HTMLElement);
     
-    public Render(renderTo:HTMLElement):HTMLElement{
-        var element = this.CreateDom();
-        
-        this.RenderSelf(element);
-        
-        if(!element){
+    protected self:HTMLElement;
+
+    protected CreateDom(){
+        this.self = this.CreateDomImpl();
+    }
+    
+    protected abstract CreateDomImpl():HTMLElement;
+    protected abstract RenderSelf();
+    
+    public Render(renderTo:HTMLElement){
+        this.CreateDom();
+        if(!this.self){
             return undefined;
         }
-        if (renderTo){
-            renderTo.appendChild(element);
-        }
         
-        return element;
+        this.RenderSelf();
+        
+        if (renderTo){
+            renderTo.appendChild(this.self);
+        }
     }    
 }
 

@@ -12,12 +12,12 @@ abstract class UIContainer extends UIElement{
         this.children.push(child);
     }
 
-    protected CreateDom():HTMLElement{
+    protected CreateDomImpl():HTMLElement{
         return Dom.div();
     }
     
-    protected RenderSelf(self:HTMLElement){
-        this.children.forEach(c=>c.Render(self));            
+    protected RenderSelf(){
+        this.children.forEach(c=>c.Render(this.self));            
     };
 }
 
