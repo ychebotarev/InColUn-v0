@@ -1,3 +1,5 @@
+/// <reference path="../../,,/../../internal_typings/medium-editor.d.ts" />
+
 import {Dom} from '../core/dom'
 import {UIElement} from '../core/UIElement';
 import {ResizeDirection, RisizerProps, BoxResizer} from './BoxResizer';
@@ -213,21 +215,28 @@ export class Box extends UIElement{
     }
     
     protected CreateDomImpl():HTMLElement{
-        var content = Dom.div('internal-box');
-        content.style.position='absolute';
+        var box = Dom.div('internal-box');
+        box.style.position='absolute';
         
-        content.style.border='1px solid red';
-        content.style.backgroundColor = "green";
-        content.onmouseenter = (ev:MouseEvent) => { this.OnMouseEnter();}
-        content.onmouseleave = (ev:MouseEvent) => { this.OnMouseLeave();}
-        
-        return this.self;
+        box.style.border='1px solid red';
+        box.style.backgroundColor = "green";
+        box.onmouseenter = (ev:MouseEvent) => { this.OnMouseEnter();}
+        box.onmouseleave = (ev:MouseEvent) => { this.OnMouseLeave();}
+
+        return box;
     }
     
     protected RenderSelf(){
         this.SetDimentions();
         this.horzResize.Render(this.self);
         this.dragger.Render(this.self);
+        
+        var content=Dom.div('internal-box-content');
+        content.style.top='10px'
+        content.style.width='99%'
+        content.style.border='1px solid blue';
+        this.self.appendChild(content);
+        var editor = new MediumEditor([content]);
     }
     
     protected OnDragStart(clientX:number, clientY: number){

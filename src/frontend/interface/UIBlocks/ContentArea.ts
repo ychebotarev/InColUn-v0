@@ -53,7 +53,9 @@ export class ContentArea extends UIElement{
     }
 
     protected RenderSelf(){
+        console.log("Render self: "+this.self.className);
         for(var guid in this.boxes){
+            console.log("Rendering box guid: "+guid);
             this.boxes[guid].Render(this.self);
         }
     }
