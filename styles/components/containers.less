@@ -1,4 +1,5 @@
 @import "../flex.less";
+@import "../variables/colors.less";
 
 .flex-row
 {
@@ -40,6 +41,7 @@
 {
   position: relative;
   border: 1px solid blue;
+  padding:1em;
 }
 
 .mainblock{
@@ -48,10 +50,24 @@
 
 .sidebar{
 	padding:0em; 
-    padding-left: 1em;
-	color:red; 
+	color:black; 
 	background-color:grey; 
 	overflow: auto;
 	width:300px; 
 	align-self: stretch;
 }	
+.internal-box{
+	position:absolute;
+	background-color:@box-bgnd; 
+    border-radius:5px;
+    border:1px solid rgba(0,0,0,0.1);
+    box-shadow: -4px 4px 5px -2px #ccc;
+    }
+
+.internal-box-content{
+    position: relative;
+    top:16px;
+ 	margin-left:5px;
+	margin-right:5px;
+    height:auto;
+}
