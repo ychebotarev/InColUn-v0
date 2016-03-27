@@ -27,7 +27,7 @@ class App{
                 {
                     info:{title:'level1_with_childs - a', guid:'level1_with_childs - a'},
                     subNodes:[
-                        {info:{title:'child_level2_a', guid:'level2_a'}},
+                        {info:{title:'child_level2_a long long long long', guid:'level2_a'}},
                         {info:{title:'child_level2_b', guid:'level2_b'}}
                     ]
                 },
@@ -35,7 +35,7 @@ class App{
                     info:{title:'level1_with_childs - b', guid:'level1_with_childs - b'},
                     subNodes:[
                         {
-                            info:{title:'child_level2_a_with_childs', guid:'level2_a_with_childs'},
+                            info:{title:'child_level2_a_with_childs long long title', guid:'level2_a_with_childs'},
                             subNodes:[
                                 {info:{title:'child_level3_a', guid:'level3_a'}},
                                 {info:{title:'child_level3_b', guid:'level3_b'}}
@@ -114,21 +114,21 @@ class App{
     }
     
     public Render(){
-        var sidebar = document.getElementById('sidebarmenu');
+        var sidebar = document.getElementById('sidebar_menu');
         console.log('rendering');
         if (sidebar != undefined){
-            this.sidebar.Render(sidebar);
+            this.sidebar.RenderTo(sidebar);
         }
         else{
             console.log("can't find sidebar");
         }
         
-        var mainpage = document.getElementById('mainpage');
-        if (mainpage != undefined){
-            this.contentArea.Render(mainpage);
+        var content_area = document.getElementById('content_area');
+        if (content_area != undefined){
+            this.contentArea.Render(content_area);
         }
         else{
-            console.log("can't find mainpage");
+            console.log("can't find content_area");
         }
     }
 }

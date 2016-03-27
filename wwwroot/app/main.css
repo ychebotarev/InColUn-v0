@@ -13,17 +13,13 @@ body {
   padding: 0;
 }
 body {
-  background: #444444;
+  background: #F6F7F8;
   color: #cccccc;
   font-size: 14px;
 }
 header {
-  padding: 8px;
-  background: rgba(255, 0, 0, 0.1);
-}
-footer {
-  padding: 8px;
-  background: rgba(0, 255, 0, 0.1);
+  padding: 4px;
+  background-color: #8094A6;
 }
 .flex-row {
   display: -webkit-box;
@@ -69,18 +65,32 @@ footer {
 .content-area {
   position: relative;
   border: 1px solid blue;
+  padding: 1em;
 }
 .mainblock {
   align-items: stretch;
 }
 .sidebar {
   padding: 0em;
-  padding-left: 1em;
-  color: red;
+  color: black;
   background-color: grey;
   overflow: auto;
   width: 300px;
   align-self: stretch;
+}
+.internal-box {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: -4px 4px 5px -2px #ccc;
+}
+.internal-box-content {
+  position: relative;
+  top: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
+  height: auto;
 }
 /*---------------------------------------------------
     LESS Elements 0.9
@@ -164,8 +174,7 @@ footer {
   background: white;
 }
 .treecontainer {
-  border: 1px solid blue;
-  width: 280px;
+  width: 100%;
   background-color: #F2F4F5;
   cursor: default;
 }
@@ -178,12 +187,17 @@ footer {
   font-size: 0.6em;
   top: 0.1em;
   cursor: pointer;
+  color: #F2F4F5;
 }
-.tree-toggle-bgnd {
+.tree-toggle:hover {
+  color: black;
+}
+.ttb-stack2 {
   color: #d5d2d5;
 }
-.tree-toggle-bgnd:hover {
-  color: #c5c2c5;
+.ttb-stack2:hover {
+  color: blue;
+  background-color: red;
 }
 .treelist {
   padding-left: 1em;
@@ -198,7 +212,7 @@ footer {
   text-overflow: ellipsis;
 }
 .treeheader:hover {
-  background-color: #938e93;
+  background-color: #a49da4;
 }
 .resizer_horz {
   width: 10px;
@@ -229,5 +243,6 @@ footer {
   position: absolute;
   top: 0px;
   cursor: move;
-  background: rgba(180, 180, 180, 0.1);
+  background: rgba(120, 120, 120, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }

@@ -115,7 +115,7 @@ export class Box extends UIElement{
             dragger.style.display = this.state.activated?'block':'none'; 
         }
         
-        this.self.style.border = this.state.activated? '1px solid grey':'none';
+        //this.self.style.border = this.state.activated? '1px solid grey':'none';
     }
     
     protected OnTouchMove(ev: TouchEvent){
@@ -216,10 +216,7 @@ export class Box extends UIElement{
     
     protected CreateDomImpl():HTMLElement{
         var box = Dom.div('internal-box');
-        box.style.position='absolute';
-        
-        box.style.border='1px solid red';
-        box.style.backgroundColor = "green";
+                
         box.onmouseenter = (ev:MouseEvent) => { this.OnMouseEnter();}
         box.onmouseleave = (ev:MouseEvent) => { this.OnMouseLeave();}
 
@@ -232,9 +229,6 @@ export class Box extends UIElement{
         this.dragger.Render(this.self);
         
         var content=Dom.div('internal-box-content');
-        content.style.top='10px'
-        content.style.width='99%'
-        content.style.border='1px solid blue';
         this.self.appendChild(content);
         var editor = new MediumEditor([content]);
     }

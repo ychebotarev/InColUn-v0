@@ -3,11 +3,10 @@ import {UIElement} from '../../core/UIElement'
 import {TreeContainer} from '../../components/TreeMenu/TreeContainer'
 import {TreeNodeData} from '../../components/TreeMenu/TreeNodeData'
 
-export class SideBar extends UIElement{
+export class SideBar {
     private treeContainer:TreeContainer;
     
     constructor(){
-        super();
     }
     
     public LoadTreeContainer(nodes:TreeNodeData[]){
@@ -18,11 +17,7 @@ export class SideBar extends UIElement{
         this.treeContainer.AddNode(node);
     }
     
-    protected CreateDomImpl():HTMLElement{
-        return Dom.div();
-    }
-    
-    protected RenderSelf(){
-        this.treeContainer.Render(this.self);
+    public RenderTo(sidebar:HTMLElement){
+        this.treeContainer.Render(sidebar);
     }
 }
