@@ -1,7 +1,7 @@
 import {Dom} from '../../core/dom'
 import {UIElement} from '../../core/UIElement'
-import {TreeContainer} from '../../components/TreeMenu/TreeContainer'
-import {TreeNodeData} from '../../components/TreeMenu/TreeNodeData'
+import {TreeContainer} from '../../lib/TreeMenu/TreeContainer'
+import {TreeNodeData} from '../../lib/TreeMenu/TreeNodeData'
 
 export class SideBar {
     private treeContainer:TreeContainer;
