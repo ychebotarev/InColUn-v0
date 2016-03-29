@@ -15,19 +15,19 @@
       "commit": "9f0f926a12026287b5a4a229e5672c01e7549313"
     },
     "express/express.d.ts": {
-      "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
+      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
     },
     "serve-static/serve-static.d.ts": {
-      "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
+      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
     },
     "mime/mime.d.ts": {
-      "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
+      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
     },
     "node/node.d.ts": {
-      "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
+      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
     },
     "express-serve-static-core/express-serve-static-core.d.ts": {
-      "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
+      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
     },
     "errorhandler/errorhandler.d.ts": {
       "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
@@ -37,6 +37,27 @@
     },
     "body-parser/body-parser.d.ts": {
       "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
+    },
+    "mongoose/mongoose.d.ts": {
+      "commit": "d99f6bb17b9b8a30551da3a387b0ca4c28f5cb06"
+    },
+    "es6-promise/es6-promise.d.ts": {
+      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
+    },
+    "passport/passport.d.ts": {
+      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
+    },
+    "passport-local/passport-local.d.ts": {
+      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
+    },
+    "passport-google-oauth/passport-google-oauth.d.ts": {
+      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
+    },
+    "passport-facebook/passport-facebook.d.ts": {
+      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
+    },
+    "bcryptjs/bcryptjs.d.ts": {
+      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
     }
   }
 }

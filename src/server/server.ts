@@ -6,6 +6,11 @@ import logger = require('morgan');
 import bodyParser = require('body-parser');
 import morgan = require('morgan');
 import errorhandler = require('errorhandler')
+import mongoose = require('mongoose');
+
+
+import {configDb} from './db/config'
+mongoose.connect(configDb.url);
 
 var app = express();
 
@@ -28,14 +33,17 @@ if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
 
-app.get("/", function (req, res) {
-    res.render("index", {
-        message: "Hey everyone! This is my webpage."
-    });
-});
+import {indexRouter} from './routes/index';
+import {loginRouter} from './routes/login';
 
-app.get("/testejs", function (req, res) {
-        res.render("test", { title: "EJS test" })
+app.use('/', indexRouter);
+app.use('/login', loginRouter)
+
+
+app.use((req, res, next) => {
+   var err = new Error('Not Found');
+   err['status'] = 404;
+   next(err);
 });
 
 
