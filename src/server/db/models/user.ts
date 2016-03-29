@@ -2,9 +2,11 @@ import {Document, Schema, model} from 'mongoose';
 var bcrypt = require('bcrypt');
 
 interface ILocalInfo{
-    username:string;
     email:string;
     password:string;
+    username?:string;
+    firstname?:string;
+    lastname?:string;
 }
 
 interface IFacebookInfo{
@@ -33,8 +35,9 @@ interface IUserModel extends IUser, Document{};
 let userSchema = new Schema({
     guid:String,
     local: {
-		username: String,
-		password: String
+        email: String,
+		password: String,
+        username: String
 	},
 	facebook: {
 		id: String,

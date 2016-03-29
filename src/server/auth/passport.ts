@@ -1,3 +1,6 @@
+/// <reference path='../../../typings/tsd.d.ts' />
+/// <reference path='../../../typings/passport/passport.d.ts' />
+ 
 import {Passport} from 'passport'
 import {providers} from './authProviders'
 

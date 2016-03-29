@@ -9,8 +9,8 @@ import errorhandler = require('errorhandler')
 import mongoose = require('mongoose');
 
 
-import {configDb} from './db/config'
-mongoose.connect(configDb.url);
+import {server_config} from './config'
+mongoose.connect(server_config.db_url);
 
 var app = express();
 
