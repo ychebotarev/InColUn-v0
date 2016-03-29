@@ -15,19 +15,19 @@
       "commit": "9f0f926a12026287b5a4a229e5672c01e7549313"
     },
     "express/express.d.ts": {
-      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
+      "commit": "ee9c524295333250ddbc7364f27c8b2ccd84b18a"
     },
     "serve-static/serve-static.d.ts": {
-      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
+      "commit": "ee9c524295333250ddbc7364f27c8b2ccd84b18a"
     },
     "mime/mime.d.ts": {
-      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
+      "commit": "ee9c524295333250ddbc7364f27c8b2ccd84b18a"
     },
     "node/node.d.ts": {
-      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
+      "commit": "ee9c524295333250ddbc7364f27c8b2ccd84b18a"
     },
     "express-serve-static-core/express-serve-static-core.d.ts": {
-      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
+      "commit": "ee9c524295333250ddbc7364f27c8b2ccd84b18a"
     },
     "errorhandler/errorhandler.d.ts": {
       "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
@@ -45,7 +45,7 @@
       "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
     },
     "passport/passport.d.ts": {
-      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
+      "commit": "ee9c524295333250ddbc7364f27c8b2ccd84b18a"
     },
     "passport-local/passport-local.d.ts": {
       "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
@@ -58,6 +58,12 @@
     },
     "bcryptjs/bcryptjs.d.ts": {
       "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
+    },
+    "jsonwebtoken/jsonwebtoken.d.ts": {
+      "commit": "ee9c524295333250ddbc7364f27c8b2ccd84b18a"
+    },
+    "flake-idgen/flake-idgen.d.ts": {
+      "commit": "ee9c524295333250ddbc7364f27c8b2ccd84b18a"
     }
   }
 }
