@@ -22,6 +22,7 @@ let sectionSchema = new Schema({
     snapshot:String
 });
 
-let Board = model<ISectionInfoModel>("Board", sectionSchema);
+let Section = model<ISectionInfoModel>("Section", sectionSchema);
     
-export {Board}
+export {Section
+    }
