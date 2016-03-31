@@ -8,99 +8,58 @@ var LocalStrategy       = require('passport-local').Strategy;
 var FacebookStrategy    = require('passport-facebook').Strategy;
 var GoogleStrategy      = require('passport-google-oauth').OAuth2Strategy;
 
-var User = require('../db/models/user');
 var configAuth = require('./auth');
+var cache = require('im-cache');
 
 function local_signup(req, email, password, done){
     process.nextTick(function(){
-	    User.findOne(
-            {'local.username': email}, 
-            function(err, user){
-		        if(err)
-			        return done(err);
-                if(user){
-			        return done(null, false, req.flash('signupMessage', 'That email already taken'));
-			    } else {
-			        var newUser = new User();
-				    newUser.local.username = email;
-				    newUser.local.password = newUser.generateHash(password);
-
-				    newUser.save(function(err){
-				        if(err)
-					        throw err;
-					    return done(null, newUser);
-                    });
-                }
-            }
-        )
+	    var user = cache.get("user-"+email);
+        if (user)
+        {
+            return done(null, false, req.flash('signupMessage', 'That email already taken'));
+        }
+        
+        cache.set("user-"+email, {id:email, type:"L", name:email, user_password:password});
     }) 
 }
 
 function local_login(req, email, password, done){
     process.nextTick(function(){
-        User.findOne({ 'local.username': email}, function(err, user){
-            if(err)
-                return done(err);
-            if(!user)
-                return done(null, false, req.flash('loginMessage', 'No User found'));
-            
-            if(!user.validPassword(password)){
-                return done(null, false, req.flash('loginMessage', 'invalid password'));
-            }
-            return done(null, user);
-
-        });
+        var user = cache.get("id-"+email);
+        if (!user)
+        {
+            return done(null, false, req.flash('loginMessage', 'No User found'));
+        }
+        if(user.user_password != password){
+            return done(null, false, req.flash('loginMessage', 'invalid password'));
+        }
+        return done(null, user);
     });
 }
 
 function facebook_login(accessToken, refreshToken, profile, done) {
     process.nextTick(function(){
-	    User.findOne({'facebook.id': profile.id}, function(err, user){
-	        if(err)
-	    	    return done(err);
-	    	if(user)
-	    	    return done(null, user);
-	    	else {
-	    	    var newUser = new User();
-	    		newUser.facebook.id = profile.id;
-	    		newUser.facebook.token = accessToken;
-	    		newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
-	    		newUser.facebook.email = profile.emails[0].value;
-
-	    		newUser.save(function(err){
-	    		    if(err)
-	    			    throw err;
-	    			return done(null, newUser);
-                })
-	    		
-                console.log(profile);
-            }
-	    });
+        var user = cache.get("id-"+profile.id);
+        if(user){
+            return done(null, user);
+        }
+        var new_user = {id:profile.id, type:"FB", token:accessToken, name:profile.name.givenName + ' ' + profile.name.familyName}
+        cache.set("id-"+profile.id, new_user);
+        
+        return done(null, new_user);
     });
 }
 
 function google_login(accessToken, refreshToken, profile, done) {
     process.nextTick(function(){
-	    User.findOne({'google.id': profile.id}, function(err, user){
-	        if(err)
-	            return done(err);
-	        if(user)
-	    	    return done(null, user);
-	    	else {
-                var newUser = new User();
-                newUser.google.id = profile.id;
-                newUser.google.token = accessToken;
-                newUser.google.name = profile.displayName;
-                newUser.google.email = profile.emails[0].value;
-
-                newUser.save(function(err){
-                    if(err)
-                        throw err;
-                    return done(null, newUser);
-                })
-                console.log(profile);
-            }
-        });
+        var user = cache.get("id-"+profile.id);
+        if(user){
+            return done(null, user);
+        }
+        var new_user = {id:profile.id, type:"G", token:accessToken, name:profile.displayName}
+        cache.set("id-"+profile.id, new_user);
+        
+        return done(null, new_user);
     });
 }
 
@@ -110,14 +69,13 @@ function setupPassport(passport:Passport) {
 		done(null, user.id);
 	});
 
-	passport.serializeUser(function(user, done){
-		done(null, user.id);
-	});
-
 	passport.deserializeUser(function(id, done){
-		User.findById(id, function(err, user){
-			done(err, user);
-		});
+        var user = cache.get("id-"+id);
+        if(!user){
+            return done("not found", null);
+        }
+        
+        return done(null, user);
 	});
     
     passport.use('local-signup'

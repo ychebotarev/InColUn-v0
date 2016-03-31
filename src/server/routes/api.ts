@@ -2,14 +2,15 @@
 /// <reference path='../../../typings/passport/passport.d.ts' />
  
 import {Passport} from 'passport'
+import {Application, Router} from 'express'
 
-import express = require('express');
 import FlakeId = require('flake-idgen');
 
 import {server_config} from '../config'
-import {User} from '../db/models/user'
 
-function setupApiRoutes(router: express.Router, passport:Passport){
+function setupApiRoutes(app: Application, passport:Passport){
+    var router = Router();
+    
     router.use(passport.authenticate('bearer', { session: false }));
     
     router.get('/boards', function(req, res){
@@ -17,5 +18,13 @@ function setupApiRoutes(router: express.Router, passport:Passport){
 	});        
     router.get('/board/:guid', function(req, res){
 		res.json({ SecretData: 'abc123' });
-	});        
+	});
+    
+    router.get('/boar/:guid/:section', function(req, res){
+		res.json({ SecretData: 'abc123' });
+	});
+    
+    app.use('/api', router);        
 }
+
+export {setupApiRoutes}

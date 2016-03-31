@@ -2,28 +2,15 @@
 /// <reference path='../../../typings/passport/passport.d.ts' />
  
 import {Passport} from 'passport'
+import {Application, Router} from 'express'
 
-import express = require('express');
 import FlakeId = require('flake-idgen');
 
 import {server_config} from '../config'
-import {User} from '../db/models/user'
 
-function setupAuthRoutes(router: express.Router, passport:Passport){
-    //localhost:8080/auth/
-    router.get('/', function(req, res){
-		res.render('index.ejs');
-	});
+function setupAuthRoutes(app: Application, passport:Passport){
     
-    //localhost:8080/auth/login
-	router.get('/login', function(req, res){
-		res.render('auth/login.ejs', { message: 'loginMessage' });
-	});
-    
-        
-    router.get('/login', function(req, res){
-        res.render('auth/login.ejs', { message: 'loginMessage' });
-	});
+    var router = Router();
     
     router.post('/login', passport.authenticate('local-login', {
 		    successRedirect: '/profile',
@@ -31,12 +18,6 @@ function setupAuthRoutes(router: express.Router, passport:Passport){
 		    failureFlash: true
 	}));    
     
-    
-
-	router.get('/signup', function(req, res){
-		res.render('auth/signup.ejs', { message: 'signupMessage' });
-	});
-
 
 	router.post('/signup', passport.authenticate('local-signup', {
 		successRedirect: '/',
@@ -81,55 +62,12 @@ function setupAuthRoutes(router: express.Router, passport:Passport){
 		})
 	});
 
-	router.get('/unlink/local', function(req, res){
-		var user = req.user;
-
-		user.local.username = null;
-		user.local.password = null;
-
-		user.save(function(err){
-			if(err)
-				throw err;
-			res.redirect('/profile');
-		});
-
-	});
-
-	router.get('/unlink/google', function(req, res){
-		var user = req.user;
-		user.google.token = null;
-
-		user.save(function(err){
-			if(err)
-				throw err;
-			res.redirect('/profile');
-		});
-	});
-
 	router.get('/logout', function(req, res){
 		req.logout();
 		res.redirect('/');
-	})    
+	}) ;
+    
+    app.use('/auth', router);   
 }
 
 export  {setupAuthRoutes}
-
-
-/*
-var loginRouter = express.Router();
-var flakeId = new FlakeId({ datacenter: server_config.instance_id % 32, worker: 1 });
-
-loginRouter.get('/:username/:password', function (req, res) {
-    var user = new User();
-    user.guid = flakeId.next().toString();
-    user.local = {
-        username: req.params.username,
-        password: req.params.password,
-        email: "bla"
-    }
-    user.save();
-    res.status(200).send(req.params.username+':'+req.params.password+ 'was saved.');
-});
-
-    
-export {loginRouter};*/

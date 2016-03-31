@@ -1,14 +1,11 @@
 /// <reference path='../../../typings/tsd.d.ts' />
+import {Application, Router} from 'express'
 
-import express = require('express');
+function setupIndexRoutes(app: Application){
+    
+    app.use('/', function(req, res){
+		res.render("index");
+	});
+}
 
-var indexRouter = express.Router();
-
-indexRouter.get('/', function(req, res, next) {
-    res.render("index", {
-        message: "Hey everyone! This is my webpage."
-    });
-});
-
-
-export {indexRouter}
+export {setupIndexRoutes}
