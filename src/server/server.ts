@@ -16,15 +16,16 @@ import {setupIndexRoutes} from './routes/index';
 import {setupAuthRoutes} from './routes/auth';
 import {setupApiRoutes} from './routes/api';
 
+console.log("test1");
+
 var app = express();
 setupPassport(passport);
+console.log("test2");
 
+app.use(cookieParser('keyboard cat'));
+app.use(session({ secret: 'anystringoftext', cookie: { maxAge: 60000 }}));
+app.use(flash());
 
-app.configure(function() {
-  app.use(cookieParser('keyboard cat'));
-  app.use(session({ secret: 'anystringoftext', cookie: { maxAge: 60000 }}));
-  app.use(flash());
-});
 
 // all environments
 app.set('port', process.env.PORT || 3000);

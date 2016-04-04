@@ -1,52 +1,137 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  	<title>InColUn</title>
-  	<meta name="description" content="Test.">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>InColUn</title>
+    <meta name="description" content="Test.">
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="lib/medium-editor/dist/css/medium-editor.css">
+    <link rel="stylesheet" href="main.css">
     <script src="lib/medium-editor/dist/js/medium-editor.js"></script>
-  </head>
-<body> 
-<div class="flex-column" style='min-height:100vh;height:100%;' id='app'>
-    <header class="flex-row" id='header' style="align-items:center">
-      <div>InColUn</div>
-      <div class="flex-fill"></div>
-	  <div class="search-box">
-        <div class="search-container">
-            <input type="search" id="search" placeholder="Search...">
-			<button class="icon">
-                <i class="fa fa-search"></i>
-            </button>
-	    </div>
-	  </div>
-      <div style="width:45px; text-align:center"> 
-          <span class="fa-stack">
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="flex-column" style='min-height:100vh;height:100%;' id='app'>
+        <header class="flex-row" id='header' style="align-items:center">
+            <div>InColUn</div>
+            <div class="flex-fill"></div>
+            <div class="search-box">
+                <div class="search-container">
+                    <input type="search" id="search" placeholder="Search...">
+                    <button class="icon">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="btn-group" style="margin-left:10px; text-align:center">
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Login</button>
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Sign In</a></li>
+                </ul>
+            </div>
+
+            <div style="width:195px; text-align:center">
+                <a class="button is-primary is-large modal-button" data-target="#modal">
+                    <span class="icon">
+    <i class="fa fa-user"></i>
+  </span>
+                    <span>Login</span>
+                </a>
+            </div>
+
+            <div style="width:45px; text-align:center">
+                <span class="fa-stack">
             <i class="ttb-stack2 fa fa-stack-2x fa-circle"></i>
             <i class="fa fa-stack-1x fa-ellipsis-v" style="color:black"></i>
-          </span>      
-      </div> 
-    </header>
-    
-    <div class="mainblock flex-row flex-fill" id='app'>
-      <div class="sidebar" id='sidebar_menu'></div>
-      <div class="content-area flex-fill" id='content_area'>
-      </div>
+          </span>
+            </div>
+        </header>
+
+        <div class="mainblock flex-row flex-fill" id='app'>
+            <div class="sidebar" id='sidebar_menu'></div>
+            <div class="content-area flex-fill" id='content_area'>
+            </div>
+        </div>
     </div>
-  </div>  
+    <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="LoginLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="LoginLabel">Login</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group input-group-1g">
+                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                        <input class="form-control" type="text" placeholder="Email address">
+                        <span class="help-block"></span>
+                    </div>
+                    <div class="input-group input-group-1g">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <input class="form-control" type="password" placeholder="Password">
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-lg">
+                        <i class="fa fa-star"></i> Login
+                    </button>
+                    
+                        <a class="btn btn-block btn-social btn-google"><span class="fa fa-google"></span> Sign in with Google</a>
+                        <a class="btn btn-block btn-social btn-facebook"><span class="fa fa-facebook"></span> Sign in with Facebook</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-background"></div>
+        <div class="modal-container">
+            <div class="modal-content">
+                <div class="login_box">
+
+                    <label class="label">Email</label>
+                    <p class="control has-icon">
+                        <input class="input" type="email" placeholder="Email">
+                        <i class="fa fa-envelope"></i>
+                    </p>
+                    <label class="label">Password</label>
+                    <p class="control has-icon">
+                        <input class="input" type="password" placeholder="Password">
+                        <i class="fa fa-lock"></i>
+                    </p>
+                    <p class="control">
+                        <button class="button is-success">Login</button>
+                    </p>
+                    <p class="control">
+
+
+                        <a class="btn btn-block btn-social btn-google"><span class="fa fa-google"></span> Sign in with Google</a>
+                        <a class="btn btn-block btn-social btn-facebook"><span class="fa fa-facebook"></span> Sign in with Facebook</a>
+
+                    </p>
+
+
+
+                </div>
+            </div>
+        </div>
+        <button class="modal-close"></button>
+    </div>
+
 </body>
-    <script src="build/bundle.js"></script>
-<!--        <script>
-        $(".nano").nanoScroller();
-    </script>
-    <script>
-        $('#sidebarmenu').enscroll({
-            showOnHover: true,
-            verticalTrackClass: 'track3',
-            verticalHandleClass: 'handle3'
-        });        
-    </script>-->
+<script src="build/bundle.js"></script>
+<script src="notlogged.js"></script>
+
 </html>

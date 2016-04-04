@@ -8,7 +8,6 @@ var LocalStrategy       = require('passport-local').Strategy;
 var FacebookStrategy    = require('passport-facebook').Strategy;
 var GoogleStrategy      = require('passport-google-oauth').OAuth2Strategy;
 
-var configAuth = require('./auth');
 var cache = require('im-cache');
 
 function local_signup(req, email, password, done){
@@ -18,8 +17,8 @@ function local_signup(req, email, password, done){
         {
             return done(null, false, req.flash('signupMessage', 'That email already taken'));
         }
-        
-        cache.set("user-"+email, {id:email, type:"L", name:email, user_password:password});
+        var new_user = {id:email, type:"L", name:email, user_password:password}
+        cache.set("user-"+email, new_user);
     }) 
 }
 
@@ -99,16 +98,16 @@ function setupPassport(passport:Passport) {
     ));
 
 	passport.use(new FacebookStrategy({
-	    clientID: configAuth.facebookAuth.clientID,
-	    clientSecret: configAuth.facebookAuth.clientSecret,
-	    callbackURL: configAuth.facebookAuth.callbackURL
+	    clientID: providers['facebook'].clientID,
+	    clientSecret: providers['facebook'].clientSecret,
+	    callbackURL: providers['facebook'].callbackURL
 	  },facebook_login
 	));
 	
     passport.use(new GoogleStrategy({
-	    clientID: configAuth.googleAuth.clientID,
-	    clientSecret: configAuth.googleAuth.clientSecret,
-	    callbackURL: configAuth.googleAuth.callbackURL
+	    clientID: providers['google'].clientID,
+	    clientSecret: providers['google'].clientSecret,
+	    callbackURL: providers['google'].callbackURL
 	  }
       , google_login
 	));

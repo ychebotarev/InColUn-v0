@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<title>InColUn</title>
+  	<meta name="description" content="Test.">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="lib/medium-editor/dist/css/medium-editor.css">
+    <script src="lib/medium-editor/dist/js/medium-editor.js"></script>
+  </head>
+<body> 
+<div class="flex-column" style='min-height:100vh;height:100%;' id='app'>
+    <header class="flex-row" id='header' style="align-items:center">
+      <div>InColUn</div>
+      <div class="flex-fill"></div>
+	  <div class="search-box">
+        <div class="search-container">
+            <input type="search" id="search" placeholder="Search...">
+			<button class="icon">
+                <i class="fa fa-search"></i>
+            </button>
+	    </div>
+	  </div>
+      <div style="width:45px; text-align:center"> 
+          <span class="fa-stack">
+            <i class="ttb-stack2 fa fa-stack-2x fa-circle"></i>
+            <i class="fa fa-stack-1x fa-ellipsis-v" style="color:black"></i>
+          </span>      
+      </div> 
+    </header>
+    
+    <div class="mainblock flex-row flex-fill" id='app'>
+      <div class="sidebar" id='sidebar_menu'></div>
+      <div class="content-area flex-fill" id='content_area'>
+      </div>
+    </div>
+  </div>  
+</body>
+    <script src="build/bundle.js"></script>
+</html>

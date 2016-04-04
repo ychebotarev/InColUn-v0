@@ -34,7 +34,7 @@ function setupAuthRoutes(app: Application, passport:Passport){
 	router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}));
 
 	router.get('/google/callback', 
-	  passport.authenticate('google', { successRedirect: '/profile',
+	  passport.authenticate('google', { successRedirect: '/board',
 	                                      failureRedirect: '/' }));
 
 	router.get('/connect/facebook', passport.authorize('facebook', { scope: 'email' }));
