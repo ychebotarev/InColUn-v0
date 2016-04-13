@@ -114,8 +114,6 @@ export class Box extends UIElement{
         if(dragger != undefined){
             dragger.style.display = this.state.activated?'block':'none'; 
         }
-        
-        //this.self.style.border = this.state.activated? '1px solid grey':'none';
     }
     
     protected OnTouchMove(ev: TouchEvent){
@@ -125,31 +123,25 @@ export class Box extends UIElement{
     protected OnResize(clientX:number, clientY:number){
         const { dimentions, original, action, direction } = this.state;
         
-        console.log('OnResize at'+clientX+':'+clientY+',box: ' +this.info.guid);
         let newWidth = original.w;
-        let newHeight = original.h;
         
         if (direction == ResizeDirection.Horz || direction == ResizeDirection.Both) {
             newWidth = original.w + clientX - original.x;
         }
         
-        if (direction == ResizeDirection.Vert || direction == ResizeDirection.Both) {
-            newHeight = original.h + clientY - original.y;
-        }
-        
-        if(newWidth == dimentions.w && newHeight == dimentions.h){
+        if(newWidth == dimentions.w){
             return;
         }
         this.state.dimentions.w = newWidth;
-        this.state.dimentions.h = newHeight;
         
         this.SetDimentions();
+        
+        window.requestAnimationFrame((timestamp:any) => { this.OnUpdateHeight()});
     }
     
     protected OnDrag(clientX:number, clientY:number){
         const { dimentions, original, action, direction } = this.state;
 
-        console.log('OnDrag at'+clientX+':'+clientY+',box: ' +this.info.guid);
         let newX = dimentions.x + clientX - original.x;
         let newY = dimentions.y + clientY - original.y;
         
@@ -183,7 +175,6 @@ export class Box extends UIElement{
         if (this.state.action == BoxAction.none){
             return;
         }
-        console.log('OnMouseUp at'+ev.clientX+':'+ev.clientY+',box: ' +this.info.guid);
         
         if(this.state.action == BoxAction.resize && this.callback.sizeChanged){
             this.callback.sizeChanged(this.info.guid, this.state.dimentions);
@@ -197,12 +188,10 @@ export class Box extends UIElement{
     }
     
     protected OnMouseEnter(){
-        console.log('OnMouseEnter: '+this.info.guid); 
         this.activate();   
     }
     
     protected OnMouseLeave(){
-        console.log('OnMouseLeave: '+this.info.guid);
         this.deactivate();    
     }
     
@@ -223,6 +212,26 @@ export class Box extends UIElement{
         return box;
     }
     
+    protected OnContentChanged(content:HTMLElement){
+        var style = window.getComputedStyle(content, null);
+        if (parseInt(style.height) + 20 != this.state.dimentions.h)
+        {
+            this.state.dimentions.h = parseInt(style.height) + 20;
+            this.self.style.height = String(this.state.dimentions.h)+'px';
+        }
+    }
+    
+    protected OnUpdateHeight(){
+        var content = this.self.getElementsByClassName('internal-box-content')[0];
+        var style = window.getComputedStyle(content, null);
+        if (parseInt(style.height) + 20 != this.state.dimentions.h)
+        {
+            this.state.dimentions.h = parseInt(style.height) + 20;
+            this.state.original.h = this.state.dimentions.h;
+            this.self.style.height = String(this.state.dimentions.h)+'px';
+        }
+    }
+    
     protected RenderSelf(){
         this.SetDimentions();
         this.horzResize.Render(this.self);
@@ -230,18 +239,30 @@ export class Box extends UIElement{
         
         var content=Dom.div('internal-box-content');
         this.self.appendChild(content);
-        var editor = new MediumEditor([content]);
+        var editor = new MediumEditor([content],
+        {
+            buttonLabels: 'fontawesome',
+            toolbar: {
+                buttons: [
+                    'bold',
+                    'italic',
+                    'table'
+                ]
+            },  
+            extensions: {
+                table: new MediumEditorTable()
+            }                      
+        });
+        editor.subscribe('editableInput', (data:any, editable:HTMLElement) => { this.OnContentChanged(editable)})
     }
     
     protected OnDragStart(clientX:number, clientY: number){
-        console.log("OnDragStart");
         
         this.state.action = BoxAction.drag;
         this.state.original = {x : clientX, y : clientY, w : this.state.dimentions.w, h : this.state.dimentions.h}
     }
     
     protected OnResizeStart(direction:ResizeDirection, clientX:number, clientY: number) {
-        console.log("OnResizeStart");
         
         this.state.action = BoxAction.resize;
         this.state.direction=direction;
