@@ -9,3 +9,4 @@ function setupIndexRoutes(app: Application){
 }
 
 export {setupIndexRoutes}
+    
