@@ -22,56 +22,76 @@ class App{
         
         var nodes = [
                 {
-                    info:{title:'level1', guid:'level1'}
+                    info:{title:'level1 0 ', guid:'level1_0'}
                 },
                 {
-                    info:{title:'level1_with_childs - a', guid:'level1_with_childs - a'},
+                    info:{title:'level1_with_childs - 1', guid:'level1_1'},
                     subNodes:[
-                        {info:{title:'child_level2_a long long long long', guid:'level2_a'}},
-                        {info:{title:'child_level2_b', guid:'level2_b'}}
+                        {info:{title:'child_level2_a long long long long', guid:'level1_1 level2_1'}},
+                        {info:{title:'child_level2_b', guid:'level1_1 level2_2'}}
                     ]
                 },
                 {
-                    info:{title:'level1_with_childs - b', guid:'level1_with_childs - b'},
+                    info:{title:'level1_with_childs - 2', guid:'level1_2'},
                     subNodes:[
                         {
-                            info:{title:'child_level2_a_with_childs long long title', guid:'level2_a_with_childs'},
+                            info:{title:'child_level2_a_with_childs long long title', guid:'level1_2 level2_1'},
                             subNodes:[
-                                {info:{title:'child_level3_a', guid:'level3_a'}},
-                                {info:{title:'child_level3_b', guid:'level3_b'}}
+                                {info:{title:'child_level3_a', guid:'level1_2 level2_1 level3_1'}},
+                                {info:{title:'child_level3_b', guid:'level1_2 level2_1 level3_2'}}
                             ]
                         },
-                        {info:{title:'child_level2_b', guid:'t_level2_b'}}
+                        {info:{title:'child_level2_b', guid:'level1_2 level2_2'}}
                     ]
                 },
                 {
-                    info:{title:'level1', guid:'level1'}
+                    info:{title:'level1 - 3', guid:'level1_3'}
                 },
                 {
-                    info:{title:'level1_with_childs - a', guid:'level1_with_childs - a'},
+                    info:{title:'level1_with_childs - 4', guid:'level1_4'},
                     subNodes:[
-                        {info:{title:'child_level2_a', guid:'level2_a'}},
-                        {info:{title:'child_level2_b', guid:'level2_b'}}
-                    ]
-                },
-                            {
-                    info:{title:'level1', guid:'level1'}
-                },
-                {
-                    info:{title:'level1_with_childs - a', guid:'level1_with_childs - a'},
-                    subNodes:[
-                        {info:{title:'child_level2_a', guid:'level2_a'}},
-                        {info:{title:'child_level2_b', guid:'level2_b'}}
+                        {info:{title:'child_level2_a', guid:'level1_4 level2_1'}},
+                        {info:{title:'child_level2_b', guid:'level1_4 level2_2'}}
                     ]
                 },
                 {
-                    info:{title:'level1', guid:'level1'}
+                    info:{title:'level1 - 5', guid:'level1_5'}
                 },
                 {
-                    info:{title:'level1_with_childs - a', guid:'level1_with_childs - a'},
+                    info:{title:'level1_with_childs - 6', guid:'level1_6'},
                     subNodes:[
-                        {info:{title:'child_level2_a', guid:'level2_a'}},
-                        {info:{title:'child_level2_b', guid:'level2_b'}}
+                        {info:{title:'child_level2_a', guid:'level1_6 level2_1'}},
+                        {info:{title:'child_level2_b', guid:'level1_6 level2_2'}}
+                    ]
+                },
+                {
+                    info:{title:'level1 - 7', guid:'level1_7'}
+                },
+                {
+                    info:{title:'level1_with_childs - 6', guid:'level1_8'},
+                    subNodes:[
+                        {
+                            info:{title:'child_level2_a', guid:'level1_8 level2_1'},
+                            subNodes:[
+                                {
+                                    info:{title:'child_level3_a', guid:'level1_8 level2_1 level3_1'},
+                                    subNodes:[
+                                        {
+                                            info:{title:'child_level3_a', guid:'level1_8 level2_1 level3_1 level4_1'},
+                                            subNodes:[
+                                                {info:{title:'level1_8 level2_1 level3_1 level4_1 level5_1', guid:'level1_8 level2_1 level3_1 level4_1 level5_1'}},
+                                                {info:{title:'level1_8 level2_1 level3_1 level4_1 level5_2', guid:'level1_8 level2_1 level3_1 level4_1 level5_2'}}
+                                            ]
+                                        },
+                                        {info:{title:'child_level3_b', guid:'level1_8 level2_1 level3_1 level3_2'}}
+                                    ]
+                                    
+                                },
+                                {info:{title:'child_level3_b', guid:'level1_8 level2_1 level3_2'}}
+                            ]
+                            
+                        },
+                        {info:{title:'child_level2_b', guid:'level1_8 level2_2'}}
                     ]
                 }
         ]; 
