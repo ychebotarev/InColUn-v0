@@ -248,10 +248,11 @@ export class Box extends UIElement{
                     'italic',
                     'table'
                 ]
-            },  
+            }
+            /*,  
             extensions: {
                 table: new MediumEditorTable()
-            }                      
+            } */                     
         });
         editor.subscribe('editableInput', (data:any, editable:HTMLElement) => { this.OnContentChanged(editable)})
     }

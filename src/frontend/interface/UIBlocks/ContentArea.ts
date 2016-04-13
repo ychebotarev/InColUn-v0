@@ -14,19 +14,19 @@ export class ContentArea {
         let onBoxSizeChanged = (guid:string, dimentions:BoxDimentions) => { this.OnBoxSizeChanged(guid, dimentions);}
         let onBoxContentChanged = (guid:string) => { this.OnBoxContentChanged(guid)}
         
-        /*for(var i:number = 0; i< 10; ++i){
+        for(var i:number = 0; i< 5; ++i){
             this.boxes['box1'+String(i)] = new Box({
-                dimention:{x:100+10*i,y:100+15*i,w:200,h:300}, 
+                dimention:{x:100+10*i,y:100+15*i,w:200,h:40}, 
                 info:{guid:'box1'+String(i)},
                 callbacks:{
                     boxActivated: onBoxActivated,
                     boxDeactivated: onBoxDeactivated,
                     sizeChanged: onBoxSizeChanged,
                     contentChanged: onBoxContentChanged}});
-        }*/
+        }
 
-        this.boxes['box2'] = new Box({
-            dimention:{x:100,y:300,w:220,h:130}, 
+        this.boxes['box22'] = new Box({
+            dimention:{x:100,y:300,w:220,h:40}, 
             info:{guid:'box2'},
             callbacks:{
                 boxActivated: onBoxActivated,
@@ -37,6 +37,7 @@ export class ContentArea {
     
     private OnBoxActivated(guid:string){
     }
+    
     private OnBoxDeactivated(guid:string){
     }
     
