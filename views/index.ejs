@@ -7,10 +7,8 @@
     <meta name="description" content="Test.">
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <!--<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">-->
-    <!--<link rel="stylesheet" href="main.css">-->
+    <link rel="stylesheet" href="login.css">
     <script src="lib/jquery/dist/jquery.min.js"></script>
-    <!--<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>    
@@ -47,7 +45,7 @@
             </div>            
         </div>
         <div class="carousel-item">
-            <img src="images/incolun_share.png" alt="Third slide">
+            <img src="images/incolun_share1.jpg" alt="Third slide">
             <div class="carousel-caption">
                 <h3>Share</h3>
                 <p>Share yuor valuabe findings with other. Looks what others discover . </p>
@@ -63,6 +61,67 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
+<div class="container">
+    <div class="omb_login">
+        <h3 class="omb_authTitle">Login or <a href="#">Sign up</a></h3>
+        <div class="row omb_row-sm-offset-3 omb_socialButtons">
+            <div class="col-xs-4 col-sm-2">
+                <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
+                    <i class="fa fa-facebook visible-xs"></i>
+                    <span class="hidden-xs">Facebook</span>
+                </a>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <a href="#" class="btn btn-lg btn-block omb_btn-google">
+                    <i class="fa fa-google-plus visible-xs"></i>
+                    <span class="hidden-xs">Google+</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="row omb_row-sm-offset-3 omb_loginOr">
+            <div class="col-xs-12 col-sm-6">
+                <hr class="omb_hrOr">
+                <span class="omb_spanOr">or</span>
+            </div>
+        </div>
+
+        <div class="row omb_row-sm-offset-3">
+            <div class="col-xs-12 col-sm-6">
+                <form class="omb_loginForm" action="" autocomplete="off" method="POST">
+                      <div class="form-group">
+                  <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" name="username" placeholder="email address">
+                    </div>
+                    <span class="help-block"></span>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div></div>
+                    <span class="help-block">Password error</span>
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+        <div class="row omb_row-sm-offset-3">
+            <div class="col-xs-12 col-sm-3">
+                <label class="checkbox">
+                    <input type="checkbox" value="remember-me">Remember Me
+                </label>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <p class="omb_forgotPwd">
+                    <a href="#">Forgot password?</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 <script src="build/bundle.js"></script>
 <script src="notlogged.js"></script>
