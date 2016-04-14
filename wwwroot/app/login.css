@@ -1,22 +1,35 @@
-.omb_login .omb_authTitle {
-  line-height: 300%;
+.omb_loginOr {
+  color: #E0DDDD;
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+  position: relative;
+}
+.omb_loginOr .omb_hrOr {
+  background-color: #cdcdcd;
+  height: 1px;
+  margin-bottom: 0px !important;
+  margin-top: -10px !important;
+}
+.omb_loginOr .omb_spanOr {
+  background-color: #1DA1F2;
+  display: block;
+  left: 50%;
+  margin-left: -1.5em;
+  position: absolute;
   text-align: center;
+  top: -0.6em;
+  width: 3em;
 }
-.omb_login .omb_socialButtons a {
-  color: white;
-}
-.omb_login .omb_socialButtons a:hover {
-  color: white;
-  opacity: 1;
-}
-.omb_login .omb_socialButtons .omb_btn-facebook {
-  background: #3b5998;
-}
-.omb_login .omb_socialButtons .omb_btn-twitter {
-  background: #00aced;
-}
-.omb_login .omb_socialButtons .omb_btn-google {
-  background: #c32f10;
+.login_box {
+  width: 350px;
+  margin: 10px auto;
+  background-color: #1DA1F2;
+  color: wheat;
+  border-radius: 10px;
+  padding: 15px;
 }
 /*
  * Social Buttons for Bootstrap
@@ -45,153 +58,60 @@
   text-align: center;
   border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
-.btn-social.btn-lg {
-  padding-left: 61px;
-}
-.btn-social.btn-lg > :first-child {
-  line-height: 45px;
-  width: 45px;
-  font-size: 1.8em;
-}
-.btn-social.btn-sm {
-  padding-left: 38px;
-}
-.btn-social.btn-sm > :first-child {
-  line-height: 28px;
-  width: 28px;
-  font-size: 1.4em;
-}
-.btn-social.btn-xs {
-  padding-left: 30px;
-}
-.btn-social.btn-xs > :first-child {
-  line-height: 20px;
-  width: 20px;
-  font-size: 1.2em;
-}
-.btn-social-icon {
-  position: relative;
-  padding-left: 44px;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  height: 34px;
-  width: 34px;
-  padding: 0;
-}
-.btn-social-icon > :first-child {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 32px;
-  line-height: 34px;
-  font-size: 1.6em;
-  text-align: center;
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
-}
-.btn-social-icon.btn-lg {
-  padding-left: 61px;
-}
-.btn-social-icon.btn-lg > :first-child {
-  line-height: 45px;
-  width: 45px;
-  font-size: 1.8em;
-}
-.btn-social-icon.btn-sm {
-  padding-left: 38px;
-}
-.btn-social-icon.btn-sm > :first-child {
-  line-height: 28px;
-  width: 28px;
-  font-size: 1.4em;
-}
-.btn-social-icon.btn-xs {
-  padding-left: 30px;
-}
-.btn-social-icon.btn-xs > :first-child {
-  line-height: 20px;
-  width: 20px;
-  font-size: 1.2em;
-}
-.btn-social-icon > :first-child {
-  border: none;
-  text-align: center;
-  width: 100%!important;
-}
-.btn-social-icon.btn-lg {
-  height: 45px;
-  width: 45px;
-  padding-left: 0;
-  padding-right: 0;
-}
-.btn-social-icon.btn-sm {
-  height: 30px;
-  width: 30px;
-  padding-left: 0;
-  padding-right: 0;
-}
-.btn-social-icon.btn-xs {
-  height: 22px;
-  width: 22px;
-  padding-left: 0;
-  padding-right: 0;
-}
-.btn-facebook {
+.btn-fbk {
   color: #fff;
   background-color: #3b5998;
   border-color: rgba(0, 0, 0, 0.2);
 }
-.btn-facebook:focus,
-.btn-facebook.focus {
+.btn-fbk:focus,
+.btn-fbk.focus {
   color: #fff;
   background-color: #2d4373;
   border-color: rgba(0, 0, 0, 0.2);
 }
-.btn-facebook:hover {
+.btn-fbk:hover {
   color: #fff;
   background-color: #2d4373;
   border-color: rgba(0, 0, 0, 0.2);
 }
-.btn-facebook:active,
-.btn-facebook.active,
-.open > .dropdown-toggle.btn-facebook {
+.btn-fbk:active,
+.btn-fbk.active,
+.open > .dropdown-toggle.btn-fbk {
   color: #fff;
   background-color: #2d4373;
   border-color: rgba(0, 0, 0, 0.2);
 }
-.btn-facebook:active:hover,
-.btn-facebook.active:hover,
-.open > .dropdown-toggle.btn-facebook:hover,
-.btn-facebook:active:focus,
-.btn-facebook.active:focus,
-.open > .dropdown-toggle.btn-facebook:focus,
-.btn-facebook:active.focus,
-.btn-facebook.active.focus,
-.open > .dropdown-toggle.btn-facebook.focus {
+.btn-fbk:active:hover,
+.btn-fbk.active:hover,
+.open > .dropdown-toggle.btn-fbk:hover,
+.btn-fbk:active:focus,
+.btn-fbk.active:focus,
+.open > .dropdown-toggle.btn-fbk:focus,
+.btn-fbk:active.focus,
+.btn-fbk.active.focus,
+.open > .dropdown-toggle.btn-fbk.focus {
   color: #fff;
   background-color: #23345a;
   border-color: rgba(0, 0, 0, 0.2);
 }
-.btn-facebook:active,
-.btn-facebook.active,
-.open > .dropdown-toggle.btn-facebook {
+.btn-fbk:active,
+.btn-fbk.active,
+.open > .dropdown-toggle.btn-fbk {
   background-image: none;
 }
-.btn-facebook.disabled:hover,
-.btn-facebook[disabled]:hover,
-fieldset[disabled] .btn-facebook:hover,
-.btn-facebook.disabled:focus,
-.btn-facebook[disabled]:focus,
-fieldset[disabled] .btn-facebook:focus,
-.btn-facebook.disabled.focus,
-.btn-facebook[disabled].focus,
-fieldset[disabled] .btn-facebook.focus {
+.btn-fbk.disabled:hover,
+.btn-fbk[disabled]:hover,
+fieldset[disabled] .btn-fbk:hover,
+.btn-fbk.disabled:focus,
+.btn-fbk[disabled]:focus,
+fieldset[disabled] .btn-fbk:focus,
+.btn-fbk.disabled.focus,
+.btn-fbk[disabled].focus,
+fieldset[disabled] .btn-fbk.focus {
   background-color: #3b5998;
   border-color: rgba(0, 0, 0, 0.2);
 }
-.btn-facebook .badge {
+.btn-fbk .badge {
   color: #3b5998;
   background-color: #fff;
 }
