@@ -15,12 +15,10 @@ import {setupPassport} from './auth/passport'
 import {setupIndexRoutes} from './routes/index';
 import {setupAuthRoutes} from './routes/auth';
 import {setupApiRoutes} from './routes/api';
-
-console.log("test1");
+import {setupBoardsRoute} from './routes/boards';
 
 var app = express();
 setupPassport(passport);
-console.log("test2");
 
 app.use(cookieParser('keyboard cat'));
 app.use(session({ secret: 'anystringoftext', cookie: { maxAge: 60000 }}));
@@ -46,15 +44,26 @@ if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
 
-setupIndexRoutes(app);
-setupAuthRoutes(app, passport);
-setupApiRoutes(app, passport);
+//setupIndexRoutes(app);
+//setupAuthRoutes(app, passport);
+//setupApiRoutes(app, passport);
+//setupBoardsRoute(app);
 
-app.use((req, res, next) => {
+app.get('/', function(req, res){
+		//res.render("index");
+        res.send('GET request to homepage');
+	});
+
+app.get('/boards', function(req, res){
+		res.render("boards");
+        //res.send('GET request to boards');
+	});
+    
+/*app.use((req, res, next) => {
    var err = new Error('Not Found');
    err['status'] = 404;
    next(err);
-});
+});*/
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
