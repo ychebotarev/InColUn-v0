@@ -8,8 +8,15 @@ var webpack = require('webpack');
 var less = require('gulp-less');
 var minifyCSS = require('gulp-minify-css');
 
-gulp.task('build styles', function () {
+gulp.task('build styles - main', function () {
   return gulp.src('./styles/main.less')
+    .pipe(less())
+    //.pipe(minifyCSS())
+    .pipe(gulp.dest('./wwwroot/app'));
+});
+
+gulp.task('build styles - login', function () {
+  return gulp.src('./styles/login.less')
     .pipe(less())
     //.pipe(minifyCSS())
     .pipe(gulp.dest('./wwwroot/app'));
