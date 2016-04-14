@@ -50,13 +50,12 @@ if ('development' == app.get('env')) {
 //setupBoardsRoute(app);
 
 app.get('/', function(req, res){
-		//res.render("index");
-        res.send('GET request to homepage');
+		res.render("index");
+        //res.send('GET request to homepage');
 	});
 
 app.get('/boards', function(req, res){
 		res.render("boards");
-        //res.send('GET request to boards');
 	});
     
 /*app.use((req, res, next) => {

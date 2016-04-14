@@ -2,20 +2,15 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Launch index.html",
-			"type": "chrome",
-			"request": "launch",
-			"sourceMaps": true,
-			"file": "${workspaceRoot}/wwwroot/app/index.html"
-		},
-		{
-			"name": "Launch localhost with sourcemaps",
-			"type": "chrome",
-			"request": "launch",
-			"url": "http://localhost/mypage.html",
-			"sourceMaps": true,
-			"webRoot": "wwwroot"
-		},
+            "name": "Launch NodeJS",
+            "type": "node",
+            // Workspace relative or absolute path to the program.
+            "program": "${workspaceRoot}/build/server/server.js",
+            "stopOnEntry": true,
+            "args": [],
+            "runtimeExecutable": null,
+            "env": { }
+        }, 
 		{
 			"name": "Attach",
 			"type": "chrome",

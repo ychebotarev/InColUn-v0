@@ -1,19 +1,23 @@
+@login-bgnd:#72BEED;
+
 .omb_loginOr {
     color: #E0DDDD;
     font-size: 1.5em;
     margin-bottom: 1em;
     margin-top: 1em;
-    padding-bottom: 0.5em;
-    padding-top: 0.5em;
+    padding-bottom: 0.2em;
+    padding-top: 0.2em;
     position: relative;
     .omb_hrOr {
         background-color: #cdcdcd;
         height: 1px;
         margin-bottom: 0px !important;
-        margin-top: -10px !important;
+        margin-top: 0px !important;
+        margin-left: 5px !important;
+        margin-right: 5px !important;
     }
     .omb_spanOr {
-        background-color: #1DA1F2;
+        background-color: @login-bgnd;
         display: block;
         left: 50%;
         margin-left: -1.5em;
@@ -27,10 +31,31 @@
 .login_box{
     width: 350px;
     margin: 10px auto;
-    background-color: #1DA1F2;
+    background-color: @login-bgnd;
     color: wheat;
     border-radius: 10px;
     padding: 15px;    
+}
+
+.signup_box{
+    width: 450px;
+    margin: 10px auto;
+    background-color: @login-bgnd;
+    color: wheat;
+    border-radius: 10px;
+    padding: 15px;    
+}
+
+.form-signin-heading{
+    color:white;
+}
+
+.forgot{
+    color: #fff !important;
+    line-height: 26px;
+    float: right;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
     
 @import "bootstrap-social.less";
