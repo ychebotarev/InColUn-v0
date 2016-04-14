@@ -22,7 +22,6 @@ gulp.task('build styles - login', function () {
     .pipe(gulp.dest('./wwwroot/app'));
 });
 
-
 gulp.task('clean-ts', function (cb) {
     var typeScriptGenFiles = [
                                 './build/**/*.js',   
