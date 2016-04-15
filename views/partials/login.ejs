@@ -1,4 +1,5 @@
 <div class="login_box" id="login_box">
+    <form class="form-signin" action="/auth/login" method="post">
         <h2 class="form-signin-heading"><i class="fa fa-sign-in"></i>&nbsp; Log in</h2>
         <div class="form-group">
             <div class="input-group input-group-lg">
@@ -9,6 +10,7 @@
         <div class="form-group">
             <div class="input-group input-group-lg">
                 <i class="input-group-addon fa fa-key fa-lg" id="sa-login-pwd"></i>
+                <input type="password" class="form-control" placeholder="Password" aria-describedby="sa-login-pwd" name="password">
             </div>
         </div>
 

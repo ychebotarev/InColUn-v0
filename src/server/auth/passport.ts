@@ -86,6 +86,7 @@ function setupPassport(passport:Passport) {
 		            passwordField: 'password',
 		            passReqToCallback: true
 	            }
+                , localSignup
     ));
 
 	passport.use('local-login'
@@ -95,6 +96,7 @@ function setupPassport(passport:Passport) {
 			        passwordField: 'password',
 			        passReqToCallback: true
 		        }
+                , localLogin
     ));
 
 	passport.use(new FacebookStrategy({
