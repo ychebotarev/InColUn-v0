@@ -8,9 +8,19 @@
             "program": "${workspaceRoot}/build/server/server.js",
             "stopOnEntry": true,
             "args": [],
+			"cwd": "${workspaceRoot}",
+			"preLaunchTask": null,
             "runtimeExecutable": null,
-            "env": { }
-        }, 
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "externalConsole": false,
+            "sourceMaps": true,
+            "outDir": null        
+		}, 
 		{
 			"name": "Attach",
 			"type": "chrome",

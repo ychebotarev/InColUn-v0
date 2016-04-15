@@ -17,29 +17,11 @@
 <body>
 <nav class="navbar navbar-light bg-faded">
     <a class="navbar-brand" href="#">InColUn</a>
-    <form class="form-inline pull-xs-right">
-        <a class="btn btn-success-outline" onclick=showLogin()>Log in</a>
-        <a class="btn btn-success-outline" onclick=showSignUp()>Sign Up</a>
-    </form>
 </nav>
-<% include partials/login.ejs %>
 
-<% var signup_style= "style=display:none;"; %>
+<% var signup_style= "style=display:block;"; %>
 <% include partials/signup.ejs %>
 
-
 </body>
-<script>
-function showLogin()
-{
-    $('#signup_box').hide();
-    $('#login_box').show();
-}    
-function showSignUp()
-{
-    $('#signup_box').show();
-    $('#login_box').hide();
-}    
-</script>
 
 </html>

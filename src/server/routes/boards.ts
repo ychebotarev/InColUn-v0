@@ -3,7 +3,7 @@ import {Application, Router} from 'express'
 
 function setupBoardsRoute(app: Application){
     
-    app.use('/boards', function(req, res){
+    app.get('/boards', function(req, res){
 		res.render("boards");
 	});
 }

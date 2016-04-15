@@ -3,7 +3,7 @@ import {Application, Router} from 'express'
 
 function setupIndexRoutes(app: Application){
     
-    app.use('/', function(req, res){
+    app.get('/', function(req, res){
 		res.render("index");
 	});
 }

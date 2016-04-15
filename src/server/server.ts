@@ -24,10 +24,11 @@ app.use(cookieParser('keyboard cat'));
 app.use(session({ secret: 'anystringoftext', cookie: { maxAge: 60000 }}));
 app.use(flash());
 
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
 
 // all environments
 app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
 
 app.use(morgan('combined'))
 
@@ -45,24 +46,28 @@ if ('development' == app.get('env')) {
 }
 
 //setupIndexRoutes(app);
-//setupAuthRoutes(app, passport);
+setupAuthRoutes(app, passport);
 //setupApiRoutes(app, passport);
 //setupBoardsRoute(app);
 
+app.all('/*', function(req, res, next){
+    console.log('capture');
+    next();
+});
+
 app.get('/', function(req, res){
 		res.render("index");
-        //res.send('GET request to homepage');
 	});
 
 app.get('/boards', function(req, res){
 		res.render("boards");
 	});
     
-/*app.use((req, res, next) => {
+app.use((req, res, next) => {
    var err = new Error('Not Found');
    err['status'] = 404;
    next(err);
-});*/
+});
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
