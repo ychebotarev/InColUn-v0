@@ -13,11 +13,15 @@ function setupAuthRoutes(app: Application, passport:Passport){
 	app.get('/login', function(req, res){ res.render("login"); });    
 	app.get('/signup', function(req, res){ res.render("signup"); });    
     
-    app.post('/auth/login', passport.authenticate('local-login', {
+    app.post('/auth/login', 
+	, function(req, res, next) {
+		passport.authenticate('local-login', function{
+			
 		    successRedirect: '/boards',
 		    failureRedirect: '/login',
 		    failureFlash: true
-	}));    
+		
+	});    
     
 	app.post('/auth/signup', passport.authenticate('local-signup', {
 		successRedirect: '/boards',
