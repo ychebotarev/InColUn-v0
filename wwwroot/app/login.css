@@ -51,6 +51,14 @@
   padding-top: 3px;
   padding-bottom: 3px;
 }
+.authError {
+  background-color: #FFEBE9;
+  border: 1px solid #BD081C;
+  color: #333;
+  padding: 5px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
 /*
  * Social Buttons for Bootstrap
  *

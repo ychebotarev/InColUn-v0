@@ -4,14 +4,14 @@ import path = require('path');
 import http = require('http');
 import logger = require('morgan');
 import bodyParser = require('body-parser');
-import morgan = require('morgan');
 import errorhandler = require('errorhandler')
 import flash = require('connect-flash');
-import cookieParser = require('connect-flash');
+import cookieParser = require('cookie-parser');
 import passport = require('passport');
 import session = require('express-session');
+import morgan = require('morgan')
 
-import {setupPassport} from './auth/passport'
+import {setupPassport} from './auth/setupPassport'
 import {setupIndexRoutes} from './routes/index';
 import {setupAuthRoutes} from './routes/auth';
 import {setupApiRoutes} from './routes/api';
@@ -21,14 +21,12 @@ var app = express();
 setupPassport(passport);
 
 app.use(cookieParser('keyboard cat'));
-app.use(session({ secret: 'anystringoftext', cookie: { maxAge: 60000 }}));
 app.use(flash());
 
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 
 app.use(morgan('combined'))
 
@@ -48,10 +46,11 @@ if ('development' == app.get('env')) {
 //setupIndexRoutes(app);
 setupAuthRoutes(app, passport);
 //setupApiRoutes(app, passport);
-//setupBoardsRoute(app);
+setupBoardsRoute(app);
 
 app.all('/*', function(req, res, next){
     console.log('capture');
+    console.log(req.url);
     next();
 });
 
@@ -59,10 +58,6 @@ app.get('/', function(req, res){
 		res.render("index");
 	});
 
-app.get('/boards', function(req, res){
-		res.render("boards");
-	});
-    
 app.use((req, res, next) => {
    var err = new Error('Not Found');
    err['status'] = 404;

@@ -12,7 +12,13 @@
     <link rel="stylesheet" href="main.css">
     <script src="lib/medium-editor/dist/js/medium-editor.js"></script>
     <script src="lib/jquery/dist/jquery.min.js"></script>
-    <scrip></scrip>t src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+    function logout()
+    {
+        document.cookie="access_token=";
+        window.location.replace('/')
+    }
+    </script>    
 </head>
 
 <body>
@@ -24,104 +30,26 @@
                 <div class="search-container">
                     <input type="search" id="search" placeholder="Search...">
                     <button class="icon">
-                        <i class="fa fa-search"></i>
-                    </button>
+                                <i class="fa fa-search"></i>
+                            </button>
                 </div>
             </div>
-
-            <div class="btn-group" style="margin-left:10px; text-align:center">
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#login-modal">Login</button>
-                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Sign In</a></li>
-                </ul>
-            </div>
-
-            <div style="width:195px; text-align:center">
-                <a class="button is-primary is-large modal-button" data-target="#modal">
-                    <span class="icon">
-    <i class="fa fa-user"></i>
-  </span>
-                    <span>Login</span>
-                </a>
+            <div class="form-inline pull-xs-right">
+                <a class="btn btn-success-outline" onclick=logout()>Log out</a>
             </div>
 
             <div style="width:45px; text-align:center">
                 <span class="fa-stack">
-            <i class="ttb-stack2 fa fa-stack-2x fa-circle"></i>
-            <i class="fa fa-stack-1x fa-ellipsis-v" style="color:black"></i>
-          </span>
+                    <i class="ttb-stack2 fa fa-stack-2x fa-circle"></i>
+                    <i class="fa fa-stack-1x fa-ellipsis-v" style="color:black"></i>
+                </span>
             </div>
-        </header>
-
+        </header>        
         <div class="mainblock flex-row flex-fill" id='app'>
             <div class="sidebar" id='sidebar_menu'></div>
-            <div class="content-area flex-fill" id='content_area'>
-            </div>
-        </div>
+            <div class="content-area flex-fill" id='content_area'></div>
+        </div>    
     </div>
-    
-<div class="modal fade" id="login-modal11" tabindex="-1" role="dialog" aria-labelledby="LoginLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="loginmodal-container">
-            <h1>Login to Your Account</h1>
-            <br>
-            <form>
-                <input type="text" name="user" placeholder="Username">
-                <input type="password" name="pass" placeholder="Password">
-                <input type="submit" name="login" class="login loginmodal-submit" value="Login">
-            </form>
-
-            <div class="login-help">
-                <a href="#">Register</a> - <a href="#">Forgot Password</a>
-            </div>
-        </div>
-    </div>
-</div>
-    
-    <div class="modal" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="LoginLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="LoginLabel">Login</h4>
-                </div>
-                <div class="modal-body">
-                    
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                            <input type="text" class="form-control login_email" id="login_username" placeholder="Email">
-                        </div>
-                        <span class="help-block has-error" id="email-error"></span>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-                            <input type="password" class="form-control login_password" id="password" placeholder="Password">
-                        </div>
-                        <span class="help-block has-error" id="password-error"></span>
-                    </div>					                    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-lg">
-                        <i class="fa fa-star"></i> Login
-                    </button>
-                    
-                    <a class="btn btn-block btn-social btn-google"><i class="fa fa-google"></i> Sign in with Google</a>
-                    <a class="btn btn-block btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 </body>
 <script src="build/bundle.js"></script>
-<script src="notlogged.js"></script>
-
 </html>
