@@ -1,42 +1,54 @@
-jQuery(document).ready(function ($) {
+function successAuth(result, errorBlock, errorMsg){
+  if(result.success){
+    document.cookie = "access_token="+result.token;
+    window.location.replace('/boards');
+  }else{
+    $(errorMsg).text(result.message);  
+    $(errorBlock).show();  
+  }
+}
 
-  var $toggle = $('#header-toggle');
-  var $menu = $('#header-menu');
+function successSignup(result){
+  successAuth(result, '#signupError', '#signupErrorMessage')
+}
+function successLogin(result){
+  successAuth(result, '#loginError', '#loginErrorMessage')
+}
 
-  $toggle.click(function() {
-    $(this).toggleClass('is-active');
-    $menu.toggleClass('is-active');
+$(document).ready(function ($) {
+  $('#form-login').submit(function(event) {
+        var data = {
+            email    : $('#i-login-email').val(),
+            password : $('#i-login-pwd').val()
+        };
+
+        $.ajax({
+            type     : 'POST', 
+            url      : 'auth/login', 
+            data     : data, 
+            dataType : 'json',
+            encode   : true,
+            success  : successLogin
+        });  
+        event.preventDefault();
+  });
+  
+  $('#form-signup').submit(function(event) {
+        var data = {
+            name     : $('#i-signup-name').val(),
+            email    : $('#i-signup-email').val(),
+            password : $('#i-signup-pwd').val()
+        };
+
+        $.ajax({
+            type     : 'POST', 
+            url      : 'auth/signup', 
+            data     : data, 
+            dataType : 'json',
+            encode   : true,
+            success  : successSignup
+        });  
+        event.preventDefault();
   });
 
-  $('.modal-button').click(function() {
-    var target = $(this).data('target');
-    $('html').addClass('has-modal-open');
-    $(target).addClass('is-active');
-  });
-
-  $('.modal-background, .modal-close').click(function() {
-    $('html').removeClass('has-modal-open');
-    $(this).parent().removeClass('is-active');
-  });
-
-  var $highlights = $('.highlight');
-
-  $highlights.each(function() {
-    var copy = '<button class="copy">Copy</button>';
-    $(this).append(copy);
-  });
-
-  var $copies = $('.highlight .copy');
-
-  $copies.hover(function() {
-    $(this).parent().css('box-shadow', '0 0 0 1px #ed6c63');
-  }, function() {
-    $(this).parent().css('box-shadow', 'none');
-  });
-
-  new Clipboard('.copy', {
-    target: function(trigger) {
-      return trigger.previousSibling;
-    }
-  });
 });

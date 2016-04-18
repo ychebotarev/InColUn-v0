@@ -24,7 +24,7 @@
       "commit": "bf4ecf5b68887ed5a065e3922885c34d0f5739df"
     },
     "node/node.d.ts": {
-      "commit": "bf4ecf5b68887ed5a065e3922885c34d0f5739df"
+      "commit": "544a35a10866b32afda9c7f029c0764558563f4f"
     },
     "express-serve-static-core/express-serve-static-core.d.ts": {
       "commit": "bf4ecf5b68887ed5a065e3922885c34d0f5739df"
@@ -57,7 +57,7 @@
       "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
     },
     "jsonwebtoken/jsonwebtoken.d.ts": {
-      "commit": "ee9c524295333250ddbc7364f27c8b2ccd84b18a"
+      "commit": "544a35a10866b32afda9c7f029c0764558563f4f"
     },
     "flake-idgen/flake-idgen.d.ts": {
       "commit": "ee9c524295333250ddbc7364f27c8b2ccd84b18a"

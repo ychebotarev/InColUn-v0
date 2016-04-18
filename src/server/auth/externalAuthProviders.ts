@@ -1,4 +1,4 @@
-interface authProvider{
+interface externalAuthProvider{
     clientID:string;
     clientSecret:string;
     callbackURL:string;
@@ -16,9 +16,9 @@ var googleProvider={
 	callbackURL: 'http://localhost:8080/auth/google/callback'
 }
 
-var providers:{[key:string]:authProvider} = {
+var providers:{[key:string]:externalAuthProvider} = {
     'facebook':facebookProvider,
     'google':googleProvider
 };
 
-export {providers, authProvider}
+export {providers, externalAuthProvider}

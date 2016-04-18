@@ -10,9 +10,7 @@ import {server_config} from '../config'
 
 function setupApiRoutes(app: Application, passport:Passport){
     var router = Router();
-    
-    router.use(passport.authenticate('bearer', { session: false }));
-    
+        
     router.get('/boards', function(req, res){
 		res.json({ SecretData: 'abc123' });
 	});        

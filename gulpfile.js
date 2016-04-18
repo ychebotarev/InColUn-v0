@@ -26,8 +26,8 @@ gulp.task('clean-ts', function (cb) {
     var typeScriptGenFiles = [
                                 './build/**/*.js',   
                                 './build/**/*.js.map',   
-                                './wwwroot/app/*.js',
-                                './wwwroot/app/*.js.map',
+                                './wwwroot/app/build/*.js',
+                                './wwwroot/app/build/*.js.map',
                                 './test/**/*.js',
                                 './test/**/*.js.map'
                             ];
@@ -37,7 +37,6 @@ gulp.task('clean-ts', function (cb) {
 var tsProject_FE = ts.createProject('src/frontend/tsconfig.json',
     { typescript: require('typescript') });
 
-
 // just build all the typescript files
 gulp.task("build frontend code", function () {
     var tsResult  = tsProject_FE.src()
@@ -46,10 +45,8 @@ gulp.task("build frontend code", function () {
     return tsResult.pipe(sourcemaps.write('.')).pipe(gulp.dest('./build/frontend'));
 });
 
-
 var tsProject_BE = ts.createProject('src/server/tsconfig.json',
     { typescript: require('typescript') });
-
 
 // just build all the typescript files
 gulp.task("build server code", function () {
