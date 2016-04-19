@@ -6,7 +6,7 @@ class Config{
 }
 
 var server_config = new Config();
-server_config.instance_id = 1;
+server_config.instance_id = 1001;
 server_config.secret = 'supersecret';
 
 export {server_config}

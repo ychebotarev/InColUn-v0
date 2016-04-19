@@ -10,12 +10,46 @@ import cookieParser = require('cookie-parser');
 import passport = require('passport');
 import session = require('express-session');
 import morgan = require('morgan')
+import bcryptjs = require('bcryptjs')
+import crypto = require('crypto');
 
 import {setupPassport} from './auth/setupPassport'
 import {setupIndexRoutes} from './routes/index';
 import {setupAuthRoutes} from './routes/auth';
 import {setupApiRoutes} from './routes/api';
 import {setupBoardsRoute} from './routes/boards';
+
+import {murmurhash3_32_gc} from './utils/murmurhash3_gc';
+import * as mysql from 'mysql'
+
+function encryptPassword(password:string, salt:string):string {
+    if (!password) return '';
+    try {
+        return crypto.createHmac('sha1', salt).update(password).digest('hex');
+    } catch (err) {
+        return '';
+    }
+}
+
+
+var result:number = murmurhash3_32_gc('a@a', 1001)
+var pwd = encryptPassword('a', '1001');
+
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '!qAzXsW2',
+  database : 'incolun'
+});
+
+connection.connect();
+connection.query('SELECT * from users', function(err, rows, fields) {
+    if (err) throw err;
+
+    console.log('The email is: ', rows[0].email);
+});
+
+connection.end();
 
 var app = express();
 setupPassport(passport);
