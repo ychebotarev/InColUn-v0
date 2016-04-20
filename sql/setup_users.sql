@@ -17,4 +17,7 @@ ENGINE = InnoDB
 INSERT INTO incolun.users (id,userid,user_provided_id, email,username, pwd,token,type,created,status) 
    VALUES (0, '1372734638','a@a','a@a','a','2ebb8efcaa00598520e7b4fdc7d3a6630bcb13f0','NA','L',NOW(),'A')
    
+
 SELECT * FROM incolun.users;
+
+SELECT * from incolun.users WHERE userid = '1372734638';

@@ -5,9 +5,10 @@
     "noEmitOnError": true,
     "removeComments": false,
     "sourceMap": true,
-    "target": "es5",
-	"listFiles" : true,
-	"outDir": "../../build/server"
+    "target": "es6",
+    "noImplicitReturns":true,
+	  "listFiles" : true,
+	  "outDir": "../../build/server"
   }
 }
 

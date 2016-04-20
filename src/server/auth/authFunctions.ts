@@ -1,12 +1,65 @@
+import crypto = require('crypto');
+
 import * as jwt from 'jsonwebtoken';
 import {Request,Response,NextFunction} from 'express'
 
 import {server_config} from '../config'
+import * as db from '../db/db.ts'
 
 var cache = require('im-cache');
 
+function createUser(rows){
+  return {
+        id:rows[0].id,
+        userid:rows[0].userid,
+        email:rows[0].email,
+        username:rows[0].username
+    }
+}
+
+var processUserRequest = function (rows, fields, done){
+    var newUser = createUser(rows);
+    done(null, newUser);
+}
+
+function createTestPromise(str:string){
+    return new Promise<string>((resolve, reject) => { 
+        resolve(str); 
+    });
+}
+
+function testPromise(str:string, callback:(str:string)=>void){
+    createTestPromise(str).then(callback)
+}
+
+testPromise('hello', (str:string)=>{console.log(str)})
+/*
+function poolQuery(query, done){
+    var promise = new Promise( function(resolve, reject){
+        db.poolQuery(query, function(errorMsg:string, rows, fields){
+            if(errorMsg){
+                reject(errorMsg);
+            }
+            resolve(rows, fields, done);
+        });
+    })
+    return promise;
+}*/
+
 function facebookLogin(accessToken, refreshToken, profile, done) {
     process.nextTick(function(){
+        db.poolQuery('SELECT * from users WHERE userid='+profile.id)
+            .then(function(rows, fields){
+                var newUser = createUser(rows);
+                done(null, newUser);
+            })
+            .catch(function(error:string){
+                done(error)
+            })
+    })
+};
+
+/*
         var user = cache.get("id-"+profile.id);
         if(user){
             return done(null, user);
@@ -16,7 +69,7 @@ function facebookLogin(accessToken, refreshToken, profile, done) {
         
         return done(null, newUser);
     });
-}
+}*/
 
 function googleLogin(accessToken, refreshToken, profile, done) {
     process.nextTick(function(){
@@ -109,4 +162,17 @@ function webGuard(req:Request, res:Response, next:NextFunction) {
     res.redirect('/login');		
 }
 
-export {facebookLogin, googleLogin, localLogin, localSignup, apiGuard, webGuard}
+function encryptPasswordImpl(password:string, salt:string):string {
+    if (!password) return '';
+    try {
+        return crypto.createHmac('sha1', salt).update(password).digest('hex');
+    } catch (err) {
+        return '';
+    }
+}
+
+function encryptPassword(password:string):string {
+    return encryptPasswordImpl(password,'1001');
+}
+
+export {facebookLogin, googleLogin, localLogin, localSignup, apiGuard, webGuard, encryptPassword}

@@ -31,7 +31,6 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "bcryptjs": "^2.3.0",
     "biguint-format": "^1.0.0",
     "body-parser": "^1.15.0",
     "connect-flash": "^0.1.1",

@@ -38,22 +38,13 @@
     "body-parser/body-parser.d.ts": {
       "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
     },
-    "es6-promise/es6-promise.d.ts": {
-      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
-    },
     "passport/passport.d.ts": {
       "commit": "ee9c524295333250ddbc7364f27c8b2ccd84b18a"
-    },
-    "passport-local/passport-local.d.ts": {
-      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
     },
     "passport-google-oauth/passport-google-oauth.d.ts": {
       "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
     },
     "passport-facebook/passport-facebook.d.ts": {
-      "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
-    },
-    "bcryptjs/bcryptjs.d.ts": {
       "commit": "4101b65a5b3e72b4a3e3b256d293e2fd11e40840"
     },
     "jsonwebtoken/jsonwebtoken.d.ts": {
