@@ -11,8 +11,20 @@ function successAuth(result, errorBlock, errorMsg){
 function successSignup(result){
   successAuth(result, '#signupError', '#signupErrorMessage')
 }
+
 function successLogin(result){
   successAuth(result, '#loginError', '#loginErrorMessage')
+}
+
+function facebookLoginAttempt(){
+        $.ajax({
+            type     : 'GET', 
+            url      : '/auth/facebook', 
+            data     : {}, 
+            dataType : 'json',
+            encode   : true,
+            success  : successLogin
+        });  
 }
 
 $(document).ready(function ($) {
@@ -50,5 +62,4 @@ $(document).ready(function ($) {
         });  
         event.preventDefault();
   });
-
 });

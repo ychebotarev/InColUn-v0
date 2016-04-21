@@ -1,3 +1,5 @@
+CREATE SCHEMA `incolun` ;
+
 DROP TABLE IF EXISTS `incolun`.`users`;
 
 CREATE TABLE IF NOT EXISTS `incolun`.`users` (

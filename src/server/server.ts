@@ -19,26 +19,6 @@ import {setupAuthRoutes} from './routes/auth';
 import {setupApiRoutes} from './routes/api';
 import {setupBoardsRoute} from './routes/boards';
 
-/*
-import {murmurhash3_32_gc} from './utils/murmurhash3_gc';
-import * as mysql from 'mysql'
-
-
-var result:number = murmurhash3_32_gc('a@a', 1001)
-var pwd = encryptPassword('a', '1001');
-
-var connection = mysql.createConnection(server_config.dbConfig);
-
-connection.connect();
-connection.query('SELECT * from users', function(err, rows, fields) {
-    if (err) throw err;
-
-    console.log('The email is: ', rows[0].email);
-});
-
-connection.end();
-*/
-
 var app = express();
 setupPassport(passport);
 
