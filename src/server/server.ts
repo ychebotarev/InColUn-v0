@@ -2,22 +2,23 @@
 import express = require('express');
 import path = require('path');
 import http = require('http');
-import logger = require('morgan');
 import bodyParser = require('body-parser');
 import errorhandler = require('errorhandler')
 import flash = require('connect-flash');
 import cookieParser = require('cookie-parser');
 import passport = require('passport');
 import session = require('express-session');
-import morgan = require('morgan')
 
 import {server_config} from './config'
+import {logger, logHttpRequests} from './utils/logger'
 
 import {setupPassport} from './auth/setupPassport'
 import {setupIndexRoutes} from './routes/index';
 import {setupAuthRoutes} from './routes/auth';
 import {setupApiRoutes} from './routes/api';
 import {setupBoardsRoute} from './routes/boards';
+
+logger.debug('starting app')
 
 var app = express();
 setupPassport(passport);
@@ -30,7 +31,7 @@ app.use(passport.initialize());
 // all environments
 app.set('port', process.env.PORT || 8080);
 
-app.use(morgan('combined'))
+app.use(logHttpRequests());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -49,12 +50,6 @@ if ('development' == app.get('env')) {
 setupAuthRoutes(app, passport);
 //setupApiRoutes(app, passport);
 setupBoardsRoute(app);
-
-app.all('/*', function(req, res, next){
-    console.log('capture');
-    console.log(req.url);
-    next();
-});
 
 app.get('/', function(req, res){
 		res.render("index");

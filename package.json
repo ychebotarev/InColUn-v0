@@ -44,12 +44,14 @@
     "im-cache": "0.0.2",
     "install": "^0.6.1",
     "jsonwebtoken": "^5.7.0",
+    "measured": "^1.1.0",
     "morgan": "^1.7.0",
     "mysql": "^2.10.2",
     "nodemon": "^1.9.1",
     "npm": "^3.8.6",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.0",
-    "passport-google-oauth": "^1.0.0"
+    "passport-google-oauth": "^1.0.0",
+    "winston": "^2.2.0"
   }
 }

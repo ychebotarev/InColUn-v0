@@ -6,6 +6,8 @@ import * as mysql from 'mysql'
 import {Request,Response,NextFunction} from 'express'
 import {server_config} from '../config'
 import {murmurhash3_32_gc} from '../utils/murmurhash3_gc';
+import {logger} from '../utils/logger'
+
 
 import * as db from '../db/db'
 
