@@ -3,7 +3,7 @@ import {CommandInfo} from '../../core/CommandInfo'
 export interface TreeNodeInfo{
     title:string;
     guid:string;
-    command?:CommandInfo;
+    commandInfo?:CommandInfo;
 } 
  
 export interface TreeNodeData{

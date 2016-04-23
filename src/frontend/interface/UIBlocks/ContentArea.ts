@@ -34,7 +34,22 @@ export class ContentArea {
                 sizeChanged:onBoxSizeChanged,
                 contentChanged:onBoxContentChanged}});
     }
+	
+	public OnOpenBoards(){
+		//if active context != boards - hide active context
+		//show boards
+		//tell boards to load
+	}
+
+	public OnOpenSavedBoards(){
+	}
     
+	public OnOpenRecycledBoards(){
+	}
+	
+	public OnOpenPage(guid:string){
+	}
+
     private OnBoxActivated(guid:string){
     }
     

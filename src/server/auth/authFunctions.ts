@@ -8,12 +8,11 @@ import {server_config} from '../config'
 import {murmurhash3_32_gc} from '../utils/murmurhash3_gc';
 import {logger} from '../utils/logger'
 
-
 import * as db from '../db/db'
 
-var cache = require('im-cache');
+import * as metrics from '../utils/metrics'
 
-interface userLoginModel{
+interface userLoginInfo{
     id:number,
     user_provided_id:string,
     password:string,
@@ -46,7 +45,7 @@ function createToken(id:number, userid:string, udername:string ):string{
 }
 
 
-function createUserFromDB(rows:any[], user_provided_id:string):userLoginModel{
+function createUserFromDB(rows:any[], user_provided_id:string):userLoginInfo{
     for(var i=0; i< rows.length;++i){
         if (rows[i].user_provided_id == user_provided_id)
         {
@@ -61,13 +60,14 @@ function createUserFromDB(rows:any[], user_provided_id:string):userLoginModel{
     return undefined;
 }
 
-function checkUser(user_provided_id:string):Promise<userLoginModel>{
+function checkUser(user_provided_id:string):Promise<userLoginInfo>{
     var userid:number = murmurhash3_32_gc(user_provided_id, 1001);
     
-    const p:Promise<userLoginModel> 
-        = new Promise(( resolve:(user:userLoginModel) => void, reject:(errorCode:string) => void )=>{
+    const p:Promise<userLoginInfo> 
+        = new Promise(( resolve:(user:userLoginInfo) => void, reject:(errorCode:string) => void )=>{
             db.connectioPool.query('SELECT * from users WHERE userid='+userid, function(error: mysql.IError, results){
-                if(error){
+				if(error){
+                    metrics.counterCollection.inc('dbfail');
                     reject(error.code);
                 }else{
                     var user = createUserFromDB(results, user_provided_id); 
@@ -79,27 +79,29 @@ function checkUser(user_provided_id:string):Promise<userLoginModel>{
 }
 
 function insertUser(userid:number, user_rovided_id:string, displayName:string, email:string, password:string, res:Response ){
-    
     var insertQuery = "INSERT INTO users (id,userid,user_provided_id, email,username, pwd, type,created,status)" + 
             " VALUES (0, '"+userid+ "','" + user_rovided_id+ "','"+ email+"','"+ displayName+"','"+password+"','L',NOW(),'N')"; 
-    db.connectioPool.query(insertQuery, function(error: mysql.IError, results){
+    
+	db.connectioPool.query(insertQuery, function(error: mysql.IError, results){
+
         if(error){
+            metrics.counterCollection.inc('dbfail');
             res.json({ success: false, message: 'Failed to add new user. '+error.code});
             return;
         }
-        
         var token = createToken(userid, user_rovided_id, displayName);
-
 	    res.json({ success: true, message: 'Signup success.', token: token });
     })
 }
 
 function localSignup(req:Request, res:Response){
-
-    checkUser(req.body.email).then(function (user:userLoginModel) {
+	var signup_duration = new metrics.Interval();
+	signup_duration.start();
+    checkUser(req.body.email).then(function (user:userLoginInfo) {
         if(user){
 		    res.json({ success: false, message: 'Signup failed. User already exist.' });
-		    return;
+		    metrics.counterCollection.inc('signupfail');
+			return;
         }
         else{
             var userid:number = murmurhash3_32_gc(req.body.email, 1001);
@@ -108,31 +110,50 @@ function localSignup(req:Request, res:Response){
             var password = encryptPassword(req.body.password);
             
             insertUser(userid, email, displayName, email, password, res);
+        	signup_duration.stop();
+			logger.info(JSON.stringify(signup_duration.toJSON('signup-durtion')));
+		    metrics.counterCollection.inc('signupsuccess');
         }
+    }).catch(function (errorCode:string) {
+		metrics.counterCollection.inc('signupfail');
+        logger.error(errorCode);
     })
 }
 
 function localLogin(req:Request, res:Response) {
-    checkUser(req.body.email).then(function (user:userLoginModel) {
+	var login_duration = new metrics.Interval();
+	login_duration.start();
+    
+	checkUser(req.body.email).then(function (user:userLoginInfo) {
         if(!user){
 		    res.json({ success: false, message: 'Login failed. User not found.' });
-		    return;
+			metrics.counterCollection.inc('loginfail');
+			return;
         }
         var in_password = encryptPassword(req.body.password);
 	    if (in_password != user.password) {
 		    res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+			metrics.counterCollection.inc('loginfail');
 		    return;
 	    }
         var token = createToken(user.id, user.user_provided_id, user.displayName);
-        res.json({ success: true, message: 'Login success.', token: token }); 
+        res.json({ success: true, message: 'Login success.', token: token });
+		
+		login_duration.stop();
+		logger.info(JSON.stringify(login_duration.toJSON('login-durtion')));
+		
+		metrics.counterCollection.inc('login_success');
+		 
     }).catch(function (errorCode:string){
+        metrics.counterCollection.inc('dbfail');
+        logger.error(errorCode);
         res.json({ success: false, message: 'Authentication failed' + errorCode });
     });
 }
 
 function externalLogin(user_provided_id:string, displayName:string,provider:string, done){
     
-    checkUser(user_provided_id).then(function (user:userLoginModel) {
+    checkUser(user_provided_id).then(function (user:userLoginInfo) {
         if(user){
             return done(null, {id:userid, user_id:user_provided_id, username:displayName});
         }
@@ -142,6 +163,7 @@ function externalLogin(user_provided_id:string, displayName:string,provider:stri
             " VALUES (0, '"+userid+ "','" + user_provided_id+ "','','"+ displayName+"','','"+provider+"',NOW(),'N')"; 
         db.connectioPool.query(insertQuery, function(error: mysql.IError, results){
             if(error){
+                metrics.counterCollection.inc('dbfail');
                 done('Signup failed.'+error.code);
                 return;
             }

@@ -18,6 +18,8 @@ import {setupAuthRoutes} from './routes/auth';
 import {setupApiRoutes} from './routes/api';
 import {setupBoardsRoute} from './routes/boards';
 
+import {dumpCounters} from './utils/dumpMetrics'
+
 logger.debug('starting app')
 
 var app = express();
@@ -60,6 +62,8 @@ app.use((req, res, next) => {
    err['status'] = 404;
    next(err);
 });
+
+setInterval(dumpCounters, 100);
 
 http.createServer(app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));

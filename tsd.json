@@ -32,9 +32,6 @@
     "errorhandler/errorhandler.d.ts": {
       "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
     },
-    "morgan/morgan.d.ts": {
-      "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
-    },
     "body-parser/body-parser.d.ts": {
       "commit": "b14601af3fb2ad72d5048e94188a569a1838fb9c"
     },
@@ -67,6 +64,9 @@
     },
     "winston/winston.d.ts": {
       "commit": "544a35a10866b32afda9c7f029c0764558563f4f"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "2d448c0a3152e8871521848c5c2c61ab4e2a2cc9"
     }
   }
 }

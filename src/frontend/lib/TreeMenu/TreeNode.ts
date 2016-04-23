@@ -92,10 +92,16 @@ export class TreeNode extends UIElement{
         }
         if(this.level > 0){
             treeheader.style.cursor='pointer';
-            treeheader.onclick = (ev:MouseEvent) => {
-                application.onClick({command:'OpenPage', param1:{guid:this.info.guid}});
+            treeheader.onclick = (ev:MouseEvent) => { application.OnCommand({command:'OpenPage', param1:{guid:this.info.guid}});
             }
-        }   
+        }
+		else{
+			if (this.info.commandInfo){
+            		treeheader.style.cursor='pointer';
+            		treeheader.onclick = (ev:MouseEvent) => { application.OnCommand(this.info.commandInfo);
+            	}
+			}
+		} 
         return treeheader;
     }
     

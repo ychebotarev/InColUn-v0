@@ -1,0 +1,465 @@
+{"level":"info","message":"/","timestamp":"2016-04-21T05:44:39.580Z"}
+{"level":"info","message":"/","timestamp":"2016-04-21T05:45:00.556Z"}
+{"level":"info","message":"GET /","timestamp":"2016-04-21T05:56:03.634Z"}
+{"level":"info","message":"GET /lib/jquery/dist/jquery.min.js","timestamp":"2016-04-21T05:56:03.757Z"}
+{"level":"info","message":"GET /login.css","timestamp":"2016-04-21T05:56:03.759Z"}
+{"level":"info","message":"GET /notlogged.js","timestamp":"2016-04-21T05:56:03.760Z"}
+{"level":"info","message":"POST /auth/login","timestamp":"2016-04-21T05:56:16.235Z"}
+{"level":"info","message":"GET /boards","timestamp":"2016-04-21T05:56:16.280Z"}
+{"level":"info","message":"GET /lib/bootstrap/dist/css/bootstrap.min.css","timestamp":"2016-04-21T05:56:16.363Z"}
+{"level":"info","message":"GET /lib/medium-editor/dist/css/medium-editor.css","timestamp":"2016-04-21T05:56:16.364Z"}
+{"level":"info","message":"GET /main.css","timestamp":"2016-04-21T05:56:16.367Z"}
+{"level":"info","message":"GET /lib/medium-editor/dist/js/medium-editor.js","timestamp":"2016-04-21T05:56:16.367Z"}
+{"level":"info","message":"GET /lib/jquery/dist/jquery.min.js","timestamp":"2016-04-21T05:56:16.369Z"}
+{"level":"info","message":"GET /build/bundle.js","timestamp":"2016-04-21T05:56:16.372Z"}
+{"level":"info","message":"GET /","timestamp":"2016-04-21T05:56:18.917Z"}
+{"level":"info","message":"GET /lib/jquery/dist/jquery.min.js","timestamp":"2016-04-21T05:56:18.968Z"}
+{"level":"info","message":"GET /login.css","timestamp":"2016-04-21T05:56:18.970Z"}
+{"level":"info","message":"GET /notlogged.js","timestamp":"2016-04-21T05:56:18.972Z"}
+{"level":"info","message":"HTTP GET /","timestamp":"2016-04-22T20:00:04.689Z"}
+{"level":"info","message":"HTTP GET /lib/jquery/dist/jquery.min.js","timestamp":"2016-04-22T20:00:04.819Z"}
+{"level":"info","message":"HTTP GET /login.css","timestamp":"2016-04-22T20:00:04.874Z"}
+{"level":"info","message":"HTTP GET /notlogged.js","timestamp":"2016-04-22T20:00:04.878Z"}
+{"level":"info","message":"HTTP GET /favicon.ico","timestamp":"2016-04-22T20:00:05.301Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:00:09.066Z"}
+{"level":"info","message":"{\"name\":\"user-search\",\"interval\":-4}","timestamp":"2016-04-22T20:00:09.155Z"}
+{"level":"info","message":"{\"name\":\"login-durtion\",\"interval\":-4}","timestamp":"2016-04-22T20:00:09.155Z"}
+{"level":"info","message":"HTTP GET /boards","timestamp":"2016-04-22T20:00:09.168Z"}
+{"level":"info","message":"HTTP GET /lib/bootstrap/dist/css/bootstrap.min.css","timestamp":"2016-04-22T20:00:09.247Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/css/medium-editor.css","timestamp":"2016-04-22T20:00:09.248Z"}
+{"level":"info","message":"HTTP GET /main.css","timestamp":"2016-04-22T20:00:09.250Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/js/medium-editor.js","timestamp":"2016-04-22T20:00:09.253Z"}
+{"level":"info","message":"HTTP GET /lib/jquery/dist/jquery.min.js","timestamp":"2016-04-22T20:00:09.254Z"}
+{"level":"info","message":"HTTP GET /build/bundle.js","timestamp":"2016-04-22T20:00:09.256Z"}
+{"level":"info","message":"HTTP GET /","timestamp":"2016-04-22T20:00:11.545Z"}
+{"level":"info","message":"HTTP GET /lib/jquery/dist/jquery.min.js","timestamp":"2016-04-22T20:00:11.603Z"}
+{"level":"info","message":"HTTP GET /login.css","timestamp":"2016-04-22T20:00:11.605Z"}
+{"level":"info","message":"HTTP GET /notlogged.js","timestamp":"2016-04-22T20:00:11.607Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:00:16.556Z"}
+{"level":"info","message":"{\"name\":\"user-search\",\"interval\":-3}","timestamp":"2016-04-22T20:00:16.560Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:00:18.419Z"}
+{"level":"info","message":"{\"name\":\"user-search\",\"interval\":-2}","timestamp":"2016-04-22T20:00:18.422Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:00:20.135Z"}
+{"level":"info","message":"{\"name\":\"user-search\",\"interval\":-2}","timestamp":"2016-04-22T20:00:20.137Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:00:22.467Z"}
+{"level":"info","message":"{\"name\":\"user-search\",\"interval\":-1}","timestamp":"2016-04-22T20:00:22.470Z"}
+{"level":"info","message":"HTTP POST /auth/signup","timestamp":"2016-04-22T20:00:32.066Z"}
+{"level":"info","message":"{\"name\":\"user-search\",\"interval\":-2}","timestamp":"2016-04-22T20:00:32.069Z"}
+{"level":"info","message":"{\"name\":\"signup-durtion\",\"interval\":-3}","timestamp":"2016-04-22T20:00:32.070Z"}
+{"level":"info","message":"{\"name\":\"user-insert\",\"interval\":-3}","timestamp":"2016-04-22T20:00:32.072Z"}
+{"date":"Fri Apr 22 2016 13:01:39 GMT-0700 (Pacific Daylight Time)","process":{"pid":3956,"uid":null,"gid":null,"cwd":"c:\\projects\\InColUn-v0","execPath":"C:\\Program Files\\nodejs\\node.exe","version":"v5.4.0","argv":["C:\\Program Files\\nodejs\\node.exe","c:\\projects\\InColUn-v0\\build\\server\\server.js"],"memoryUsage":{"rss":49188864,"heapTotal":25006848,"heapUsed":19913512}},"os":{"loadavg":[0,0,0],"uptime":501559.8746138},"trace":[{"column":26,"file":"c:\\projects\\InColUn-v0\\build\\server\\utils\\metrics\\counterCollection.js","function":"CounterCollection.inc","line":14,"method":"inc","native":false},{"column":39,"file":"c:\\projects\\InColUn-v0\\build\\server\\auth\\authFunctions.js","function":"Query._callback","line":71,"method":"_callback","native":false},{"column":24,"file":"c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\sequences\\Sequence.js","function":"Query.Sequence.end","line":96,"method":"Sequence.end","native":false},{"column":8,"file":"c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\sequences\\Query.js","function":"Query.ErrorPacket","line":94,"method":"ErrorPacket","native":false},{"column":23,"file":"c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\Protocol.js","function":"Protocol._parsePacket","line":280,"method":"_parsePacket","native":false},{"column":12,"file":"c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\Parser.js","function":"Parser.write","line":73,"method":"write","native":false},{"column":16,"file":"c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\Protocol.js","function":"Protocol.write","line":39,"method":"write","native":false},{"column":28,"file":"c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\Connection.js","function":"","line":96,"method":null,"native":false},{"column":13,"file":"events.js","function":"emitOne","line":77,"method":null,"native":false},{"column":7,"file":"events.js","function":"Socket.emit","line":169,"method":"emit","native":false}],"stack":["TypeError: Cannot read property 'dbfail' of undefined","    at CounterCollection.inc (c:\\projects\\InColUn-v0\\build\\server\\utils\\metrics\\counterCollection.js:14:26)","    at Query._callback (c:\\projects\\InColUn-v0\\build\\server\\auth\\authFunctions.js:71:39)","    at Query.Sequence.end (c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\sequences\\Sequence.js:96:24)","    at Query.ErrorPacket (c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\sequences\\Query.js:94:8)","    at Protocol._parsePacket (c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\Protocol.js:280:23)","    at Parser.write (c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\Parser.js:73:12)","    at Protocol.write (c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\Protocol.js:39:16)","    at Socket.<anonymous> (c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\Connection.js:96:28)","    at emitOne (events.js:77:13)","    at Socket.emit (events.js:169:7)"],"level":"error","message":"uncaughtException: Cannot read property 'dbfail' of undefined","timestamp":"2016-04-22T20:01:39.347Z"}
+{"level":"info","message":"HTTP POST /auth/signup","timestamp":"2016-04-22T20:02:22.486Z"}
+{"level":"info","message":"{\"name\":\"user-search\",\"interval\":0}","timestamp":"2016-04-22T20:02:22.486Z"}
+{"level":"info","message":"{\"name\":\"signup-durtion\",\"interval\":0}","timestamp":"2016-04-22T20:02:22.486Z"}
+{"level":"info","message":"{\"name\":\"user-insert\",\"interval\":-16}","timestamp":"2016-04-22T20:02:22.502Z"}
+{"date":"Fri Apr 22 2016 13:02:27 GMT-0700 (Pacific Daylight Time)","process":{"pid":3956,"uid":null,"gid":null,"cwd":"c:\\projects\\InColUn-v0","execPath":"C:\\Program Files\\nodejs\\node.exe","version":"v5.4.0","argv":["C:\\Program Files\\nodejs\\node.exe","c:\\projects\\InColUn-v0\\build\\server\\server.js"],"memoryUsage":{"rss":49799168,"heapTotal":25023488,"heapUsed":20769416}},"os":{"loadavg":[0,0,0],"uptime":501607.6039885},"trace":[{"column":26,"file":"c:\\projects\\InColUn-v0\\build\\server\\utils\\metrics\\counterCollection.js","function":"CounterCollection.inc","line":14,"method":"inc","native":false},{"column":39,"file":"c:\\projects\\InColUn-v0\\build\\server\\auth\\authFunctions.js","function":"Query._callback","line":71,"method":"_callback","native":false},{"column":24,"file":"c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\sequences\\Sequence.js","function":"Query.Sequence.end","line":96,"method":"Sequence.end","native":false},{"column":8,"file":"c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\sequences\\Query.js","function":"Query.ErrorPacket","line":94,"method":"ErrorPacket","native":false},{"column":23,"file":"c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\Protocol.js","function":"Protocol._parsePacket","line":280,"method":"_parsePacket","native":false},{"column":12,"file":"c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\Parser.js","function":"Parser.write","line":73,"method":"write","native":false},{"column":16,"file":"c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\Protocol.js","function":"Protocol.write","line":39,"method":"write","native":false},{"column":28,"file":"c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\Connection.js","function":"","line":96,"method":null,"native":false},{"column":13,"file":"events.js","function":"emitOne","line":77,"method":null,"native":false},{"column":7,"file":"events.js","function":"Socket.emit","line":169,"method":"emit","native":false}],"stack":["TypeError: Cannot read property 'dbfail' of undefined","    at CounterCollection.inc (c:\\projects\\InColUn-v0\\build\\server\\utils\\metrics\\counterCollection.js:14:26)","    at Query._callback (c:\\projects\\InColUn-v0\\build\\server\\auth\\authFunctions.js:71:39)","    at Query.Sequence.end (c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\sequences\\Sequence.js:96:24)","    at Query.ErrorPacket (c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\sequences\\Query.js:94:8)","    at Protocol._parsePacket (c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\Protocol.js:280:23)","    at Parser.write (c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\Parser.js:73:12)","    at Protocol.write (c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\protocol\\Protocol.js:39:16)","    at Socket.<anonymous> (c:\\projects\\InColUn-v0\\node_modules\\mysql\\lib\\Connection.js:96:28)","    at emitOne (events.js:77:13)","    at Socket.emit (events.js:169:7)"],"level":"error","message":"uncaughtException: Cannot read property 'dbfail' of undefined","timestamp":"2016-04-22T20:02:27.076Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:05:25.971Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:05:26.940Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:05:30.781Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:05:35.733Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:05:40.095Z"}
+{"level":"info","message":"{\"name\":\"login-durtion\",\"interval\":3}","timestamp":"2016-04-22T20:05:40.098Z"}
+{"level":"info","message":"HTTP GET /boards","timestamp":"2016-04-22T20:05:40.103Z"}
+{"level":"info","message":"HTTP GET /lib/bootstrap/dist/css/bootstrap.min.css","timestamp":"2016-04-22T20:05:40.217Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/css/medium-editor.css","timestamp":"2016-04-22T20:05:40.221Z"}
+{"level":"info","message":"HTTP GET /main.css","timestamp":"2016-04-22T20:05:40.222Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/js/medium-editor.js","timestamp":"2016-04-22T20:05:40.223Z"}
+{"level":"info","message":"HTTP GET /lib/jquery/dist/jquery.min.js","timestamp":"2016-04-22T20:05:40.223Z"}
+{"level":"info","message":"HTTP GET /build/bundle.js","timestamp":"2016-04-22T20:05:40.224Z"}
+{"level":"info","message":"HTTP GET /","timestamp":"2016-04-22T20:05:42.287Z"}
+{"level":"info","message":"HTTP GET /lib/jquery/dist/jquery.min.js","timestamp":"2016-04-22T20:05:42.376Z"}
+{"level":"info","message":"HTTP GET /login.css","timestamp":"2016-04-22T20:05:42.378Z"}
+{"level":"info","message":"HTTP GET /notlogged.js","timestamp":"2016-04-22T20:05:42.378Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:10:38.355Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:10:59.644Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:11:27.173Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:12:35.707Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:14:02.998Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:16:05.962Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:17:51.697Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:51.748Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:51.863Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:51.963Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:52.077Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:52.178Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:52.281Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:52.394Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:52.495Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:52.600Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:52.704Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:52.806Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:52.906Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:53.012Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:53.127Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:53.228Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:53.329Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:53.433Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:53.549Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:53.650Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:53.754Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:53.857Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:53.958Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:54.066Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:54.167Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:54.267Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:54.367Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:54.469Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:54.571Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:54.675Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:54.776Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:54.877Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:54.978Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:55.080Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:55.190Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:55.299Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:55.400Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:55.500Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:55.612Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:55.713Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:55.820Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:55.922Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:56.022Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:56.130Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:56.231Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:56.332Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:56.433Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:56.533Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:56.633Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:56.734Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:56.835Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:56.937Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:57.039Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:57.142Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:57.243Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:57.356Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:57.458Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:57.559Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:57.660Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:57.772Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:17:57.888Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:17:57.896Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:57.988Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:58.089Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:58.195Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:58.296Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:58.397Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:58.499Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:58.600Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:58.711Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:58.812Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:58.912Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:59.011Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:59.112Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:59.213Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:59.313Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:59.420Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:59.522Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:59.624Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:59.730Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:59.833Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:17:59.935Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:00.037Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:00.138Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:00.239Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:00.341Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:00.444Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:00.548Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:00.650Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:00.752Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:00.864Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:00.965Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:01.066Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:01.168Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:01.268Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:01.368Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:01.480Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:01.581Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:01.685Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:01.795Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:01.908Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:02.016Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:02.117Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:02.217Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:02.317Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:02.431Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:02.537Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":2}","timestamp":"2016-04-22T20:18:02.638Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:18:02.720Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:02.739Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:02.846Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:02.947Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:03.048Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:03.156Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:03.256Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:03.356Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:03.468Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:03.583Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:03.685Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:03.785Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:03.896Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:03.997Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:04.098Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:04.199Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:04.300Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:04.402Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:04.512Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:04.619Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:04.719Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:04.820Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:04.922Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:05.031Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:05.136Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:05.237Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:05.337Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:05.437Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:05.538Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:05.638Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:05.739Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:05.840Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:05.942Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:06.051Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:06.157Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:06.258Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:06.374Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:06.477Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:06.579Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:06.690Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:06.790Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:06.905Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:07.006Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:07.114Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:07.220Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:07.321Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:07.421Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:07.523Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:07.623Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:07.724Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:07.825Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:07.927Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:08.036Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:08.145Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:08.246Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:08.347Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:08.448Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:08.549Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:08.650Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:08.751Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:08.851Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:08.951Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:09.052Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:09.154Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:09.256Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:09.358Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:09.459Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:09.560Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:09.660Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:09.762Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:09.864Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:09.965Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:10.067Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:10.167Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:10.267Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:10.368Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:10.469Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:10.570Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:10.670Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:10.773Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:10.874Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:10.974Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:11.074Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:11.174Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:11.275Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:11.375Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:11.478Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:11.579Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:11.679Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:11.780Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:11.881Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:11.982Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:12.084Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:12.185Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:12.286Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:12.394Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:12.494Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:12.594Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:12.703Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:12.804Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:12.905Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:13.006Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:13.108Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:13.208Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:13.310Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:13.412Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:13.527Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:13.629Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:13.731Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:13.832Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:13.934Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:14.034Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:14.134Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:14.234Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:14.334Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:14.434Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:14.534Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:14.642Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:14.743Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:14.844Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:14.945Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:15.045Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:15.147Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:15.247Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:15.348Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:15.449Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:15.551Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:15.651Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:15.752Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:15.856Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:15.956Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:16.058Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:16.159Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:16.262Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:16.362Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:16.463Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:16.562Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:16.662Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:16.762Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:16.863Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:16.963Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:17.064Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:17.163Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:17.263Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:17.364Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:17.465Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:17.577Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:17.678Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:17.784Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:17.885Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:17.986Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:18.086Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:18.188Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:18.288Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:18.393Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:18.494Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:18.593Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:18.693Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:18.794Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:18.894Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:18.995Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:19.095Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:19.196Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:19.297Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:19.397Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:19.498Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:19.600Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:19.714Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:19.826Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:19.926Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:20.026Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:20.127Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:20.227Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:20.344Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:20.445Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:20.548Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:20.650Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:20.752Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:20.853Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:20.953Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:21.054Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:21.156Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:21.258Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:21.359Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:21.471Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:21.573Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:21.673Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:21.775Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:21.875Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:21.975Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:22.076Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:22.175Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:22.276Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:22.376Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:22.476Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:22.589Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:22.690Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:22.791Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:18:27.994Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:19:44.169Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":1}","timestamp":"2016-04-22T20:20:00.223Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:20:04.499Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:20:07.372Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":3}","timestamp":"2016-04-22T20:20:16.335Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:20:18.071Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":4}","timestamp":"2016-04-22T20:20:18.091Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:20:59.673Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":5}","timestamp":"2016-04-22T20:21:42.619Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:21:57.166Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":6}","timestamp":"2016-04-22T20:22:22.315Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:22:33.544Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":7}","timestamp":"2016-04-22T20:22:37.509Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:22:59.695Z"}
+{"level":"info","message":"{\"name\":\"loginfail\",\"count\":8}","timestamp":"2016-04-22T20:22:59.723Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:23:02.721Z"}
+{"level":"info","message":"{\"name\":\"login-durtion\",\"interval\":5}","timestamp":"2016-04-22T20:23:02.727Z"}
+{"level":"info","message":"HTTP GET /boards","timestamp":"2016-04-22T20:23:02.733Z"}
+{"level":"info","message":"{\"name\":\"login_success\",\"count\":1}","timestamp":"2016-04-22T20:23:02.793Z"}
+{"level":"info","message":"HTTP GET /lib/bootstrap/dist/css/bootstrap.min.css","timestamp":"2016-04-22T20:23:02.849Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/js/medium-editor.js","timestamp":"2016-04-22T20:23:02.854Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/css/medium-editor.css","timestamp":"2016-04-22T20:23:02.855Z"}
+{"level":"info","message":"HTTP GET /main.css","timestamp":"2016-04-22T20:23:02.857Z"}
+{"level":"info","message":"HTTP GET /lib/jquery/dist/jquery.min.js","timestamp":"2016-04-22T20:23:02.858Z"}
+{"level":"info","message":"HTTP GET /build/bundle.js","timestamp":"2016-04-22T20:23:02.859Z"}
+{"level":"info","message":"HTTP GET /","timestamp":"2016-04-22T20:23:04.775Z"}
+{"level":"info","message":"HTTP GET /lib/jquery/dist/jquery.min.js","timestamp":"2016-04-22T20:23:04.857Z"}
+{"level":"info","message":"HTTP GET /login.css","timestamp":"2016-04-22T20:23:04.861Z"}
+{"level":"info","message":"HTTP GET /notlogged.js","timestamp":"2016-04-22T20:23:04.862Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-22T20:23:17.440Z"}
+{"level":"info","message":"{\"name\":\"login-durtion\",\"interval\":3}","timestamp":"2016-04-22T20:23:17.444Z"}
+{"level":"info","message":"HTTP GET /boards","timestamp":"2016-04-22T20:23:17.450Z"}
+{"level":"info","message":"{\"name\":\"login_success\",\"count\":2}","timestamp":"2016-04-22T20:23:17.475Z"}
+{"level":"info","message":"HTTP GET /lib/bootstrap/dist/css/bootstrap.min.css","timestamp":"2016-04-22T20:23:17.509Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/css/medium-editor.css","timestamp":"2016-04-22T20:23:17.511Z"}
+{"level":"info","message":"HTTP GET /main.css","timestamp":"2016-04-22T20:23:17.512Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/js/medium-editor.js","timestamp":"2016-04-22T20:23:17.513Z"}
+{"level":"info","message":"HTTP GET /lib/jquery/dist/jquery.min.js","timestamp":"2016-04-22T20:23:17.514Z"}
+{"level":"info","message":"HTTP GET /build/bundle.js","timestamp":"2016-04-22T20:23:17.519Z"}
+{"level":"info","message":"HTTP GET /","timestamp":"2016-04-23T21:43:39.793Z"}
+{"level":"info","message":"HTTP GET /lib/jquery/dist/jquery.min.js","timestamp":"2016-04-23T21:43:39.994Z"}
+{"level":"info","message":"HTTP GET /login.css","timestamp":"2016-04-23T21:43:39.997Z"}
+{"level":"info","message":"HTTP GET /notlogged.js","timestamp":"2016-04-23T21:43:40.033Z"}
+{"level":"info","message":"HTTP GET /favicon.ico","timestamp":"2016-04-23T21:43:42.293Z"}
+{"level":"info","message":"HTTP POST /auth/login","timestamp":"2016-04-23T21:43:44.355Z"}
+{"level":"info","message":"{\"name\":\"login-durtion\",\"interval\":49}","timestamp":"2016-04-23T21:43:44.536Z"}
+{"level":"info","message":"HTTP GET /boards","timestamp":"2016-04-23T21:43:44.540Z"}
+{"level":"info","message":"{\"name\":\"login_success\",\"count\":1}","timestamp":"2016-04-23T21:43:44.591Z"}
+{"level":"info","message":"HTTP GET /lib/bootstrap/dist/css/bootstrap.min.css","timestamp":"2016-04-23T21:43:44.654Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/css/medium-editor.css","timestamp":"2016-04-23T21:43:44.658Z"}
+{"level":"info","message":"HTTP GET /main.css","timestamp":"2016-04-23T21:43:44.658Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/js/medium-editor.js","timestamp":"2016-04-23T21:43:44.658Z"}
+{"level":"info","message":"HTTP GET /lib/jquery/dist/jquery.min.js","timestamp":"2016-04-23T21:43:44.665Z"}
+{"level":"info","message":"HTTP GET /build/bundle.js","timestamp":"2016-04-23T21:43:44.665Z"}
+{"level":"info","message":"HTTP GET /boards","timestamp":"2016-04-23T21:44:40.070Z"}
+{"level":"info","message":"HTTP GET /lib/bootstrap/dist/css/bootstrap.min.css","timestamp":"2016-04-23T21:44:40.245Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/css/medium-editor.css","timestamp":"2016-04-23T21:44:40.253Z"}
+{"level":"info","message":"HTTP GET /main.css","timestamp":"2016-04-23T21:44:40.253Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/js/medium-editor.js","timestamp":"2016-04-23T21:44:40.257Z"}
+{"level":"info","message":"HTTP GET /lib/jquery/dist/jquery.min.js","timestamp":"2016-04-23T21:44:40.257Z"}
+{"level":"info","message":"HTTP GET /build/bundle.js","timestamp":"2016-04-23T21:44:40.257Z"}
+{"level":"info","message":"HTTP GET /boards","timestamp":"2016-04-23T21:55:44.452Z"}
+{"level":"info","message":"HTTP GET /lib/bootstrap/dist/css/bootstrap.min.css","timestamp":"2016-04-23T21:55:44.623Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/css/medium-editor.css","timestamp":"2016-04-23T21:55:44.623Z"}
+{"level":"info","message":"HTTP GET /main.css","timestamp":"2016-04-23T21:55:44.627Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/js/medium-editor.js","timestamp":"2016-04-23T21:55:44.627Z"}
+{"level":"info","message":"HTTP GET /lib/jquery/dist/jquery.min.js","timestamp":"2016-04-23T21:55:44.627Z"}
+{"level":"info","message":"HTTP GET /build/bundle.js","timestamp":"2016-04-23T21:55:44.627Z"}
+{"level":"info","message":"HTTP GET /boards","timestamp":"2016-04-23T21:56:02.958Z"}
+{"level":"info","message":"HTTP GET /lib/bootstrap/dist/css/bootstrap.min.css","timestamp":"2016-04-23T21:56:03.138Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/css/medium-editor.css","timestamp":"2016-04-23T21:56:03.140Z"}
+{"level":"info","message":"HTTP GET /main.css","timestamp":"2016-04-23T21:56:03.142Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/js/medium-editor.js","timestamp":"2016-04-23T21:56:03.144Z"}
+{"level":"info","message":"HTTP GET /lib/jquery/dist/jquery.min.js","timestamp":"2016-04-23T21:56:03.144Z"}
+{"level":"info","message":"HTTP GET /build/bundle.js","timestamp":"2016-04-23T21:56:03.144Z"}
+{"level":"info","message":"HTTP GET /lib/bootstrap/dist/css/bootstrap.min.css","timestamp":"2016-04-23T21:56:07.525Z"}
+{"level":"info","message":"HTTP GET /lib/medium-editor/dist/css/medium-editor.css","timestamp":"2016-04-23T21:56:07.526Z"}
+{"level":"info","message":"HTTP GET /main.css","timestamp":"2016-04-23T21:56:07.527Z"}
+{"level":"info","message":"HTTP GET /build/bundle.js.map","timestamp":"2016-04-23T21:56:07.583Z"}
+{"level":"info","message":"HTTP GET /lib/bootstrap/dist/css/bootstrap.min.css.map","timestamp":"2016-04-23T21:56:07.696Z"}

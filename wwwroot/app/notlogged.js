@@ -17,14 +17,14 @@ function successLogin(result){
 }
 
 function facebookLoginAttempt(){
-        $.ajax({
-            type     : 'GET', 
-            url      : '/auth/facebook', 
-            data     : {}, 
-            dataType : 'json',
-            encode   : true,
-            success  : successLogin
-        });  
+	$.ajax({
+		type     : 'GET', 
+		url      : '/auth/facebook', 
+		data     : {}, 
+		dataType : 'json',
+		encode   : true,
+		success  : successLogin
+	});  
 }
 
 $(document).ready(function ($) {
