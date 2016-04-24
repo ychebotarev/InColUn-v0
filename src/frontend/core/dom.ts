@@ -64,6 +64,24 @@ class Dom{
         var cn:string = 'glyphicon glyphicon-'+icon;
         return Dom.Create('i', cn);
     }
+	
+	public static GetElementByClassName(parent:HTMLElement, className:string):HTMLElement{
+		if(!parent){
+			return undefined;
+		}
+		var elements = parent.getElementsByClassName(className);
+		if(!elements || elements.length == 0){
+			return undefined;
+		}
+		return <HTMLElement>elements[0];
+	}
+	
+	public static Hide(element:HTMLElement){
+		element.style.display = 'none';
+	}
+	public static Show(element:HTMLElement){
+		element.style.display = 'block';
+	}
 }
 
 

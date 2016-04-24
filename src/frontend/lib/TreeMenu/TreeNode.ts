@@ -115,5 +115,4 @@ export class TreeNode extends UIElement{
         treelist.style.display = this.open? 'block' : 'none';        
         return treelist;
     }
-    
 }

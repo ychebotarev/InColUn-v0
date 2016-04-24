@@ -1,7 +1,6 @@
 .board-container {
   padding: 0;
   margin: 0;
-  list-style: none;
   
   display: -webkit-box;
   display: -moz-box;
@@ -10,7 +9,7 @@
   display: flex;
   
   -webkit-flex-flow: row wrap;
-  justify-content: flex-left;
+  justify-content: flex-start;
 }
 
 .board-item {
@@ -26,8 +25,10 @@
   //line-height: 150px;
   color: white;
   font-weight: bold;
-  font-size: 3em;
+  font-size: 2em;
   text-align: center; 
+  //overflow: hidden;
+  //text-overflow: ellipsis;
 }
 
 .add-board {

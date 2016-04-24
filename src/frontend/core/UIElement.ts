@@ -22,7 +22,21 @@ abstract class UIElement {
         if (renderTo){
             renderTo.appendChild(this.self);
         }
-    }    
+    }
+	
+	public Hide(){
+		if(!this.self){
+			return;
+		}
+		this.self.style.display = 'none';
+	}    
+	
+	public Show(show_style?: string){
+		if(!this.self){
+			return;
+		}
+		this.self.style.display = (!show_style)?'block':show_style;
+	}    
 }
 
 export {UIElement}
