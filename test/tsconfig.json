@@ -6,11 +6,11 @@
     "removeComments": false,
     "sourceMap": true,
     "target": "es5",
+    "noImplicitReturns":true,
+	"outDir": "../../build/frontend",
 	"listFiles" : true
-  },
-  "files": [
-	"person_test.ts",
-	"greetings_test.ts",
-    "classnames_test.ts"
-  ]
+ },
+ "files": [
+    	"classnames.spec.ts"
+  	]
 }

@@ -13,10 +13,9 @@ import {server_config} from './config'
 import {logger, logHttpRequests} from './utils/logger'
 
 import {setupPassport} from './auth/setupPassport'
-import {setupIndexRoutes} from './routes/index';
 import {setupAuthRoutes} from './routes/auth';
 import {setupApiRoutes} from './routes/api';
-import {setupBoardsRoute} from './routes/boards';
+import {setupCommonRoute} from './routes/common';
 
 import {dumpCounters} from './utils/dumpMetrics'
 
@@ -48,20 +47,10 @@ if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
 
-//setupIndexRoutes(app);
 setupAuthRoutes(app, passport);
-//setupApiRoutes(app, passport);
-setupBoardsRoute(app);
+setupApiRoutes(app);
+setupCommonRoute(app);
 
-app.get('/', function(req, res){
-		res.render("index");
-	});
-
-app.use((req, res, next) => {
-   var err = new Error('Not Found');
-   err['status'] = 404;
-   next(err);
-});
 
 setInterval(dumpCounters, 100);
 

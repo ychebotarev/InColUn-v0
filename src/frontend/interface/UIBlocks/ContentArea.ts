@@ -15,7 +15,7 @@ export class ContentArea {
 	
 	public OnOpenBoards(){
 		this.boxContext.Hide();
-		this.boardsContext.Show('flex');
+		//this.boardsContext.Show('flex');
 		
 		this.boardsContext.LoadBoards();
 	}
@@ -27,9 +27,9 @@ export class ContentArea {
 	}
 	
 	public OnOpenPage(guid:string){
-		this.boardsContext.Hide();
-		this.boxContext.LoadPage(guid);
-		this.boxContext.Show();
+		//this.boardsContext.Hide();
+		//this.boxContext.LoadPage(guid);
+		//this.boxContext.Show();
 	}
 
     private OnBoxActivated(guid:string){
@@ -49,6 +49,6 @@ export class ContentArea {
 		this.boxContext.Render(contentArea);
 		this.boardsContext.Render(contentArea);
 		this.boxContext.Hide();
-		this.boardsContext.Show('flex');
+		//this.boardsContext.Show('flex');
     }
 } 

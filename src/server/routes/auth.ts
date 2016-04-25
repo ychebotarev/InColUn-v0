@@ -51,9 +51,6 @@ function setupAuthRoutes(app: Application, passport:Passport){
   		})(req, res, next);
 	});
 
-	//app.use('/api/', apiGuard);
-	//app.use('/boards', apiGuard);
-
 	app.get('/logout', function(req, res){
 		req.logout();
 		res.redirect('/');

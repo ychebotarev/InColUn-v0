@@ -2,7 +2,7 @@
 /// <reference path="../typings/chai/chai.d.ts" />
 
 import * as chai from 'chai';
-import {classNames} from "../code/utils/classnames";
+import {classNames} from "../src/frontend/lib/classnames";
 
 var assert = chai.assert;
 

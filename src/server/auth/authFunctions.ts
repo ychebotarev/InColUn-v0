@@ -11,10 +11,11 @@ import {logger} from '../utils/logger'
 import * as db from '../db/db'
 
 import * as metrics from '../utils/metrics'
+import {flakeIdGenerator} from '../utils/flakeid'
 
 interface userLoginInfo{
-    id:number,
-    user_provided_id:string,
+    id:string,
+    user_id_key:string,
     password:string,
     displayName:string        
 }
@@ -38,21 +39,20 @@ function encryptPassword(password:string):string {
     return encryptPasswordImpl(password,'1001');
 }
 
-function createToken(id:number, userid:string, udername:string ):string{
-    var user = {id:String(id), userid:userid, username:udername}
+function createToken(id:string, userid:string, udername:string ):string{
+    var user = {id:id, userid:userid, username:udername}
     var token = jwt.sign(user, server_config.secret, { expiresIn: '24h'});
     return token;
 }
 
-
-function createUserFromDB(rows:any[], user_provided_id:string):userLoginInfo{
+function createUserFromDB(rows:any[], user_id:string):userLoginInfo{
     for(var i=0; i< rows.length;++i){
-        if (rows[i].user_provided_id == user_provided_id)
+        if (rows[i].user_id == user_id)
         {
             return {
                 id:rows[0].id,
-                user_provided_id:rows[0].user_provided_id,
-                password:rows[0].pwd,
+                user_id_key:rows[0].user_id_key,
+                password:rows[0].password,
                 displayName:rows[0].username
             }
         }
@@ -60,17 +60,17 @@ function createUserFromDB(rows:any[], user_provided_id:string):userLoginInfo{
     return undefined;
 }
 
-function checkUser(user_provided_id:string):Promise<userLoginInfo>{
-    var userid:number = murmurhash3_32_gc(user_provided_id, 1001);
+function checkUser(user_id:string):Promise<userLoginInfo>{
+    var user_id_key:number = murmurhash3_32_gc(user_id, 1001);
     
     const p:Promise<userLoginInfo> 
         = new Promise(( resolve:(user:userLoginInfo) => void, reject:(errorCode:string) => void )=>{
-            db.connectioPool.query('SELECT * from users WHERE userid='+userid, function(error: mysql.IError, results){
+            db.connectioPool.query('SELECT * from users WHERE user_id_key='+user_id_key, function(error: mysql.IError, results){
 				if(error){
                     metrics.counterCollection.inc('dbfail');
                     reject(error.code);
                 }else{
-                    var user = createUserFromDB(results, user_provided_id); 
+                    var user = createUserFromDB(results, user_id); 
                     resolve(user);
                 }
             })
@@ -78,9 +78,10 @@ function checkUser(user_provided_id:string):Promise<userLoginInfo>{
     return p;
 }
 
-function insertUser(userid:number, user_rovided_id:string, displayName:string, email:string, password:string, res:Response ){
-    var insertQuery = "INSERT INTO users (id,userid,user_provided_id, email,username, pwd, type,created,status)" + 
-            " VALUES (0, '"+userid+ "','" + user_rovided_id+ "','"+ email+"','"+ displayName+"','"+password+"','L',NOW(),'N')"; 
+function insertUser(user_id_key:number, user_id:string, displayName:string, email:string, password:string, res:Response ){
+    var id = flakeIdGenerator.nextStr(1);
+	var insertQuery = "INSERT INTO users (id,user_id_key,user_id, email,username, password, type,created,status)" + 
+            " VALUES ('"+id+"', '"+user_id_key+ "','" + user_id+ "','"+ email+"','"+ displayName+"','"+password+"','L',NOW(),'N')"; 
     
 	db.connectioPool.query(insertQuery, function(error: mysql.IError, results){
 
@@ -89,7 +90,7 @@ function insertUser(userid:number, user_rovided_id:string, displayName:string, e
             res.json({ success: false, message: 'Failed to add new user. '+error.code});
             return;
         }
-        var token = createToken(userid, user_rovided_id, displayName);
+        var token = createToken(id, user_id, displayName);
 	    res.json({ success: true, message: 'Signup success.', token: token });
     })
 }
@@ -104,12 +105,12 @@ function localSignup(req:Request, res:Response){
 			return;
         }
         else{
-            var userid:number = murmurhash3_32_gc(req.body.email, 1001);
+            var user_id_key:number = murmurhash3_32_gc(req.body.email, 1001);
             var email = req.body.email;
             var displayName = req.body.name;
             var password = encryptPassword(req.body.password);
             
-            insertUser(userid, email, displayName, email, password, res);
+            insertUser(user_id_key, email, displayName, email, password, res);
         	signup_duration.stop();
 			logger.info(JSON.stringify(signup_duration.toJSON('signup-durtion')));
 		    metrics.counterCollection.inc('signupsuccess');
@@ -136,7 +137,7 @@ function localLogin(req:Request, res:Response) {
 			metrics.counterCollection.inc('loginfail');
 		    return;
 	    }
-        var token = createToken(user.id, user.user_provided_id, user.displayName);
+        var token = createToken(user.id, user.user_id_key, user.displayName);
         res.json({ success: true, message: 'Login success.', token: token });
 		
 		login_duration.stop();
@@ -151,24 +152,26 @@ function localLogin(req:Request, res:Response) {
     });
 }
 
-function externalLogin(user_provided_id:string, displayName:string,provider:string, done){
+function externalLogin(user_id:string, displayName:string,provider:string, done){
     
-    checkUser(user_provided_id).then(function (user:userLoginInfo) {
+    checkUser(user_id).then(function (user:userLoginInfo) {
         if(user){
-            return done(null, {id:userid, user_id:user_provided_id, username:displayName});
+            return done(null, {id:user.id, user_id:user.user_id_key, username:displayName});
         }
-        var userid:number = murmurhash3_32_gc(user_provided_id, 1001);
+		
+        var user_id_key:number = murmurhash3_32_gc(user_id, 1001);
+        var id = flakeIdGenerator.nextStr(1);
+        var insertQuery = "INSERT INTO users (id,user_id_key,user_id, email,username, password, type,created,status)" + 
+            " VALUES ('"+id+"', '"+user_id_key+ "','" + user_id+ "','','"+ displayName+"','','"+provider+"',NOW(),'N')"; 
         
-        var insertQuery = "INSERT INTO users (id,userid,user_provided_id, email,username, pwd, type,created,status)" + 
-            " VALUES (0, '"+userid+ "','" + user_provided_id+ "','','"+ displayName+"','','"+provider+"',NOW(),'N')"; 
-        db.connectioPool.query(insertQuery, function(error: mysql.IError, results){
+		db.connectioPool.query(insertQuery, function(error: mysql.IError, results){
             if(error){
                 metrics.counterCollection.inc('dbfail');
                 done('Signup failed.'+error.code);
                 return;
             }
 
-            done(null,{id:userid, user_id:user_provided_id, username:displayName})
+            done(null,{id:id, user_id_key:user_id_key, username:displayName})
         })
     })
 }
