@@ -5,12 +5,13 @@
     "noEmitOnError": true,
     "removeComments": false,
     "sourceMap": true,
-    "target": "es5",
+    "target": "es6",
     "noImplicitReturns":true,
-	"outDir": "../../build/frontend",
 	"listFiles" : true
  },
  "files": [
-    	"classnames.spec.ts"
+    	"classnames.spec.ts",
+		"flakeid.spec.ts",
+		"localLogin.spec.ts"
   	]
 }

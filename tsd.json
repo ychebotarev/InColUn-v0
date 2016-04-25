@@ -24,7 +24,7 @@
       "commit": "bf4ecf5b68887ed5a065e3922885c34d0f5739df"
     },
     "node/node.d.ts": {
-      "commit": "544a35a10866b32afda9c7f029c0764558563f4f"
+      "commit": "2d448c0a3152e8871521848c5c2c61ab4e2a2cc9"
     },
     "express-serve-static-core/express-serve-static-core.d.ts": {
       "commit": "bf4ecf5b68887ed5a065e3922885c34d0f5739df"
@@ -66,6 +66,12 @@
       "commit": "544a35a10866b32afda9c7f029c0764558563f4f"
     },
     "jquery/jquery.d.ts": {
+      "commit": "2d448c0a3152e8871521848c5c2c61ab4e2a2cc9"
+    },
+    "supertest/supertest.d.ts": {
+      "commit": "2d448c0a3152e8871521848c5c2c61ab4e2a2cc9"
+    },
+    "superagent/superagent.d.ts": {
       "commit": "2d448c0a3152e8871521848c5c2c61ab4e2a2cc9"
     }
   }
