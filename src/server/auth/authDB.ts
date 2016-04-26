@@ -14,10 +14,10 @@ function createUserFromDB(rows:any[], user_id:string):aI.userLoginInfo{
         if (rows[i].user_id == user_id)
         {
             return {
-                id:rows[0].id,
-                user_id_key:rows[0].user_id_key,
-                password:rows[0].password,
-                displayName:rows[0].username
+                id:rows[i].id,
+                user_id_key:rows[i].user_id_key,
+                password:rows[i].password,
+                displayName:rows[i].username
             }
         }
     }

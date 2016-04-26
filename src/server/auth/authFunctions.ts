@@ -38,19 +38,18 @@ function googleLogin(accessToken, refreshToken, profile, done) {
     });
 }
 
-function apiGuard(req:Request, res:Response, next:NextFunction) {
+function apiGuard(req:Request, res:Response, callback:(req:Request, res:Response, token:any)=>void) {
 	var token = req.body.token || req.param('token') 
         || req.headers['x-access-token']
         || req.cookies.access_token;
 
 	if (token) {
-		jwt.verify(token, server_config.secret, function(err, decoded) {			
+		jwt.verify(token, server_config.secret, function(err, decodedToken) {			
 			if (err) {
 				res.json({ success: false, message: 'Failed to authenticate token.' });		
 				return;
 			} 
-			req.params.decoded = decoded;	
-			next();
+			callback(req,res, decodedToken);
 		});
 		return;
 	}

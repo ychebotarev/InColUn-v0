@@ -3,11 +3,16 @@
  
 import {Passport} from 'passport'
 import {Application, Router} from 'express'
+import {Request,Response,NextFunction} from 'express'
+import {IBoardInfo} from '../../common/interfaces'
 
 import FlakeId = require('flake-idgen');
 
 import {server_config} from '../config'
 import * as authFunction from '../auth/authFunctions'
+import * as db from '../db/db'
+import * as mysql from 'mysql'
+import * as metrics from '../utils/metrics'
 
 function getFakeBoards():any{
 	var docInfo = [
@@ -51,23 +56,42 @@ function getFakeBoards():any{
 	return docInfo;
 }
 
+function createBoardsFromDB(results:any[]):IBoardInfo[]{
+	var boards:	IBoardInfo[] = [];
+    for(var i=0; i< results.length;++i){
+		boards.push({
+			title:results[i].title, 
+			created:results[i].created,
+			updated:results[i].updated,
+			shared:results[i].shared,	
+			saved:results[i].saved,
+			kudos:results[i].kudos
+		});
+    }
+	
+	return boards;
+}
+
+function getBoards(req:Request, res:Response, token:any){
+	var query = "select * from boards where userid = "+token.id;
+	db.connectioPool.query(query, function(error: mysql.IError, results){
+        if(error){
+            metrics.counterCollection.inc('dbfail');
+            res.json({ success: false, message: 'Failed to add new user. '+error.code});
+            return;
+        }
+		
+		var boards = createBoardsFromDB(results);
+		res.json({ success:true, message:'', boards: boards });
+
+	})	
+}
+
 function setupApiRoutes(app: Application){
 	
-	app.use('/api/boards', authFunction.apiGuard);
-	app.use('/api/boards/:guid', authFunction.apiGuard);
-	
-    var router = Router();
-        
-    router.get('/boards', function(req, res){
-		
-		res.json({ boards: getFakeBoards() });
-	});        
-    router.get('/board/:guid', function(req, res){
-		res.json({ SecretData: 'abc123' });
-	});
-    
-    
-    app.use('/api', router);        
+    app.get('/api/boards', function(req:Request, res:Response){
+		authFunction.apiGuard(req,res,getBoards)
+	});  
 }
 
 export {setupApiRoutes}

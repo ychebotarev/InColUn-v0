@@ -40,7 +40,7 @@ var tsProject_FE = ts.createProject('src/frontend/tsconfig.json',
 
 // just build all the typescript files
 gulp.task("build frontend code", function () {
-    var tsResult  = tsProject_FE.src()
+    var tsResult = tsProject_FE.src()
         .pipe(sourcemaps.init())
         .pipe(ts(tsProject_FE));
     return tsResult.pipe(sourcemaps.write('.')).pipe(gulp.dest('./build/frontend'));
@@ -51,10 +51,10 @@ var tsProject_BE = ts.createProject('src/server/tsconfig.json',
 
 // just build all the typescript files
 gulp.task("build server code", function () {
-    var tsResult  = tsProject_BE.src()
+    var tsResult = tsProject_BE.src()
         .pipe(sourcemaps.init())
         .pipe(ts(tsProject_BE));
-    return tsResult.pipe(sourcemaps.write('.')).pipe(gulp.dest('./build/server'));
+    return tsResult.pipe(sourcemaps.write('.')).pipe(gulp.dest('./build'));
 });
 
 var tsProject_BE_test = ts.createProject('test/server/tsconfig.json',
