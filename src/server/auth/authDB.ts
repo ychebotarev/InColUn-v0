@@ -27,7 +27,8 @@ function checkUser(user_id:string):Promise<aI.userLoginInfo>{
     
     const p:Promise<aI.userLoginInfo> 
         = new Promise(( resolve:(user:aI.userLoginInfo) => void, reject:(errorCode:string) => void )=>{
-            db.connectioPool.query('SELECT * from users WHERE user_id_key='+user_id_key, function(error: mysql.IError, results){
+            var query = "SELECT * from users WHERE user_id_key="+user_id_key;
+            db.connectioPool.query(query, function(error: mysql.IError, results){
 				if(error){
                     metrics.counterCollection.inc('dbfail');
                     reject(error.code);

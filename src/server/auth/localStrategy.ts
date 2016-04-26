@@ -44,7 +44,7 @@ function processLocalLogin(user_id:string, password:string, callback:aI.localLog
         callback({ success: true, message: 'Login success.', token: token });
 		
 		login_duration.stop();
-		logger.info(JSON.stringify(login_duration.toJSON('login-durtion')));
+		logger.info(JSON.stringify(login_duration.toJSON('login-duration')));
 		
 		metrics.counterCollection.inc('login_success');
 		 

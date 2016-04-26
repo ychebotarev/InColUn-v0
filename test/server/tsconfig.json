@@ -10,7 +10,6 @@
 	"listFiles" : true
  },
  "files": [
-    "classnames.spec.ts",
 		"flakeid.spec.ts",
 		"localLogin.spec.ts"
   	]

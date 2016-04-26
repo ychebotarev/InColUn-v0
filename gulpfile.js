@@ -7,6 +7,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var webpack = require('webpack');
 var less = require('gulp-less');
 var minifyCSS = require('gulp-minify-css');
+var gutil = require('gulp-util');
 
 gulp.task('build styles - main', function () {
   return gulp.src('./styles/main.less')
@@ -54,4 +55,19 @@ gulp.task("build server code", function () {
         .pipe(sourcemaps.init())
         .pipe(ts(tsProject_BE));
     return tsResult.pipe(sourcemaps.write('.')).pipe(gulp.dest('./build/server'));
+});
+
+var tsProject_BE_test = ts.createProject('test/server/tsconfig.json',
+    { typescript: require('typescript') });
+gulp.task("build server test", function () {
+    var tsResult  = tsProject_BE_test.src()
+        .pipe(sourcemaps.init())
+        .pipe(ts(tsProject_BE_test));
+    return tsResult.pipe(sourcemaps.write('.')).pipe(gulp.dest('./test/server'));
+});
+
+gulp.task('run test - server', function () {
+    return gulp.src(['test/server/**/*.js'], { read: false })
+        .pipe(mocha({ reporter: 'spec' }))
+        .on('error', gutil.log);
 });
