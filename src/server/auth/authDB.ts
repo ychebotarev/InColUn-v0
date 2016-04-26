@@ -43,30 +43,10 @@ function checkUser(user_id:string, callback:(errorMsg:string,loginInfo:aI.userLo
 	})	
 }
 
-/*
-function checkUser(user_id:string):Promise<aI.userLoginInfo>{
-    var user_id_key:number = murmurhash3_32_gc(user_id, 1001);
-    
-    const p:Promise<aI.userLoginInfo> 
-        = new Promise(( resolve:(user:aI.userLoginInfo) => void, reject:(errorCode:string) => void )=>{
-            var query = "SELECT * from users WHERE user_id_key="+user_id_key;
-            db.connectioPool.query(query, function(error: mysql.IError, results){
-				if(error){
-                    metrics.counterCollection.inc('dbfail');
-                    reject(error.code);
-                }else{
-                    var user = createUserFromDB(results, user_id); 
-                    resolve(user);
-                }
-            })
-    })
-    return p;
-}*/
-
 function insertUser(user_id_key:number, user_id:string, displayName:string, email:string, password:string, callback:aI.localLoginCallback){
     var id = flakeIdGenerator.nextStr(1);
-	var insertQuery = "INSERT INTO users (id,user_id_key,user_id, email,username, password, type,created,status)" + 
-            " VALUES ('"+id+"', '"+user_id_key+ "','" + user_id+ "','"+ email+"','"+ displayName+"','"+password+"','L',NOW(),'N')"; 
+	var insertQuery = "INSERT INTO users (id,user_id_key,user_id, email,username, password, token, type,created,status)" + 
+            " VALUES ('"+id+"', '"+user_id_key+ "','" + user_id+ "','"+ email+"','"+ displayName+"','"+password+"','NA','L',NOW(),'N')"; 
     
 	db.connectioPool.query(insertQuery, function(error: mysql.IError, results){
         if(error){

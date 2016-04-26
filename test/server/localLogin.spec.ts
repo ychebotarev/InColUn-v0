@@ -4,9 +4,13 @@
 
 import * as express  from 'express'
 import * as chai from 'chai';
+import * as mysql from 'mysql'
+import * as jwt from 'jsonwebtoken';
 
 import {processLocalLogin, processExternalLogin, processLocalSignup} from '../../src/server/auth/localStrategy'
 import * as aI from '../../src/server/auth/interfaces'
+import * as db from '../../src/server/db/db';
+import {server_config} from '../../src/server/config'
 
 var assert = chai.assert;
 
@@ -33,5 +37,32 @@ describe('Local login', function () {
 	});
 })
 
-describe('Local signup', function () {
-})
+describe('Local Signup', function () {
+	
+	it('fails if user already exist', function () {
+		processLocalSignup("a@a", "a", "a",function( res:aI.localLoginResponse){
+			if(!res.success){
+				console.log("*************************************");
+				console.log(res.message);
+				console.log("*************************************");
+			}
+			assert.isFalse(res.success);	
+		});
+	});
+	
+	it("succesful for new user", function (done) {
+		processLocalSignup("test@test", "test", "test", function(res:aI.localLoginResponse){
+			if(!res.success){
+				console.log("*************************************");
+				console.log(res.message);
+				console.log("*************************************");
+			}
+			assert.isTrue(res.success);
+			var deleteQuery = "DELETE from users WHERE user_id_key=834624741";
+			db.connectioPool.query(deleteQuery, function(error: mysql.IError, results){
+				assert.isTrue(!error);
+			})
+			done();
+		});
+	});	
+}) 

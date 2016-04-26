@@ -1,10 +1,10 @@
 node_modules/
 build/
 typings/
-test/*.js
+test/**/*.js
 test/**/*.js.map
-code/*.js
-code/**/*.js.map
+src/server/**/*.js
+src/server/**/*.js.map
 wwwroot/app/build/*
 wwwroot/app/lib/*
 wwwroot/app/main.css

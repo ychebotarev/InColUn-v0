@@ -30,3 +30,9 @@ SELECT * from incolun.users WHERE user_id_key = '1372734638';
 
 INSERT INTO incolun.users (id,user_id_key,user_id, email,username, password,token,type,created,status) 
    VALUES (1, '1','b@b','b@b','b','N/A','NA','L',NOW(),'A');
+
+DELETE from incolun.users WHERE user_id_key=4232722471
+DELETE from incolun.users WHERE user_id_key=834624741
+                   
+INSERT INTO users (id,user_id_key,user_id, email,username, password, token, type,created,status) 
+	VALUES ('281779587464273920', '4232722471','b@b','b@b','b','5ece1dc5bb7a19d0d5d8dc670a582519f5f3170a','NA','L',NOW(),'N')

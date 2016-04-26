@@ -7,9 +7,8 @@ import {flakeIdGenerator} from "../../src/server/utils/flakeid";
 
 var assert = chai.assert;
 
-describe('classNames', function () {
+describe('flake ID generation', function () {
 	it('generates non empty id', function () {
 		assert.isTrue(flakeIdGenerator.nextStr(1).length > 0);
 	});
-
 })

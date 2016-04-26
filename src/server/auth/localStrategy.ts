@@ -84,11 +84,11 @@ function processLocalSignup(email:string, username:string, password:string, call
         }
         else{
             var user_id_key:number = murmurhash3_32_gc(email, 1001);
-            var password = encryptPassword(password);
+            var encrypted = encryptPassword(password);
             
-            authDB.insertUser(user_id_key, email, username, email, password, callback);
+            authDB.insertUser(user_id_key, email, username, email, encrypted, callback);
         	signup_duration.stop();
-			logger.info(JSON.stringify(signup_duration.toJSON('signup-durtion')));
+			logger.info(JSON.stringify(signup_duration.toJSON('signup-duration')));
 		    metrics.counterCollection.inc('signupsuccess');
         }
     })
