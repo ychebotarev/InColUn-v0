@@ -27,38 +27,32 @@ function encryptPassword(password:string):string {
 function processLocalLogin(user_id:string, password:string, callback:aI.localLoginCallback){
 	var login_duration = new metrics.Interval();
 	login_duration.start();
-    
-	authDB.checkUser(user_id).then(function (user:aI.userLoginInfo) {
-        if(!user){
-		    callback({ success: false, message: 'Login failed. User not found.' });
+	authDB.checkUser(user_id, function (errorMsg:string,loginInfo:aI.userLoginInfo) {
+		if (errorMsg){
+		    callback({success: false, message: errorMsg});
 			metrics.counterCollection.inc('loginfail');
 			return;
         }
         var in_password = encryptPassword(password);
-	    if (in_password != user.password) {
+	    if (in_password != loginInfo.password) {
 		    callback({ success: false, message: 'Authentication failed. Wrong password.' });
 			metrics.counterCollection.inc('loginfail');
 		    return;
 	    }
-        var token = createToken({id:user.id, user_id_key:user.user_id_key, username: user.displayName});
+        var token = createToken({id:loginInfo.id, user_id_key:loginInfo.user_id_key, username: loginInfo.displayName});
         callback({ success: true, message: 'Login success.', token: token });
 		
 		login_duration.stop();
 		logger.info(JSON.stringify(login_duration.toJSON('login-duration')));
 		
 		metrics.counterCollection.inc('login_success');
-		 
-    }).catch(function (errorCode:string){
-        metrics.counterCollection.inc('dbfail');
-        logger.error(errorCode);
-        callback({ success: false, message: 'Authentication failed' + errorCode });
-    });
+    })
 }
 
 function processExternalLogin(user_id:string, displayName:string, provider:string, callback:aI.externalLoginCallback){
-    authDB.checkUser(user_id).then(function (user:aI.userLoginInfo) {
-        if(user){
-			callback(null, {id:user.id, user_id_key:user.user_id_key, username:displayName})
+	authDB.checkUser(user_id, function (errorMsg:string,loginInfo:aI.userLoginInfo) {
+        if(loginInfo){
+			callback(null, {id:loginInfo.id, user_id_key:loginInfo.user_id_key, username:loginInfo.displayName})
             return;
         }
 		
@@ -82,26 +76,21 @@ function processExternalLogin(user_id:string, displayName:string, provider:strin
 function processLocalSignup(email:string, username:string, password:string, callback:aI.localLoginCallback){
 	var signup_duration = new metrics.Interval();
 	signup_duration.start();
-    authDB.checkUser(email).then(function (user:aI.userLoginInfo) {
-        if(user){
+	authDB.checkUser(email, function (errorMsg:string,loginInfo:aI.userLoginInfo) {
+        if(loginInfo){
 			callback({success: false, message: 'Signup failed. User already exist.'});
 		    metrics.counterCollection.inc('signupfail');
 			return;
         }
         else{
             var user_id_key:number = murmurhash3_32_gc(email, 1001);
-            var email = email;
-            var displayName = username;
             var password = encryptPassword(password);
             
-            authDB.insertUser(user_id_key, email, displayName, email, password, callback);
+            authDB.insertUser(user_id_key, email, username, email, password, callback);
         	signup_duration.stop();
 			logger.info(JSON.stringify(signup_duration.toJSON('signup-durtion')));
 		    metrics.counterCollection.inc('signupsuccess');
         }
-    }).catch(function (errorCode:string) {
-		metrics.counterCollection.inc('signupfail');
-        logger.error(errorCode);
     })
 }
 

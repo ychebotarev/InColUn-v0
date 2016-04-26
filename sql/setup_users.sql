@@ -27,3 +27,6 @@ INSERT INTO incolun.users (id,user_id_key,user_id, email,username, password,toke
 SELECT * FROM incolun.users;
 
 SELECT * from incolun.users WHERE user_id_key = '1372734638';
+
+INSERT INTO incolun.users (id,user_id_key,user_id, email,username, password,token,type,created,status) 
+   VALUES (1, '1','b@b','b@b','b','N/A','NA','L',NOW(),'A');
