@@ -1,11 +1,19 @@
-
-import {logger} from './logger'
 import {rateCollection} from './metrics/rateCollection'
 import {intervalCollection} from './metrics/intervalCollection'
 import {counterCollection}  from './metrics/counterCollection'
 import {Meter} from './metrics/measure/meter'
 import {Counter} from './metrics/measure/counter'
 import {Interval} from './metrics/measure/interval'
-import{EWMA, createM1EWMA, createM5EWMA, createM15EWMA, M1_ALPHA, M5_ALPHA, M15_ALPHA} from './metrics/stats/ewma'
 
-export {rateCollection, intervalCollection, counterCollection, Meter, Counter, Interval,EWMA, createM1EWMA, createM5EWMA, createM15EWMA, M1_ALPHA, M5_ALPHA, M15_ALPHA}
+import {ICounterCollection, IIntervalCollection, rateInterval, IRateCollection, IMetrics, IInterval} from '../interfaces/interfaces'
+
+class Metrics implements IMetrics{
+	public counterCollection():ICounterCollection { return counterCollection};
+	public intervalCollection():IIntervalCollection { return intervalCollection};
+	public rateCollection():IRateCollection { return rateCollection};
+	public createInterval():IInterval { return new Interval(); };
+}
+
+var metrics = new Metrics();
+
+export {metrics}

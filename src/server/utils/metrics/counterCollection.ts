@@ -1,7 +1,8 @@
+import {ICounter, ICounterCollection} from '../../interfaces/interfaces'
 import {Counter} from './measure/counter'
 
-class CounterCollection{
-	counters:{[id:string]:Counter};
+class CounterCollection implements ICounterCollection{
+	private counters:{[id:string]:Counter};
 	
 	constructor(){
 		this.counters = {};
@@ -52,7 +53,14 @@ class CounterCollection{
 		return undefined;
 	}
 	
+	public interate(callback:(counter:ICounter, name:string)=>void){
+		for(var name in this.counters){
+			var counter = this.counters[name]; 
+			callback(counter, name);
+		}
+	}
 }
 
 var counterCollection = new CounterCollection();
+
 export {counterCollection}

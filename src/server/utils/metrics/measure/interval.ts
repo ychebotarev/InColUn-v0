@@ -1,9 +1,10 @@
-class Interval{
+import {IInterval} from '../../../interfaces/interfaces'
+
+class Interval implements IInterval {
 	startTime:number;
 	endTime;
 	
 	constructor(){
-		
 	}
 	
 	public start(){

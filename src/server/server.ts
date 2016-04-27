@@ -18,8 +18,15 @@ import {setupApiRoutes} from './routes/api';
 import {setupCommonRoute} from './routes/common';
 
 import {dumpCounters} from './utils/dumpMetrics'
+import {env} from './environment'
+import {db} from './db/db'
+import {metrics} from './utils/metrics'
 
-logger.debug('starting app')
+env().setLogger(logger);
+env().setDb(db);
+env().setMetrics(metrics);
+
+env().logger().debug('starting app')
 
 var app = express();
 setupPassport(passport);
