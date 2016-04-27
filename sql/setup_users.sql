@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS `incolun`.`users` (
 ENGINE = InnoDB;
 
 
-INSERT INTO incolun.users (id,profile_id, username, email, password,type,created,status) 
-   VALUES (0, '1372734638','a','a@a','NA','L',NOW(),'A');
+INSERT INTO incolun.users (id,profile_id, username, email, password, type, created, status) 
+   VALUES (0, '1372734638','a','a@a','2ebb8efcaa00598520e7b4fdc7d3a6630bcb13f0','L',NOW(),'A');
    
 SELECT * FROM incolun.users;
 
