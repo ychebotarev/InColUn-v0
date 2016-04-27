@@ -1,13 +1,12 @@
 import crypto = require('crypto');
 
 import {murmurhash3_32_gc} from '../utils/murmurhash3_gc';
-import {logger} from '../utils/logger'
 import {flakeIdGenerator} from '../utils/flakeid'
 import {createToken} from './createToken'
 import {IAuthResponse} from './IAuthResponse'
 
-import * as db from '../db/db'
-import * as metrics from '../utils/metrics'
+import {env} from '../environment'
+
 import * as mysql from 'mysql'
 import {IUserModel, findUserByEmail, insertUser} from '../db/user' 
 
@@ -25,26 +24,26 @@ function encryptPassword(password:string):string {
 }
 
 function processLocalLogin(email:string, password:string, callback:(authResponse:IAuthResponse)=>void){
-	var login_duration = new metrics.Interval();
+	var login_duration = env().metrics().createInterval();
 	login_duration.start();
 	findUserByEmail(email, function (errorMsg:string, userModel:IUserModel) {
 		if (errorMsg){
 		    callback({success:false, message:errorMsg});
-			metrics.counterCollection.inc('loginfail');
+			env().metrics().counterCollection().inc('loginfail');
 			return;
         }
         var in_password = encryptPassword(password);
 	    if (in_password != userModel.password) {
 		    callback({success:false, message:'Authentication failed. Wrong password.'});
-			metrics.counterCollection.inc('loginfail');
+			env().metrics().counterCollection().inc('loginfail');
 		    return;
 	    }
         var token = createToken(userModel);
         callback({ success: true, message: 'Login success.', token: token });
 		
 		login_duration.stop();
-		logger.info(JSON.stringify(login_duration.toJSON('login-duration')));
-		metrics.counterCollection.inc('login_success');
+		env().logger().info(JSON.stringify(login_duration.toJSON('login-duration')));
+		env().metrics().counterCollection().inc('login_success');
     })
 }
 
@@ -68,7 +67,7 @@ function processExternalLogin(profile:string, displayName:string, provider:strin
         } 
         insertUser(user, function(errorMsg:string,userModel:IUserModel){
             if(errorMsg){
-                metrics.counterCollection.inc('dbfail');
+                env().metrics().counterCollection().inc('dbfail');
                 callback({success:false, message:'Signup failed.'+errorMsg});
                 return;
             }
@@ -82,12 +81,12 @@ function processLocalSignup(email:string
         , username:string
         , password:string
         , callback:(authResponse:IAuthResponse)=>void){
-	var signup_duration = new metrics.Interval();
+	var signup_duration = env().metrics().createInterval();
 	signup_duration.start();
 	findUserByEmail(email, function (errorMsg:string,userModel:IUserModel) {
         if(userModel){
 			callback({success:false, message:'Signup failed. User already exist.'});
-		    metrics.counterCollection.inc('signupfail');
+		    env().metrics().counterCollection().inc('signupfail');
 			return;
         }
         else{
@@ -111,8 +110,8 @@ function processLocalSignup(email:string
                 var token = createToken(userModel);
                 callback({success:true,message:'SignUp success',token:token});
                 signup_duration.stop();
-                logger.info(JSON.stringify(signup_duration.toJSON('signup-duration')));
-                metrics.counterCollection.inc('signupsuccess');
+                env().logger().info(JSON.stringify(signup_duration.toJSON('signup-duration')));
+                env().metrics().counterCollection().inc('signupsuccess');
             })
         }
     })

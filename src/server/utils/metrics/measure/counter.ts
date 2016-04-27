@@ -3,7 +3,9 @@
  * transported via JSON without additional code, but not today. */
 var MAX_COUNTER_VALUE = Math.pow(2, 32); // 4294967296
 
-class Counter{
+import {ICounter} from '../../../interfaces/interfaces'
+
+class Counter implements ICounter{
 	count:number;
 	prevCount:number;
 	constructor(){

@@ -1,9 +1,11 @@
 import {murmurhash3_32_gc} from '../utils/murmurhash3_gc';
 import {flakeIdGenerator} from '../utils/flakeid'
 
-import * as db from '../db/db'
+//import * as db from '../db/db'
 import * as mysql from 'mysql'
-import * as metrics from '../utils/metrics'
+//import * as metrics from '../utils/metrics'
+import {env} from '../environment'
+
 
 interface IUserModel{
     id:string, 
@@ -35,9 +37,9 @@ function getUserFromDB(results:any[], email:string):IUserModel{
 function findUserByEmail(email:string, callback:(errorMsg:string,userModel:IUserModel)=>void){
     var profile_id:number = murmurhash3_32_gc(email, 1001);
 	var query = "SELECT * from users WHERE profile_id="+profile_id;
-	db.connectioPool.query(query, function(error: mysql.IError, results){
+	env().db().pool().query(query, function(error: mysql.IError, results){
 		if(error){
-			metrics.counterCollection.inc('dbfail');
+			env().metrics().counterCollection().inc('dbfail');
 			callback(error.code, null);
 		}else{
 			var user = getUserFromDB(results, email);
@@ -62,9 +64,9 @@ function insertUser(userModel:IUserModel
                         +(userModel.type?userModel.type:"L")+
                         "',NOW(),'N')"; 
 	
-    db.connectioPool.query(insertQuery, function(error: mysql.IError, results){
+    env().db().pool().query(insertQuery, function(error: mysql.IError, results){
         if(error){
-            metrics.counterCollection.inc('dbfail');
+            env().metrics().counterCollection().inc('dbfail');
             callback('Failed to add new user. '+error.code, null);
             return;
         }

@@ -16,6 +16,7 @@ import {processLocalLogin, processExternalLogin, processLocalSignup} from '../..
 var assert = chai.assert;
 
 describe('Local login', function () {
+	
 	it('should fail if password is wrong', function (done) {
 		processLocalLogin("a@a", "b", function(authResponse:IAuthResponse){
 			assert.isFalse(authResponse.success);	

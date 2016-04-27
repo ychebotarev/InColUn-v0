@@ -2,8 +2,9 @@
 import {server_config} from '../config'
 
 import * as mysql from 'mysql'
+import {} from '../interfaces/interfaces'
 
-var connectioPool      =    mysql.createPool({
+var connectioPool = mysql.createPool({
     connectionLimit : 100,
     host     : 'localhost',
     user     : 'root',
@@ -12,15 +13,29 @@ var connectioPool      =    mysql.createPool({
     debug    :  false
 });
 
-function getConnection(callback) {
-    connectioPool.getConnection(function(err, connection) {
-        callback(err, connection);
-    });
-};
+class Db{
+	public getConnection(callback: (err: mysql.IError, connection: mysql.IConnection) => void) {
+    	connectioPool.getConnection(callback);
+	}
 
-interface IDBResponse{
-    results:{}
-    fields:any
+	public pool():mysql.IPool{
+		return connectioPool;
+	}
+
+	public query(queryStr:string):Promise<any>{
+		const p:Promise<any> = new Promise<any>((resolve,reject)=>{
+			connectioPool.query(queryStr, function (error: mysql.IError, results) {
+				if(error){
+					reject(error);
+				} else{
+					resolve(results)	
+				}
+			})
+		})
+		return p;
+	}
 }
 
-export {getConnection, connectioPool, IDBResponse}
+var db = new Db();
+
+export {db}
