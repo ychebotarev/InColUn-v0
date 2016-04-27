@@ -5,24 +5,26 @@ import {server_config} from '../config'
 import * as jwt from 'jsonwebtoken';
 import * as db from '../db/db'
 import * as metrics from '../utils/metrics'
-import * as aI from './interfaces'
-import {processLocalLogin, processExternalLogin, processLocalSignup} from './localStrategy' 
+import {processLocalLogin, processExternalLogin, processLocalSignup} from './processAuth'
+import {IUserModel} from '../db/user' 
+import {IAuthResponse} from './IAuthResponse'
 
 function localSignup(req:Request, res:Response){
-	processLocalSignup(req.body.email, req.body.name, req.body.password, function(localRes:aI.localLoginResponse){
-		res.json(localRes);
+	processLocalSignup(req.body.email, req.body.name, req.body.password, function(authResponse:IAuthResponse){
+		res.json(authResponse);
 	});
 }
 
 function localLogin(req:Request, res:Response) {
-	processLocalLogin(req.body.email, req.body.password, function(localRes:aI.localLoginResponse){
-		res.json(localRes);
+	processLocalLogin(req.body.email, req.body.password, function(authResponse:IAuthResponse){
+		res.json(authResponse);
 	});
 }
 
 function externalLogin(user_id:string, displayName:string, provider:string, done){
-    processExternalLogin(user_id, displayName, provider, function(errorMsg:string, user:aI.userToken){
-		done(errorMsg, user);
+    processExternalLogin(user_id, displayName, provider, function(authResponse:IAuthResponse){
+		if(authResponse.success)
+			done(null, authResponse.token);
 	})
 }
 

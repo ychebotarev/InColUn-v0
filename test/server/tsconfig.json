@@ -11,6 +11,6 @@
  },
  "files": [
 		"flakeid.spec.ts",
-		"localLogin.spec.ts"
+		"processAuth.spec.ts"
   	]
 }
