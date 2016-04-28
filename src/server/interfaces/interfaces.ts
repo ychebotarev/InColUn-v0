@@ -52,12 +52,15 @@ export interface IInterval{
 export interface ILogger{
 	info(message:string);
 	debug(message:string);
+	error(message:string);
+	messages():string[];
+	clear();
 }
 
 export interface IMetrics{
-	counterCollection():ICounterCollection;
-	intervalCollection():IIntervalCollection;
-	rateCollection():IRateCollection;
+	counters:ICounterCollection;
+	intervals:IIntervalCollection;
+	rates:IRateCollection;
 	createInterval():IInterval;
 }
 

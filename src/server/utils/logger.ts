@@ -42,6 +42,15 @@ class Logger implements ILogger{
 	public debug(message:string){
 		winston_logger.debug(message);
 	}
+    
+    public error(message:string){
+        winston_logger.error(message);
+    }
+    public messages():string[]{
+        return undefined;
+    }
+    public clear(){
+    }
 }
 
 var logger = new Logger();

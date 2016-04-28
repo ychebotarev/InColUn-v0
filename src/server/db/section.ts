@@ -1,5 +1,4 @@
-import * as db from './db'
-import * as metrics from '../utils/metrics'
+import {env} from '../environment'
 
 interface IRawSection{
     id:string,
@@ -45,17 +44,27 @@ function createSectionsFromDB(parent_id:string, results:any[]):ISection[]{
     return sections;
 }
 
-function getSections(boardid:string, callback:(success:boolean, message:string, sections?:ISection[])=>void){
-    var query = "select * from boards where userid = " + boardid;
-     db.connectioPool.query(query, function (error, results) {
-        if (error) {
-            metrics.counterCollection.inc('dbfail');
-            callback(false, 'Failed to get boards. ' + error.code);
-            return;
-        }
-        var sections = createSectionsFromDB(boardid, results);
-        callback(true, '', sections);
-    });
+interface IGetSections{
+    success:boolean,
+    message:string,
+    sections?:ISection[]
 }
 
-export {ISection, getSections, IRawSection, convertToTree}
+function getSections(userid:string, boardid:string):Promise<ISection[]>{
+    //TODO - check if user can load this boards
+    const p:Promise<ISection[]> = new Promise<ISection[]>((resolve,reject) =>{
+        var query = "select * from sections where boardid = " + boardid;
+        env().db().query(query)
+            .then(function (results) {
+                var sections = createSectionsFromDB(boardid, results);
+                resolve(sections);
+            })
+            .catch(function (message:string) {
+                env().metrics().counters.inc('dbfail');
+                reject('Failed to get sections. ' + message);
+            })
+    })
+    return p;
+}
+
+export {ISection, getSections}

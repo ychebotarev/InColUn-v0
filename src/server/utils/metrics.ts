@@ -8,9 +8,15 @@ import {Interval} from './metrics/measure/interval'
 import {ICounterCollection, IIntervalCollection, rateInterval, IRateCollection, IMetrics, IInterval} from '../interfaces/interfaces'
 
 class Metrics implements IMetrics{
-	public counterCollection():ICounterCollection { return counterCollection};
-	public intervalCollection():IIntervalCollection { return intervalCollection};
-	public rateCollection():IRateCollection { return rateCollection};
+	public counters:ICounterCollection;
+	public intervals:IIntervalCollection;
+	public rates:IRateCollection;
+	
+	constructor(){
+		this.counters = counterCollection;
+		this.intervals = intervalCollection;
+		this.rates = rateCollection;
+	}
 	public createInterval():IInterval { return new Interval(); };
 }
 

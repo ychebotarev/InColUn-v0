@@ -1,4 +1,3 @@
-
 import {Board} from './components/Board';
 import {Dom} from './core/Dom'
 import {CommandInfo,OnCommandCallback} from './core/CommandInfo'

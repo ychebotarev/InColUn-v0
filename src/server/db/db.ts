@@ -26,7 +26,7 @@ class Db{
 		const p:Promise<any> = new Promise<any>((resolve,reject)=>{
 			connectioPool.query(queryStr, function (error: mysql.IError, results) {
 				if(error){
-					reject(error);
+					reject(String(error.code));
 				} else{
 					resolve(results)	
 				}

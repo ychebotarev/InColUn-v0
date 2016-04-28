@@ -1,4 +1,4 @@
-import {ICounterCollection, IIntervalCollection, rateInterval, IRateCollection, IMetrics, IInterval, ICounter} from '../../../src/server/interfaces/interfaces'
+import {ICounterCollection, IIntervalCollection, rateInterval, IRateCollection, IMetrics, IInterval, ICounter} from '../../interfaces/interfaces'
 
 class MockCounterCollection implements ICounterCollection{
 	public add(name:string):boolean { return true};
@@ -28,22 +28,19 @@ class MockInterval{
 	public stop(){}
 	
 	public value():number{ return 0;}
-	public toJSON(name:string):Object{return undefined};
+	public toJSON(name:string):Object{return 'mockInterval'};
 }
 
 class MockMetrics implements IMetrics{
-	mockCounterCollection:MockCounterCollection;
-	mockIntervalCollection:MockIntervalCollection;
-	mockRateCollection:MockRateCollection;
+	counters:ICounterCollection;
+	intervals:IIntervalCollection;
+	rates:IRateCollection;
 	
 	constructor(){
-		this.mockCounterCollection = new MockCounterCollection();	
-		this.mockIntervalCollection = new MockIntervalCollection();
-		this.mockRateCollection = new MockRateCollection();
+		this.counters = new MockCounterCollection();	
+		this.intervals = new MockIntervalCollection();
+		this.rates = new MockRateCollection();
 	}
-	public counterCollection():ICounterCollection { return this.mockCounterCollection;}
-	public intervalCollection():IIntervalCollection { return this.mockIntervalCollection;};
-	public rateCollection():IRateCollection { return this.mockRateCollection;};
 	public createInterval():IInterval { return new MockInterval(); };
 }
 

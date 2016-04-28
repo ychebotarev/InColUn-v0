@@ -1,7 +1,9 @@
-import * as db from './db'
-import * as metrics from '../utils/metrics'
+//import * as db from './db'
+//import * as metrics from '../utils/metrics'
+import {env} from '../environment'
 
 interface IBoard{
+    id:string,
     title:string,
     created:Date,
     updated:Date,
@@ -14,6 +16,7 @@ function createBoardsFromDB(results:any[]):IBoard[] {
     var boards:IBoard[] = [];
     for (var i = 0; i < results.length; ++i) {
         boards.push({
+            id:results[i].boardid,
             title: results[i].title,
             created: results[i].created,
             updated: results[i].updated,
@@ -25,17 +28,16 @@ function createBoardsFromDB(results:any[]):IBoard[] {
     return boards;
 }
 
-function getBoards(id:number, callback:(success:boolean, message:string, boards?:IBoard[])=>void){
-    var query = "select * from boards where userid = " + id;
-    db.connectioPool.query(query, function (error, results) {
-        if (error) {
-            metrics.counterCollection.inc('dbfail');
-            callback(false, 'Failed to get boards. ' + error.code);
-            return;
-        }
-        var boards = createBoardsFromDB(results);
-        callback(true, '', boards);
-    });
+function getBoards(userid:string, callback:(success:boolean, message:string, boards?:IBoard[])=>void){
+    var query = "select * from boards where userid = " + userid;
+    env().db().query(query)
+        .then(function (results:any[]) {
+            var boards = createBoardsFromDB(results);
+            callback(true, '', boards);
+        }).catch(function(message:string){
+            env().metrics().counters.inc('dbfail');
+            callback(false, 'Failed to get boards. ' + message);
+        });
 }
 
 export {IBoard, getBoards}

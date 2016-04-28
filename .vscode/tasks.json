@@ -13,10 +13,6 @@
             "isBuildCommand": true
         },
         {
-            "taskName": "build server test",
-            "isBuildCommand": true
-        },
-        {
             "taskName": "build styles - main",
             "isBuildCommand": true
         },

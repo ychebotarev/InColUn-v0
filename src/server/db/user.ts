@@ -1,9 +1,7 @@
 import {murmurhash3_32_gc} from '../utils/murmurhash3_gc';
 import {flakeIdGenerator} from '../utils/flakeid'
 
-//import * as db from '../db/db'
 import * as mysql from 'mysql'
-//import * as metrics from '../utils/metrics'
 import {env} from '../environment'
 
 
@@ -37,23 +35,22 @@ function getUserFromDB(results:any[], email:string):IUserModel{
 function findUserByEmail(email:string, callback:(errorMsg:string,userModel:IUserModel)=>void){
     var profile_id:number = murmurhash3_32_gc(email, 1001);
 	var query = "SELECT * from users WHERE profile_id="+profile_id;
-	env().db().pool().query(query, function(error: mysql.IError, results){
-		if(error){
-			env().metrics().counterCollection().inc('dbfail');
-			callback(error.code, null);
-		}else{
+	env().db().query(query)
+        .then(function(results){
 			var user = getUserFromDB(results, email);
 			if(!user){
 				callback('Login failed. User not found.', null);
 			} else{
 				callback(null, user);
 			}
-		}
-	})	
+        }).catch(function (message:string) {
+			env().metrics().counters.inc('dbfail');
+			callback(message, null);
+            
+        })
 }
 
-function insertUser(userModel:IUserModel
-        , callback:(errorMsg:string,userModel:IUserModel)=>void){
+function insertUser(userModel:IUserModel, callback:(errorMsg:string,userModel:IUserModel)=>void){
     userModel.id = flakeIdGenerator.nextStr(1);
 	var insertQuery = "INSERT INTO users (id, profile_id, email, username, password, type, created, status)" + 
             " VALUES ('"+userModel.id+"', '"
@@ -64,14 +61,15 @@ function insertUser(userModel:IUserModel
                         +(userModel.type?userModel.type:"L")+
                         "',NOW(),'N')"; 
 	
-    env().db().pool().query(insertQuery, function(error: mysql.IError, results){
-        if(error){
-            env().metrics().counterCollection().inc('dbfail');
-            callback('Failed to add new user. '+error.code, null);
-            return;
-        }
-	    callback(null, userModel);
-    })
+    env().db().query(insertQuery)
+        .then(function(results){
+            callback(null, userModel)
+        })
+        .catch(function (message:string) {
+            env().metrics().counters.inc('dbfail');
+            callback('Failed to add new user. '+message, null);
+            
+        })
 }
 
 export{IUserModel, findUserByEmail, insertUser}

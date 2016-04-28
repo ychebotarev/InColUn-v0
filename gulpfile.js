@@ -35,39 +35,31 @@ gulp.task('clean-ts', function (cb) {
     del(typeScriptGenFiles, cb).then(paths => {console.log('Deleted files and folders:\n', paths.join('\n'))});
 });
 
-var tsProject_FE = ts.createProject('src/frontend/tsconfig.json',
+var tsconfig_FE = ts.createProject('src/frontend/tsconfig.json',
     { typescript: require('typescript') });
-
-// just build all the typescript files
 gulp.task("build frontend code", function () {
-    var tsResult = tsProject_FE.src()
+    var tsResult = tsconfig_FE.src()
         .pipe(sourcemaps.init())
-        .pipe(ts(tsProject_FE));
+        .pipe(ts(tsconfig_FE));
     return tsResult.pipe(sourcemaps.write('.')).pipe(gulp.dest('./build/frontend'));
 });
 
-var tsProject_BE = ts.createProject('src/server/tsconfig.json',
-    { typescript: require('typescript') });
-
-// just build all the typescript files
+var tsconfig_BE = ts.createProject('src/server/tsconfig.json', { typescript: require('typescript') });
 gulp.task("build server code", function () {
-    var tsResult = tsProject_BE.src()
+    var tsResult = tsconfig_BE.src()
         .pipe(sourcemaps.init())
-        .pipe(ts(tsProject_BE));
-    return tsResult.pipe(sourcemaps.write('.')).pipe(gulp.dest('./build'));
-});
-
-var tsProject_BE_test = ts.createProject('test/server/tsconfig.json',
-    { typescript: require('typescript') });
-gulp.task("build server test", function () {
-    var tsResult  = tsProject_BE_test.src()
-        .pipe(sourcemaps.init())
-        .pipe(ts(tsProject_BE_test));
-    return tsResult.pipe(sourcemaps.write('.')).pipe(gulp.dest('./test/server'));
+        .pipe(ts(tsconfig_BE));
+    return tsResult.pipe(sourcemaps.write('.')).pipe(gulp.dest('./build/server'));
 });
 
 gulp.task('run test - server', function () {
-    return gulp.src(['test/server/**/*.js'], { read: false })
+    return gulp.src(['build/server/tests/**/*.spec.js'], { read: false })
+        .pipe(mocha({ reporter: 'spec' }))
+        .on('error', gutil.log);
+});
+
+gulp.task('run test - frontend', function () {
+    return gulp.src(['build/frontend/tests/**/*.spec.js'], { read: false })
         .pipe(mocha({ reporter: 'spec' }))
         .on('error', gutil.log);
 });

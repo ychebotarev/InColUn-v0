@@ -29,13 +29,13 @@ function processLocalLogin(email:string, password:string, callback:(authResponse
 	findUserByEmail(email, function (errorMsg:string, userModel:IUserModel) {
 		if (errorMsg){
 		    callback({success:false, message:errorMsg});
-			env().metrics().counterCollection().inc('loginfail');
+			env().metrics().counters.inc('loginfail');
 			return;
         }
         var in_password = encryptPassword(password);
 	    if (in_password != userModel.password) {
 		    callback({success:false, message:'Authentication failed. Wrong password.'});
-			env().metrics().counterCollection().inc('loginfail');
+			env().metrics().counters.inc('loginfail');
 		    return;
 	    }
         var token = createToken(userModel);
@@ -43,7 +43,7 @@ function processLocalLogin(email:string, password:string, callback:(authResponse
 		
 		login_duration.stop();
 		env().logger().info(JSON.stringify(login_duration.toJSON('login-duration')));
-		env().metrics().counterCollection().inc('login_success');
+		env().metrics().counters.inc('login_success');
     })
 }
 
@@ -67,7 +67,7 @@ function processExternalLogin(profile:string, displayName:string, provider:strin
         } 
         insertUser(user, function(errorMsg:string,userModel:IUserModel){
             if(errorMsg){
-                env().metrics().counterCollection().inc('dbfail');
+                env().metrics().counters.inc('dbfail');
                 callback({success:false, message:'Signup failed.'+errorMsg});
                 return;
             }
@@ -86,7 +86,7 @@ function processLocalSignup(email:string
 	findUserByEmail(email, function (errorMsg:string,userModel:IUserModel) {
         if(userModel){
 			callback({success:false, message:'Signup failed. User already exist.'});
-		    env().metrics().counterCollection().inc('signupfail');
+		    env().metrics().counters.inc('signupfail');
 			return;
         }
         else{
@@ -111,7 +111,7 @@ function processLocalSignup(email:string
                 callback({success:true,message:'SignUp success',token:token});
                 signup_duration.stop();
                 env().logger().info(JSON.stringify(signup_duration.toJSON('signup-duration')));
-                env().metrics().counterCollection().inc('signupsuccess');
+                env().metrics().counters.inc('signupsuccess');
             })
         }
     })

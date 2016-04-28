@@ -1,4 +1,4 @@
-import {env} from '../../../src/server/environment'
+import {env} from '../../environment'
 import {MockDb} from './mockDb'
 import {MockLogger} from './mockLogger'
 import {MockMetrics} from './mockMetrics'
@@ -11,3 +11,6 @@ function setupMockEnvironment(){
 	env().setLogger(logger);
 	env().setMetrics(metrics);
 }
+
+
+export {setupMockEnvironment}
