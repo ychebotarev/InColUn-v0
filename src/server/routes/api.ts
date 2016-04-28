@@ -15,6 +15,14 @@ function setupApiRoutes(app: Application){
 			})	
 		})
 	});  
+	
+	app.get('/api/recent', function(req:Request, res:Response){
+		apiGuard(req,res, function(req:Request, res:Response, token:any){
+			getRecent(token.id, function(success:boolean, message:string, boards?:IBoard[]) {
+				res.json({ success:true, message:'', boards: boards });
+			})	
+		}
+	});
 
 	app.get('/api/board:guid', function(req:Request, res:Response){
 		apiGuard(req,res, function(req:Request, res:Response, token:any){

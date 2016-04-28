@@ -5,10 +5,12 @@ import {TreeNodeData} from './TreeNodeData'
 import {TreeNode} from './TreeNode'
 
 export class TreeContainer extends UIElement{
-    nodes:TreeNode[];
+    isLoading:boolean;
+	nodes:TreeNode[];
     
     constructor(nodes:TreeNodeData[]){
         super();
+		this.isLoading = false;
         this.nodes = [];
         nodes.forEach(
             node =>{
@@ -16,6 +18,10 @@ export class TreeContainer extends UIElement{
             } 
         );
     }
+	
+	public setLoading(loading:boolean){
+		this.isLoading = loading;
+	}
     
     public AddNode(node:TreeNodeData){
         this.nodes.push(new TreeNode(node, 0));
@@ -34,5 +40,4 @@ export class TreeContainer extends UIElement{
                 
         this.self.appendChild(treelist);
     }
-    
 }

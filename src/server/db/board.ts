@@ -1,16 +1,7 @@
 //import * as db from './db'
 //import * as metrics from '../utils/metrics'
 import {env} from '../environment'
-
-interface IBoard{
-    id:string,
-    title:string,
-    created:Date,
-    updated:Date,
-    shared:number,
-    saved:number,
-    kudos:number
-}
+import {IBoard} from '../interfaces/interfaces'
 
 function createBoardsFromDB(results:any[]):IBoard[] {
     var boards:IBoard[] = [];
@@ -40,4 +31,4 @@ function getBoards(userid:string, callback:(success:boolean, message:string, boa
         });
 }
 
-export {IBoard, getBoards}
+export {getBoards}

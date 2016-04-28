@@ -35,24 +35,31 @@ describe('Local login', function () {
   	})
 	  	
 	it('should fail because password is wrong', function (done) {
-		processLocalLogin("a@a", "b", function(authResponse:IAuthResponse){
-			assert.isFalse(authResponse.success);	
+		processLocalLogin("a@a", "b").then((unused:string)=>{
+			assert.isTrue(false, 'Login user passed. But it should not');	
+			done()
+		}).catch((unused:string)=>{
 			done();
-		});
+		})
 	});
 	
 	it("should fails user doesn't exist", function (done) {
-		processLocalLogin("a@b", "a", function(authResponse:IAuthResponse){
-			assert.isFalse(authResponse.success);
-			done();	
-		});
+		processLocalLogin("a@b", "a").then((unused:string)=>{
+			assert.isTrue(false, 'Login passed. But it should not');	
+			done()
+		}).catch((unused:string)=>{
+			done();
+		})
 	});
 
 	it("should succeseed for proper user", function (done) {
-		processLocalLogin("a@a", "a", function(authResponse:IAuthResponse){
-			assert.isTrue(authResponse.success);
-			done();	
-		});
+		processLocalLogin("a@a", "a").then( (unused:string) =>{
+			done();
+		} )
+		.catch((error:string)=>{
+			assert.isTrue(false, error);
+			done();
+		})
 	});
 	
 	afterEach(function(){

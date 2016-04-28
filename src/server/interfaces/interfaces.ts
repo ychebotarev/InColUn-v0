@@ -69,3 +69,20 @@ export interface IDb{
 	pool():mysql.IPool;
 	query(queryStr:string):Promise<any>;
 }
+
+export interface ISection{
+    id:string,
+    title:string,
+    childs:ISection[]
+}
+
+export interface IBoard{
+    id:string,
+    title:string,
+    created:Date,
+    updated:Date,
+    shared:number,
+    saved:number,
+    kudos:number,
+	sections?:ISection[]
+}

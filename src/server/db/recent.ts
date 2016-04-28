@@ -1,11 +1,16 @@
 import {env} from '../environment'
-import {ISection} from '../interfaces/interfaces'
 
 interface IRawSection{
     id:string,
     boardId:string,
     parentId:string,
     title:string
+}
+
+interface ISection{
+    id:string,
+    title:string,
+    childs:ISection[]
 }
 
 function convertToTree(parentId:string, rawSections:IRawSection[]):ISection[]{
@@ -45,15 +50,32 @@ interface IGetSections{
     sections?:ISection[]
 }
 
-function getSections(userid:string, boardid:string):Promise<ISection[]>{
-    //TODO - check if user can load this boards
-    const p:Promise<ISection[]> = new Promise<ISection[]>((resolve,reject) =>{
-        var query = "select * from sections where boardid = " + boardid;
+function createRecent(){
+	
+}
+
+function loadRecent(results:any[]) {
+    const p:Promise<string[]> = new Promise<string[]>((resolve,reject) =>{
+        var query = "select * from boards where boardid  in ";
+		return env().db().query(query);
+	})
+}
+
+function getRecent(userid:string):Promise<ISection[]>{
+    var query = "select * from recent where userid = " + userid;
+	env().db().query(query)
+          .then(loadRecent)
+		  .then();
+			
+	const p:Promise<ISection[]> = new Promise<ISection[]>((resolve,reject) =>{
+        var query = "select * from recent where userid = " + boardid;
         env().db().query(query)
             .then(function (results) {
-                var sections = createSectionsFromDB(boardid, results);
-                resolve(sections);
+                var boards = getBoards(results);
+				return boards;
+                //resolve(sections);
             })
+			.then(boards:string[])
             .catch(function (message:string) {
                 env().metrics().counters.inc('dbfail');
                 reject('Failed to get sections. ' + message);
@@ -62,4 +84,4 @@ function getSections(userid:string, boardid:string):Promise<ISection[]>{
     return p;
 }
 
-export {getSections}
+export {ISection, getRecent}

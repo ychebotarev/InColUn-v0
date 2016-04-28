@@ -32,27 +32,22 @@ function getUserFromDB(results:any[], email:string):IUserModel{
     return undefined;
 }
 
-function findUserByEmail(email:string, callback:(errorMsg:string,userModel:IUserModel)=>void){
-    var profile_id:number = murmurhash3_32_gc(email, 1001);
-	var query = "SELECT * from users WHERE profile_id="+profile_id;
-	env().db().query(query)
-        .then(function(results){
-			var user = getUserFromDB(results, email);
-			if(!user){
-				callback('Login failed. User not found.', null);
-			} else{
-				callback(null, user);
-			}
-        }).catch(function (message:string) {
-			env().metrics().counters.inc('dbfail');
-			callback(message, null);
-            
-        })
+function findUserByEmail(email:string):Promise<IUserModel>{
+	return new Promise<IUserModel>((resolve, reject)=>{
+    	var profile_id:number = murmurhash3_32_gc(email, 1001);
+		var queryStr = "SELECT * from users WHERE profile_id="+profile_id;
+		env().db().query(queryStr)
+        	.then(function(results){
+				var user = getUserFromDB(results, email);
+				user?resolve(user):reject('Login failed. User not found.');
+			}).catch( (message:string) => {reject(message)});
+	});
 }
 
-function insertUser(userModel:IUserModel, callback:(errorMsg:string,userModel:IUserModel)=>void){
-    userModel.id = flakeIdGenerator.nextStr(1);
-	var insertQuery = "INSERT INTO users (id, profile_id, email, username, password, type, created, status)" + 
+function insertUser(userModel:IUserModel):Promise<IUserModel>{
+	return new Promise<IUserModel> ( (resolve:(userModel:IUserModel)=>void, reject:(message:string)=>void)=>{
+    	userModel.id = flakeIdGenerator.nextStr(1);
+		var insertQuery = "INSERT INTO users (id, profile_id, email, username, password, type, created, status)" + 
             " VALUES ('"+userModel.id+"', '"
                         +userModel.profile_id+ "','" 
                         +userModel.email+ "','"
@@ -61,15 +56,15 @@ function insertUser(userModel:IUserModel, callback:(errorMsg:string,userModel:IU
                         +(userModel.type?userModel.type:"L")+
                         "',NOW(),'N')"; 
 	
-    env().db().query(insertQuery)
-        .then(function(results){
-            callback(null, userModel)
+    	env().db().query(insertQuery)
+        	.then(function(results){
+            	resolve(userModel)
+        	})
+        	.catch(function (message:string) {
+            	env().metrics().counters.inc('dbfail');
+            	reject('Failed to add new user. '+message);
         })
-        .catch(function (message:string) {
-            env().metrics().counters.inc('dbfail');
-            callback('Failed to add new user. '+message, null);
-            
-        })
+	})
 }
 
 export{IUserModel, findUserByEmail, insertUser}

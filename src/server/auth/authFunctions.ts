@@ -10,22 +10,27 @@ import {IUserModel} from '../db/user'
 import {IAuthResponse} from './IAuthResponse'
 
 function localSignup(req:Request, res:Response){
-	processLocalSignup(req.body.email, req.body.name, req.body.password, function(authResponse:IAuthResponse){
-		res.json(authResponse);
-	});
+	processLocalSignup(req.body.email, req.body.name, req.body.password).then( (token:string) =>{
+		res.json({success:true, token:token})
+	}).catch((error:string)=>{
+		res.json({success:false, message:error})
+	})
 }
 
 function localLogin(req:Request, res:Response) {
-	processLocalLogin(req.body.email, req.body.password, function(authResponse:IAuthResponse){
-		res.json(authResponse);
-	});
+	processLocalLogin(req.body.email, req.body.password).then( (token:string) =>{
+		res.json({success:true, token:token})
+	}).catch((error:string)=>{
+		res.json({success:false, message:error})
+	})
 }
 
 function externalLogin(user_id:string, displayName:string, provider:string, done){
-    processExternalLogin(user_id, displayName, provider, function(authResponse:IAuthResponse){
-		if(authResponse.success)
-			done(null, authResponse.token);
-	})
+    processExternalLogin(user_id, displayName, provider).then ( (token:string) =>{
+		done(null, token);
+	}).catch ( (error:string) =>{
+		done(error);
+	} )
 }
 
 function facebookLogin(accessToken, refreshToken, profile, done) {
