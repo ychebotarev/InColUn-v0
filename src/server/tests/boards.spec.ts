@@ -1,6 +1,7 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 import * as chai from 'chai';
-import {IBoard, getBoards} from '../db/board'
+import { getBoards} from '../db/board'
+import {IBoard} from '../interfaces/interfaces'
 
 import {setupMockEnvironment} from './mocks/mockEnvironment'
 import {mockedQueries} from './mocks/mockDb'
@@ -26,19 +27,25 @@ describe('Load boards', function () {
   	})
       
 	it('simple acceptance test', function (done) {
-		getBoards("0", function(success:boolean, message:string, boards?:IBoard[]){
-			assert.isTrue(success, "getBoards return false");
+		getBoards("0").then( function(boards:IBoard[]){
             assert.isTrue(boards != null && boards != undefined, "boards are undefined");
+			var b:IBoard = boards[0];
+			//for i in boards:
+			
             assert.equal(boards.length, 5, "wrong number of boards");
 			done();
-		});
+		}).catch( function(error:string){
+			assert.isTrue(false, error);			
+			done();	
+		})
 	});
     
     it('simple negative test', function (done) {
-        getBoards("1", function (success, message, boards) {
-            assert.isFalse(success, "getBoards return true");
-            done();
-        });
+        getBoards("1").then( function(boards:IBoard[]){
+			assert.isTrue(false, "doesn'e suppose to get boards for id 1");			
+			done();	
+		}).catch( function(error:string){
+			done();	
+		})
     });
-    
 })
