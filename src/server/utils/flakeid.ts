@@ -26,7 +26,6 @@ class FlakeIdGenerator{
 		return biguint_format(buffer, 'dec');
 	}
 	
-	
 	public next(type_id:number,time?:number):Buffer{
 		var id = new Buffer(8);
 		id.fill(0);
@@ -52,7 +51,6 @@ class FlakeIdGenerator{
 			
 		return id;	
 	}
-	
 }
 
 var flakeIdGenerator = new FlakeIdGenerator(server_config.instance_id)

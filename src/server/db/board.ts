@@ -1,5 +1,3 @@
-//import * as db from './db'
-//import * as metrics from '../utils/metrics'
 import {env} from '../environment'
 import {IBoard} from '../interfaces/interfaces'
 
@@ -19,16 +17,18 @@ function createBoardsFromDB(results:any[]):IBoard[] {
     return boards;
 }
 
-function getBoards(userid:string, callback:(success:boolean, message:string, boards?:IBoard[])=>void){
-    var query = "select * from boards where userid = " + userid;
-    env().db().query(query)
-        .then(function (results:any[]) {
-            var boards = createBoardsFromDB(results);
-            callback(true, '', boards);
-        }).catch(function(message:string){
-            env().metrics().counters.inc('dbfail');
-            callback(false, 'Failed to get boards. ' + message);
-        });
+async function getBoards(userid:string):Promise<IBoard[]>{
+	var query = "select * from boards where userid = " + userid;
+	var results:any = await env().db().query(query)
+	var boards = createBoardsFromDB(results);
+	return boards;
 }
 
-export {getBoards}
+async function getRecent(userid:string):Promise<IBoard[]>{
+	var query = "select * from recent where userid = " + userid;
+	var results = await env().db().query(query)
+	var boards = createBoardsFromDB(results);
+	return boards;
+}
+
+export {getBoards, getRecent}

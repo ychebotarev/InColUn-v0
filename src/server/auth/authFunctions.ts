@@ -2,12 +2,9 @@ import crypto = require('crypto');
 import {Request,Response,NextFunction} from 'express'
 import {server_config} from '../config'
 
-import * as jwt from 'jsonwebtoken';
-import * as db from '../db/db'
-import * as metrics from '../utils/metrics'
 import {processLocalLogin, processExternalLogin, processLocalSignup} from './processAuth'
-import {IUserModel} from '../db/user' 
-import {IAuthResponse} from './IAuthResponse'
+import {IUserModel, IAuthResponse} from '../interfaces/interfaces' 
+import {verifyToken} from './createToken'
 
 function localSignup(req:Request, res:Response){
 	processLocalSignup(req.body.email, req.body.name, req.body.password).then( (token:string) =>{
@@ -45,7 +42,20 @@ function googleLogin(accessToken, refreshToken, profile, done) {
     });
 }
 
-function apiGuard(req:Request, res:Response, callback:(req:Request, res:Response, token:any)=>void) {
+async function tokenGuard(req:Request):Promise<any>{
+	var token = req.body.token || req.param('token') 
+        || req.headers['x-access-token']
+        || req.cookies.access_token;
+
+	if (!token){
+		throw 'No token provided.';
+	}
+	var decodedToken = await verifyToken(token);
+	return decodedToken;
+}
+
+/*
+async function apiGuard(req:Request, res:Response, callback:(req:Request, res:Response, token:any)=>void) {
 	var token = req.body.token || req.param('token') 
         || req.headers['x-access-token']
         || req.cookies.access_token;
@@ -65,25 +75,6 @@ function apiGuard(req:Request, res:Response, callback:(req:Request, res:Response
 		success: false, 
 		message: 'No token provided.'
 	});
-}
+}*/
 
-function webGuard(req:Request, res:Response, next:NextFunction) {
-	var token = req.body.token || req.param('token') 
-        || req.headers['x-access-token']
-        || req.cookies.access_token;
-
-	if (token) {
-		jwt.verify(token, server_config.secret, function(err, decoded) {			
-			if (err) {
-				res.redirect('/login');		
-				return;
-			} 
-			req.params.decoded = decoded;	
-			next();
-		});
-		return;
-	}
-    res.redirect('/login');		
-}
-
-export {facebookLogin, googleLogin, localLogin, localSignup, apiGuard, webGuard}
+export {facebookLogin, googleLogin, localLogin, localSignup, tokenGuard}

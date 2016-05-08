@@ -3,7 +3,7 @@
 /// <reference path="../../../typings/chai/chai.d.ts" />
 import * as chai from 'chai';
 
-import {IAuthResponse} from '../auth/IAuthResponse'
+import {IAuthResponse} from '../interfaces/interfaces'
 import {murmurhash3_32_gc} from '../utils/murmurhash3_gc'
 import {processLocalLogin, processExternalLogin, processLocalSignup} from '../auth/processAuth'
 import {setupMockEnvironment} from './mocks/mockEnvironment'

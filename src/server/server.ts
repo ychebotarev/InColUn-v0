@@ -58,7 +58,6 @@ setupAuthRoutes(app, passport);
 setupApiRoutes(app);
 setupCommonRoute(app);
 
-
 setInterval(dumpCounters, 100);
 
 http.createServer(app).listen(app.get('port'), function () {

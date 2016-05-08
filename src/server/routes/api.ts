@@ -1,37 +1,46 @@
 /// <reference path='../../../typings/tsd.d.ts' />
 import {Application,Request,Response,NextFunction} from 'express'
 
-import {IBoard, getBoards} from '../db/board'
-import {ISection, getSections} from '../db/section'
-import {apiGuard} from '../auth/authFunctions'
+import {getBoards} from '../db/board'
+import {getSections} from '../db/section'
+import {tokenGuard} from '../auth/authFunctions'
 import {env} from '../environment'
 
+import {IBoard, ISection} from '../interfaces/interfaces'
+
 function setupApiRoutes(app: Application){
-    
 	app.get('/api/boards', function(req:Request, res:Response){
-		apiGuard(req,res, function(req:Request, res:Response, token:any){
-			getBoards(token.id, function(success:boolean, message:string, boards?:IBoard[]) {
-				res.json({ success:true, message:'', boards: boards });
-			})	
+		tokenGuard(req).then(function(token:string){
+			return getBoards(token)
+		}).then(function (boards:IBoard[]){
+			res.json({ success:true, message:'', boards: boards });
+		})
+		.catch( function(error:string){
+			env().logger().error(error);
+			res.json({ success:false, message:'failed to get boards' });
 		})
 	});  
 	
+	/*
 	app.get('/api/recent', function(req:Request, res:Response){
 		apiGuard(req,res, function(req:Request, res:Response, token:any){
 			getRecent(token.id, function(success:boolean, message:string, boards?:IBoard[]) {
 				res.json({ success:true, message:'', boards: boards });
 			})	
 		}
-	});
+	});*/
 
-	app.get('/api/board:guid', function(req:Request, res:Response){
-		apiGuard(req,res, function(req:Request, res:Response, token:any){
-			getSections(token.id, req.params.guid).then(function(sections:ISection[]){
-				res.json({ success:true, message:'', sections: sections });
-			}).catch(function (message:string) {
-				env().logger().error(message);
-				res.json({ success:false, message:message});
-			})
+	app.get('/api/board:id', function(req:Request, res:Response){
+		tokenGuard(req)
+		.then( function(decodedToken:any){
+			return getSections(decodedToken.id, req.params.guid) 
+		})
+		.then( function(sections:ISection[]){
+			res.json({ success:true, message:'', sections: sections });
+		})
+		.catch( function(error:string){
+			env().logger().error(error);
+			res.json({ success:false, message:'failed to get board' });
 		})
 	});  
 

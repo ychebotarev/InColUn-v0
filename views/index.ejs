@@ -11,37 +11,32 @@
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>    
-    
     <link rel="stylesheet" href="login.css">
     <script src="notlogged.js"></script>
 </head>
 
 <body>
-<nav class="navbar navbar-light bg-faded">
-    <a class="navbar-brand" href="#">InColUn</a>
-    <form class="form-inline pull-xs-right">
-        <a class="btn btn-success-outline" onclick=showLogin()>Log in</a>
-        <a class="btn btn-success-outline" onclick=showSignUp()>Sign Up</a>
-    </form>
-</nav>
-<% include partials/login.ejs %>
-
-<% var signup_style= "style=display:none;"; %>
-<% include partials/signup.ejs %>
-
-
+	
+    <div class="flex-column" style='min-height:100vh;height:100%;' id='index'>
+        <header class="header-row flex-row" id='header' style="align-items:center; padding:10px;">
+            <div>InColUn</div>
+            <div class="search-box">
+                <div class="search-container">
+                    <input type="search" id="search" placeholder="Search...">
+                    <button class="icon">
+                    	<i class="fa fa-search"></i>
+					</button>
+                </div>
+            </div>
+        </header>
+        <div class="login-block flex-row flex-fill">
+			<% include partials/login.ejs %>
+			<% include partials/signup.ejs %>
+        </div>    
+	</div>
 </body>
+
 <script>
-function showLogin()
-{
-    $('#signup_box').hide();
-    $('#login_box').show();
-}    
-function showSignUp()
-{
-    $('#signup_box').show();
-    $('#login_box').hide();
-}    
 </script>
 
 </html>

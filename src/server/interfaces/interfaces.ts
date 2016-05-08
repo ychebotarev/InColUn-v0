@@ -70,10 +70,21 @@ export interface IDb{
 	query(queryStr:string):Promise<any>;
 }
 
-export interface ISection{
-    id:string,
-    title:string,
-    childs:ISection[]
+export interface IAuthResponse{
+    success:boolean,
+    message:string,
+    token?:string
+}
+
+export interface IUserModel{
+    id:string, 
+    profile_id:number,
+    username:string,
+    email:string,
+    password:string,
+    type?:string,
+    created?:Date,
+    status?:number  
 }
 
 export interface IBoard{
@@ -86,3 +97,10 @@ export interface IBoard{
     kudos:number,
 	sections?:ISection[]
 }
+
+export interface ISection{
+    id:string,
+    title:string,
+    childs:ISection[]
+}
+

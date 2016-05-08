@@ -1,6 +1,7 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 import * as chai from 'chai';
-import {ISection, getSections} from '../db/section'
+import {getSections} from '../db/section'
+import {ISection} from '../interfaces/interfaces'
 
 import {setupMockEnvironment} from './mocks/mockEnvironment'
 import {mockedQueries} from './mocks/mockDb'
@@ -103,5 +104,4 @@ describe('Load sections', function () {
 		messages.forEach(message => console.log(message))
 		env().logger().clear();
   	})
-    
 })

@@ -21,6 +21,7 @@ class Db{
 	public pool():mysql.IPool{
 		return connectioPool;
 	}
+	
 
 	public query(queryStr:string):Promise<any>{
 		const p:Promise<any> = new Promise<any>((resolve,reject)=>{
@@ -34,6 +35,11 @@ class Db{
 		})
 		return p;
 	}
+	
+	/*public async query(queryStr:string):Promise<any>{
+		var results = await connectioPool.query(queryStr);
+		return results;
+	}*/
 }
 
 var db = new Db();

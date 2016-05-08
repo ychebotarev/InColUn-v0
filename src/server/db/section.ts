@@ -1,21 +1,21 @@
 import {env} from '../environment'
 import {ISection} from '../interfaces/interfaces'
 
-interface IRawSection{
+interface IDBSection{
     id:string,
     boardId:string,
     parentId:string,
     title:string
 }
 
-function convertToTree(parentId:string, rawSections:IRawSection[]):ISection[]{
+function convertToTree(parentId:string, dbSections:IDBSection[]):ISection[]{
     var sections:ISection[] = [];
-    for(var i=0; i<rawSections.length;i++){
-        if(rawSections[i].parentId == parentId){
+    for(var i=0; i<dbSections.length;i++){
+        if(dbSections[i].parentId == parentId){
             sections.push({
-                id:rawSections[i].id,
-                title:rawSections[i].title,
-                childs:convertToTree(rawSections[i].id, rawSections)
+                id:dbSections[i].id,
+                title:dbSections[i].title,
+                childs:convertToTree(dbSections[i].id, dbSections)
             });
         }
     }
@@ -23,9 +23,9 @@ function convertToTree(parentId:string, rawSections:IRawSection[]):ISection[]{
 }
 
 function createSectionsFromDB(parent_id:string, results:any[]):ISection[]{
-    var rawSections:IRawSection[] = [];
+    var dbSections:IDBSection[] = [];
     for (var i = 0; i < results.length; ++i) {
-        rawSections.push({
+        dbSections.push({
             id: results[i].id,
             boardId: results[i].boardid,
             parentId: results[i].parentid,
@@ -33,16 +33,7 @@ function createSectionsFromDB(parent_id:string, results:any[]):ISection[]{
         });
     }
     
-    //build tree from sections list
-    var sections = convertToTree(parent_id, rawSections);
-        
-    return sections;
-}
-
-interface IGetSections{
-    success:boolean,
-    message:string,
-    sections?:ISection[]
+    return convertToTree(parent_id, dbSections);
 }
 
 function getSections(userid:string, boardid:string):Promise<ISection[]>{
