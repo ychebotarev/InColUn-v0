@@ -1,13 +1,13 @@
-import {DocumentProps} from './DocumentProps'
+import {IBoard, ISection} from '../../common/interfaces'
 import {Section} from './Section';
 
 class Board {
     private sections: {[key:string]:Section};
     private activeSectionId:string;
-    props:DocumentProps;
+    private board:IBoard;
     
-    constructor(props:DocumentProps){
-        this.props = props;
+    constructor(board:IBoard){
+        this.board = board;
     }
     
     public getID():string{

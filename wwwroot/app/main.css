@@ -76,10 +76,36 @@ header {
 .sidebar {
   padding: 0em;
   color: black;
-  background-color: grey;
+  background-color: white;
   overflow: auto;
-  width: 300px;
+  width: 0px;
+  height: 100%;
   align-self: stretch;
+  position: absolute;
+  z-index: 1;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 5px;
+  border: 1px solid grey;
+}
+.sidebar a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 1.2em;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+.sidebar a:hover,
+.offcanvas a:focus {
+  color: #f1f1f1;
+}
+.closebtn {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  font-size: 1.2em !important;
+  margin-left: 50px;
 }
 .internal-box {
   position: absolute;
@@ -329,20 +355,21 @@ header {
   justify-content: flex-start;
 }
 .board-item {
-  background: tomato;
+  background: white;
   padding: 5px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  width: 200px;
-  height: 150px;
+  width: 220px;
   margin-top: 10px;
   margin-left: 10px;
-  color: white;
+  color: grey;
   font-weight: bold;
-  font-size: 2em;
-  text-align: center;
+  font-size: 1.6em;
+  text-align: left;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
 }
 .add-board {
   border: 2px dashed #bbb;

@@ -43,7 +43,7 @@ function googleLogin(accessToken, refreshToken, profile, done) {
 }
 
 async function tokenGuard(req:Request):Promise<any>{
-	var token = req.body.token || req.param('token') 
+	var token = req.body.token || req.params.token 
         || req.headers['x-access-token']
         || req.cookies.access_token;
 

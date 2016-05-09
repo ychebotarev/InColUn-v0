@@ -53,6 +53,10 @@ class Dom{
     public static li(className?:string, style?: {}, attributes?:{}):HTMLElement{
         return Dom.Create('li', className, style, attributes);
     }
+	
+	public static img(path:string, className?:string){
+		return Dom.Create('img',className, {}, {src:path} )
+	}
     
     public static text(content:string, tag:string,className?:string, style?: {}, attributes?:{}):HTMLElement{
         var el = Dom.Create(tag, className, style, attributes);

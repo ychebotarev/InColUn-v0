@@ -11,7 +11,6 @@ export class BoardsContext extends UIElement {
 		super();
 		this.isLoading = false;
 		this.boardsInfo = {};
-		this.createFakeBoards();
 	}
 
 	public LoadBoards() {
@@ -47,7 +46,7 @@ export class BoardsContext extends UIElement {
 		this.isLoading = false;
 		this.boardsInfo={}
 		if(data.boards && data.boards.length > 0){
-			data.boards.forEach(doc => { this.boardsInfo[doc.guid] = new BoardInfo(doc) });
+			data.boards.forEach(board => { this.boardsInfo[board.id] = new BoardInfo(board) });
 		}
 		this.self.innerHTML='';
 		this.RenderSelf();
@@ -82,47 +81,5 @@ export class BoardsContext extends UIElement {
 		holder.appendChild(outer_ball);
 		holder.appendChild(inner_ball);
 		self.appendChild(holder);
-	}
-
-	private createFakeBoards() {
-		var docInfo = [
-			{
-				title: 'Statistic and machine learning',
-				guid: 'eec39f91-8ae2-4023-b3f8-694a9561b8d5',
-				created: new Date(2016, 4, 4, 18, 31, 54),
-				modified: new Date(2016, 4, 4, 18, 31, 54),
-				timestamp: 'AAAA'
-			},
-			{
-				title: 'Misc',
-				guid: 'c3cb42ff-699b-499c-bbb7-9adc722cfbc9',
-				created: new Date(2016, 4, 4, 18, 31, 54),
-				modified: new Date(2016, 4, 4, 18, 32, 54),
-				timestamp: 'BBBB'
-			},
-			{
-					title: 'Javascript',
-				guid: '29147c3e-c190-450f-bdca-cff5077a08b4',
-				created: new Date(2016, 4, 4, 18, 31, 54),
-				modified: new Date(2016, 4, 4, 19, 31, 54),
-				timestamp: 'CCC'
-			},
-			{
-				title:'Really really really really really long long long tiiiiiiitle', 
-				guid:'29147c3e-c190-450f-bdca-cff5077a08b5',
-				created: new Date(2016,4,4,12,31,54),
-				modified: new Date(2016,4,4,13,31,54),
-				timestamp:'DDD'
-			},
-			{
-				title:'Javascript on UX', 
-				guid:'29147c3e-c190-450f-bdca-cff5077a08b6',
-				created: new Date(2016,4,4,11,31,54),
-				modified: new Date(2016,4,4,16,31,54),
-				timestamp:'EEE'
-			}
-		]
-
-		docInfo.forEach(doc => { this.boardsInfo[doc.guid] = new BoardInfo(doc) });
 	}
 }

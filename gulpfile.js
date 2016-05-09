@@ -49,7 +49,7 @@ gulp.task("build server code", function () {
     var tsResult = tsconfig_BE.src()
         .pipe(sourcemaps.init())
         .pipe(ts(tsconfig_BE));
-    return tsResult.pipe(sourcemaps.write('.')).pipe(gulp.dest('./build/server'));
+    return tsResult.pipe(sourcemaps.write('.')).pipe(gulp.dest('./build/'));
 });
 
 gulp.task('run test - server', function () {

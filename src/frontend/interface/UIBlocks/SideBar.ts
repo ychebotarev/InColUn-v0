@@ -29,7 +29,6 @@ export class SideBar {
 			dataType : 'json',
 			success  : (data: any, textStatus: string, jqXHR: JQueryXHR) => {this.OnRecentLoaded(data, textStatus, jqXHR)}
 		});  
-		
 	}
 	
 	private OnRecentLoaded(data: any, textStatus: string, jqXHR: JQueryXHR) {

@@ -1,5 +1,6 @@
 import {env} from '../environment'
-import {ISection} from '../interfaces/interfaces'
+import {ISection} from '../../common/interfaces'
+
 
 interface IDBSection{
     id:string,

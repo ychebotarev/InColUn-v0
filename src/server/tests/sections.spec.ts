@@ -1,7 +1,7 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 import * as chai from 'chai';
 import {getSections} from '../db/section'
-import {ISection} from '../interfaces/interfaces'
+import {IBoard, ISection} from '../../common/interfaces'
 
 import {setupMockEnvironment} from './mocks/mockEnvironment'
 import {mockedQueries} from './mocks/mockDb'

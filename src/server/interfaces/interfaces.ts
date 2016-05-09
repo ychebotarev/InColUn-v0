@@ -87,20 +87,4 @@ export interface IUserModel{
     status?:number  
 }
 
-export interface IBoard{
-    id:string,
-    title:string,
-    created:Date,
-    updated:Date,
-    shared:number,
-    saved:number,
-    kudos:number,
-	sections?:ISection[]
-}
-
-export interface ISection{
-    id:string,
-    title:string,
-    childs:ISection[]
-}
 

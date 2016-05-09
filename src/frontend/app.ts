@@ -19,13 +19,13 @@ class App{
         this.sidebar = new SideBar();
         this.contentArea = new ContentArea();
         
-        /*var nodes = [
-                {
+        var nodes = [
+        /*        {
                     info:{title:'My boards', guid:'my_boards', commandInfo:{command:'OpenBoards'}}
                 },
                 {
                     info:{title:'Saved boards', guid:'saved_boards', commandInfo:{command:'OpenSavedBoards'}}
-                },
+                },*/
                 {
                     info:{title:'Misc Information', guid:'57be4c62-5ca1-4800-974f-11b7e92eda37'},
                     subNodes:[
@@ -104,18 +104,11 @@ class App{
                 {
                     info:{title:'Recycled Boards', guid:'50849231-ec86-44ab-93bc-61f197e240d5',commandInfo:{command:'OpenRecycledBoards'}}
                 }
-        ];*/ 
-		var nodes = [
-			{
-				info:{title:'My boards', guid:'my_boards', commandInfo:{command:'OpenBoards'}}
-			},
-			{
-				info:{title:'Saved boards', guid:'saved_boards', commandInfo:{command:'OpenSavedBoards'}}
-			}
-		];
-        
+        ];
 		this.sidebar.LoadTreeContainer(nodes);
         let openPageCallback:OnCommandCallback = (param1:{}, param2:{}) =>{ this.contentArea.OnOpenPage(param1['guid'])}
+		
+		this.SetCommandDispatcher('OpenBoard', (param1:{}, param2:{}) =>{ this.OnOpenBoard(param1['guid'])});
         this.SetCommandDispatcher('OpenPage', openPageCallback);
 		this.SetCommandDispatcher('OpenBoards', () => { this.contentArea.OnOpenBoards()});
 		this.SetCommandDispatcher('OpenSavedBoards', () => { this.contentArea.OnOpenSavedBoards()});
@@ -175,6 +168,24 @@ class App{
 		this.sidebar.OnLoadRecentBoards();
 		this.contentArea.OnOpenBoards();
 	}
+	
+	public OnOpenBoard(id:string){
+		$.ajax('/api/board/'+id, {
+			type     : 'GET', 
+			data     : {}, 
+			dataType : 'json',
+			success  : (data: any, textStatus: string, jqXHR: JQueryXHR) => {this.OnBoardLoaded(data, textStatus, jqXHR)}
+		});  
+	}
+	
+	private OnBoardLoaded(data: any, textStatus: string, jqXHR: JQueryXHR) {
+		if (!any || any.success != true){
+			return;
+		}
+		var sections:ISection[] = data.sections;
+		
+		this.sidebar.LoadTreeContainer(nodes);
+	}	
 }
 
 let application = new App();

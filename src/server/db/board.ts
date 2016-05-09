@@ -1,5 +1,5 @@
 import {env} from '../environment'
-import {IBoard} from '../interfaces/interfaces'
+import {IBoard} from '../../common/interfaces'
 
 function createBoardsFromDB(results:any[]):IBoard[] {
     var boards:IBoard[] = [];
@@ -31,4 +31,24 @@ async function getRecent(userid:string):Promise<IBoard[]>{
 	return boards;
 }
 
-export {getBoards, getRecent}
+async function getOpened(userid:string):Promise<IBoard[]>{
+	var query = "select * from opened where userid = " + userid;
+	var results = await env().db().query(query)
+	var boards = createBoardsFromDB(results);
+	return boards;
+}
+
+async function getBoard(userid:string, boardid:string):Promise<IBoard>{
+	//TODO CHECK IF USER HAS ACCESS TO THIS BOARD
+	var query = 'select * from boards where boardid = ' + boardid;
+	var results = await env().db().query(query)
+	var boards = createBoardsFromDB(results);
+	
+	if (!boards || boardid.length != 1){
+		throw 'too many boards for ' + boardid;
+	}
+	return boards[0];
+	
+}
+
+export {getBoards, getBoard, getRecent}

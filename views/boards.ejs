@@ -24,7 +24,9 @@
 <body>
     <div class="flex-column" style='min-height:100vh;height:100%;' id='app'>
         <header class="header-row flex-row" id='header' >
-            <div><i class="fa fa-bars fa-2x" aria-hidden="true"></i> &nbsp;InColUn</div>
+            <div>
+			<a class="btn btn-success-outline" onclick=openNav()><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>	
+				&nbsp;InColUn</div>
             <div class="search-box">
                 <div class="search-container">
                     <input type="search" id="search" placeholder="Search...">
@@ -45,10 +47,25 @@
             </div>
         </header>        
         <div class="mainblock flex-row flex-fill" id='app'>
-            <div class="sidebar" id='sidebar_menu'></div>
+            <div class="sidebar" id='sidebar_menu'>
+ 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa fa-times" style="color:black"></i></a>
+				<a href="#"><i class="fa fa-times" style="color:black"></i>My Boards</a>		
+				<a href="#"><i class="fa fa-heart-o" style="color:black; font-size:1em"></i>Saved Boards</a>		
+			</div>
+			
             <div class="content-area flex-fill" id='content_area'></div>
         </div>    
     </div>
 </body>
 <script src="build/bundle.js"></script>
+<script>
+function openNav() {
+    document.getElementById("sidebar_menu").style.width = "350px";
+}
+
+function closeNav() {
+    document.getElementById("sidebar_menu").style.width = "0";
+}
+	
+</script>
 </html>

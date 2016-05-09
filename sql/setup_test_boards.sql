@@ -15,18 +15,11 @@ CREATE TABLE IF NOT EXISTS `incolun`.`boards` (
 ENGINE = InnoDB;
 
 INSERT INTO incolun.boards (userid,boardid,title, created,updated, status,shared) 
-   VALUES (0, 0, 'Statistic and machine learning',NOW(),NOW(),'A','P');
-
-INSERT INTO incolun.boards (userid,boardid,title, created,updated, status,shared) 
-   VALUES (0, 1, 'Misc',NOW(),NOW(),'A','P');
-
-INSERT INTO incolun.boards (userid,boardid,title, created,updated, status,shared) 
-   VALUES (0, 2, 'Javascript',NOW(),NOW(),'A','P');
-
-INSERT INTO incolun.boards (userid,boardid,title, created,updated, status,shared) 
-   VALUES (0, 3, 'Really really really really really long long long tiiiiiiitle',NOW(),NOW(),'A','P');
-
-INSERT INTO incolun.boards (userid,boardid,title, created,updated, status,shared) 
-   VALUES (0, 4, 'Javascript on UX',NOW(),NOW(),'A','P');
+   VALUES 
+   (0, 0, 'Statistic and machine learning',NOW(),NOW(),'A','P'),
+   (0, 1, 'Misc',NOW(),NOW(),'A','P'),
+   (0, 2, 'Javascript',NOW(),NOW(),'A','P'),
+   (0, 3, 'Really really really really really long long long tiiiiiiitle',NOW(),NOW(),'A','P'),
+   (0, 4, 'Javascript on UX',NOW(),NOW(),'A','P');
 
 select * from incolun.boards;

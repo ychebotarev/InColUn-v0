@@ -1,26 +1,32 @@
 import {Dom} from '../core/dom'
 import {DomElement} from '../core/DomElement';
-import {DocumentProps} from './DocumentProps'
+import {IBoard} from '../../common/interfaces'
 import {application} from '../App';
 
 export class BoardInfo extends DomElement{
-    private docProps:DocumentProps;
+    private board:IBoard;
     
-    constructor(docProps:DocumentProps){
+    constructor(board:IBoard){
         super({tag:'div', className:'board-item'});
-        this.docProps = docProps;
+        this.board = board;
     }
     
-    Guid():string{
-        return this.docProps.guid;
+    Id():string{
+        return this.board.id;
     }
     
 	Title():string{
-        return this.docProps.title;
+        return this.board.title;
     }
     
 	protected RenderSelf(self:HTMLElement){
-		self.innerText=this.Title();
-        self.onclick = (ev:MouseEvent) => { application.OnCommand({command:'OpenBoard', param1:{guid:this.Guid()}})};
+		var img = Dom.img('images/boards/board'+this.Id()+'.png');
+		self.appendChild(img)
+		
+		var title = Dom.div();
+		title.innerText = this.Title(); 
+		
+		self.appendChild(title);
+        self.onclick = (ev:MouseEvent) => { application.OnCommand({command:'OpenBoard', param1:{guid:this.Id()}})};
     }
 }
