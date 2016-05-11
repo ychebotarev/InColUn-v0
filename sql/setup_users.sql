@@ -12,8 +12,6 @@ CREATE TABLE IF NOT EXISTS `incolun`.`users` (
   `created` DATETIME NOT NULL,
   `status` CHAR(1) NOT NULL,
   `kudos` INT UNSIGNED NOT NULL DEFAULT 0,
-  `boards` INT UNSIGNED NOT NULL DEFAULT 0,
-  `saved_boards` INT UNSIGNED NOT NULL DEFAULT 0,
   `json_blob` JSON NULL,
   PRIMARY KEY (`id`, `profile_id`))
 ENGINE = InnoDB;
@@ -21,8 +19,12 @@ ENGINE = InnoDB;
 
 INSERT INTO incolun.users (id,profile_id, username, email, password, type, created, status) 
    VALUES (0, '1372734638','a','a@a','2ebb8efcaa00598520e7b4fdc7d3a6630bcb13f0','L',NOW(),'A');
+
+INSERT INTO incolun.users (id,profile_id, username, email, password, type, created, status) 
+   VALUES (1, '4232722471','b','b@b','5ece1dc5bb7a19d0d5d8dc670a582519f5f3170a','L',NOW(),'A');
+
    
-	SELECT * FROM incolun.users;
+SELECT * FROM incolun.users;
 
 SELECT * from incolun.users WHERE user_id_key = '1372734638';
 

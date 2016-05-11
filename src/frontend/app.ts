@@ -4,6 +4,9 @@ import {CommandInfo,OnCommandCallback} from './core/CommandInfo'
 import {SideBar} from './interface/UIBlocks/SideBar'
 import {ContentArea} from './interface/UIBlocks/ContentArea'
 
+import {ISection} from '../common/interfaces'
+import {TreeNodeData} from './lib/TreeMenu/TreeNodeData'
+
 class App{
     private root:HTMLElement;
     
@@ -20,12 +23,6 @@ class App{
         this.contentArea = new ContentArea();
         
         var nodes = [
-        /*        {
-                    info:{title:'My boards', guid:'my_boards', commandInfo:{command:'OpenBoards'}}
-                },
-                {
-                    info:{title:'Saved boards', guid:'saved_boards', commandInfo:{command:'OpenSavedBoards'}}
-                },*/
                 {
                     info:{title:'Misc Information', guid:'57be4c62-5ca1-4800-974f-11b7e92eda37'},
                     subNodes:[
@@ -179,13 +176,17 @@ class App{
 	}
 	
 	private OnBoardLoaded(data: any, textStatus: string, jqXHR: JQueryXHR) {
-		if (!any || any.success != true){
+		if (!data || data.success != true){
 			return;
 		}
 		var sections:ISection[] = data.sections;
-		
-		this.sidebar.LoadTreeContainer(nodes);
+		var nodes = this.SectionsToNodes(sections);
+		//this.sidebar.LoadTreeContainer(nodes);
 	}	
+    
+    private  SectionsToNodes(sections:ISection[]):TreeNodeData[]{
+        return null;   
+    }
 }
 
 let application = new App();
