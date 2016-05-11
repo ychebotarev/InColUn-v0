@@ -1,34 +1,24 @@
-DROP TABLE IF EXISTS `incolun`.`boards`;
 DROP TABLE IF EXISTS `incolun`.`userboards`;
+DROP TABLE IF EXISTS `incolun`.`boards`;
 DROP TABLE IF EXISTS `incolun`.`opened`;
 DROP TABLE IF EXISTS `incolun`.`recent`;
 
-
-CREATE TABLE IF NOT EXISTS `incolun`.`boards` (
-  `boardid` BIGINT NOT NULL,
-  `parentid` BIGINT,
-  `title` VARCHAR(255) NOT NULL,
-  `created` DATETIME NOT NULL,
-  `updated` DATETIME NOT NULL,
-  `status` CHAR(1) NOT NULL,
-  `json_blob` JSON NULL,
-  PRIMARY KEY (`boardid`))
-ENGINE = InnoDB;
 /*
 status:
 P - private
 S - shared
 O - open
 */
-
-CREATE TABLE IF NOT EXISTS `incolun`.`userboards` (
-  `userid` BIGINT UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `incolun`.`boards` (
   `boardid` BIGINT UNSIGNED NOT NULL,
-  `CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `sakila`.`film_list` AS select `sakila`.`film`.`film_id` AS `FID`,`sakila`.`film`.`title` AS `title`,`sakila`.`film`.`description` AS `description`,`sakila`.`category`.`name` AS `category`,`sakila`.`film`.`rental_rate` AS `price`,`sakila`.`film`.`length` AS `length`,`sakila`.`film`.`rating` AS `rating`,group_concat(concat(`sakila`.`actor`.`first_name`,_utf8' ',`sakila`.`actor`.`last_name`) separator ', ') AS `actors` from ((((`sakila`.`category` left join `sakila`.`film_category` on((`sakila`.`category`.`category_id` = `sakila`.`film_category`.`category_id`))) left join `sakila`.`film` on((`sakila`.`film_category`.`film_id` = `sakila`.`film`.`film_id`))) join `sakila`.`film_actor` on((`sakila`.`film`.`film_id` = `sakila`.`film_actor`.`film_id`))) join `sakila`.`actor` on((`sakila`.`film_actor`.`actor_id` = `sakila`.`actor`.`actor_id`))) group by `sakila`.`film`.`film_id`,`sakila`.`category`.`name`;
-` CHAR(1) NOT NULL, 
-  `timestamp` DATETIME NOT NULL,
+  `parentid` BIGINT NULL,
+  `title` VARCHAR(255) NOT NULL,
+  `created` DATETIME NOT NULL DEFAULT NOW(),
+  `updated` DATETIME NOT NULL DEFAULT NOW(),
+  `status` ENUM('P', 'S', 'O', 'D') NOT NULL DEFAULT 'P',
   `json_blob` JSON NULL,
-  PRIMARY KEY (`userid`, `boardid`))
+  PRIMARY KEY (`boardid`),
+  UNIQUE INDEX `boardid_UNIQUE` (`boardid` ASC))
 ENGINE = InnoDB;
 
 /*
@@ -38,6 +28,25 @@ V - viewer
 C - contributer
 S - saved (saved public board)
 */
+CREATE TABLE IF NOT EXISTS `incolun`.`userboards` (
+  `userid` BIGINT UNSIGNED NOT NULL,
+  `boardid` BIGINT UNSIGNED NOT NULL,
+  `relation` ENUM('O', 'V', 'C', 'S') NOT NULL DEFAULT 'O',
+  `timestamp` DATETIME NOT NULL DEFAULT NOW(),
+  PRIMARY KEY (`userid`, `boardid`),
+  INDEX `boardid_idx` (`boardid` ASC),
+  CONSTRAINT `userid`
+    FOREIGN KEY (`userid`)
+    REFERENCES `incolun`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `boardid`
+    FOREIGN KEY (`boardid`)
+    REFERENCES `incolun`.`boards` (`boardid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 
 CREATE TABLE IF NOT EXISTS `incolun`.`opened` (
   `userid` BIGINT UNSIGNED NOT NULL,
@@ -55,52 +64,50 @@ CREATE TABLE IF NOT EXISTS `incolun`.`recent` (
   PRIMARY KEY (`userid`))
 ENGINE = InnoDB;
 
-INSERT INTO incolun.boards (boardid, parentid, title, created,updated, status) 
+INSERT INTO incolun.boards (boardid, parentid, title) 
    VALUES 
-   (0, NULL, 'Statistic and machine learning',NOW(),NOW(), 'P'),
-   (1, 0, 'board 0 section1',NOW(),NOW(),'P'),
-   (2, 1, 'board 0 section1',NOW(),NOW(),'P'),
-   (3, 2, 'board 0 section1',NOW(),NOW(),'P'),
-   (4, 3, 'board 0 section1',NOW(),NOW(),'P'),
+   (0, NULL, 'Statistic and machine learning'),
+   (1, 0, 'board 0 section1'),
+   (2, 1, 'board 0 section1'),
+   (3, 2, 'board 0 section1'),
+   (4, 3, 'board 0 section1'),
    
-   (10, NULL, 'Misc', NOW(),NOW(),'P'),
-   (11, 10, 'board 1 section2',NOW(),NOW(),'P'),
-   (12, 10, 'board 1 section3',NOW(),NOW(),'P'),
-   (13, 10, 'board 1 section4',NOW(),NOW(),'P'),
-   (14, 11, 'board 1 section5',NOW(),NOW(),'P'),
+   (10, NULL, 'Misc' ),
+   (11, 10, 'board 1 section2'),
+   (12, 10, 'board 1 section3'),
+   (13, 10, 'board 1 section4'),
+   (14, 11, 'board 1 section5'),
    
-   (20, NULL, 'Working with Typescript and VS code', NOW(),NOW(),'P'),
-   (21, 20, 'board 2 section2',NOW(),NOW(),'P'),
-   (22, 20, 'board 2 section3',NOW(),NOW(),'P'),
-   (23, 20, 'board 2 section4',NOW(),NOW(),'P'),
-   (24, 20, 'board 2 section5',NOW(),NOW(),'P'),
+   (20, NULL, 'Working with Typescript and VS code'),
+   (21, 20, 'board 2 section2'),
+   (22, 20, 'board 2 section3'),
+   (23, 20, 'board 2 section4'),
+   (24, 20, 'board 2 section5'),
    
-   
-   (30, NULL, 'TODO', NOW(),NOW(),'P'),
-   (31, 30, 'board 3 section2',NOW(),NOW(),'P'),
-   (32, 31, 'board 3 section3',NOW(),NOW(),'P'),
-   (33, 31, 'board 3 section4',NOW(),NOW(),'P'),
-   (34, 31, 'board 3 section5',NOW(),NOW(),'P'),
-   (31, 31, 'board 3 section6',NOW(),NOW(),'P'),
-   (32, 31, 'board 3 section7',NOW(),NOW(),'P'),
-   (33, 31, 'board 3 section8',NOW(),NOW(),'P'),
-   (34, 30, 'board 3 section9',NOW(),NOW(),'P'),
+   (30, NULL, 'TODO' ),
+   (31, 30, 'board 3 section2'),
+   (32, 31, 'board 3 section3'),
+   (33, 31, 'board 3 section4'),
+   (34, 31, 'board 3 section5'),
+   (35, 31, 'board 3 section6'),
+   (36, 31, 'board 3 section7'),
+   (37, 31, 'board 3 section8'),
+   (38, 30, 'board 3 section9'),
 
-   (40, NULL, 'Paris planning', NOW(),NOW(),'S'),
-   (41, 40, 'board 4 section2',NOW(),NOW(),'P'),
-   (42, 41, 'board 4 section3',NOW(),NOW(),'P'),
-   (43, 41, 'board 4 section4',NOW(),NOW(),'P'),
-   (44, 42, 'board 4 section5',NOW(),NOW(),'P'),
+   (40, NULL, 'Paris planning'),
+   (41, 40, 'board 4 section2'),
+   (42, 41, 'board 4 section3'),
+   (43, 41, 'board 4 section4'),
+   (44, 42, 'board 4 section5');
 
-   (50, NULL, 'Really really really really really long long long tiiiiiiitle',NOW(),NOW(),'O'),
-   (51, 50, 'board 5 section2',NOW(),NOW(),'P'),
-   (52, 50, 'board 5 section3',NOW(),NOW(),'P'),
-   (53, 52, 'board 5 section4',NOW(),NOW(),'P'),
-   (54, 52, 'board 5 section5',NOW(),NOW(),'P');
+INSERT INTO incolun.boards (boardid, parentid, title, created, updated, status) 
+   VALUES 
+   (50, NULL, 'Really really really really really long long long tiiiiiiitle', NOW(), NOW(), 'O'),
+   (51, 50, 'board 5 section2', NOW(), NOW(), 'O'),
+   (52, 50, 'board 5 section3', NOW(), NOW(), 'O'),
+   (53, 52, 'board 5 section4', NOW(), NOW(), 'O'),
+   (54, 52, 'board 5 section5', NOW(), NOW(), 'O');
    
-select * from incolun.boards;  
-select * from incolun.userboards;  
-
 INSERT INTO incolun.userboards(userid, boardid, relation, timestamp)
 	VALUES 
     (0, 0, 'O', NOW()),
@@ -115,6 +122,21 @@ INSERT INTO incolun.userboards(userid, boardid, relation, timestamp)
     (0, 40, 'V', NOW()),
     (0, 50, 'S', NOW());
     
-SELECT *
-    
+select * from incolun.boards;  
 select * from incolun.userboards;  
+
+SELECT a.title, a.boardid from incolun.boards a inner join 
+incolun.userboards b on a.boardid = b.boardid
+where b.userid = 0
+
+
+DELIMITER $$
+CREATE PROCEDURE `get_tables` (IN userid BIGINT)
+BEGIN
+SELECT a.title, a.boardid, a.created, a.updated, b.timestamp, b.relation from incolun.boards a inner join 
+incolun.userboards b on a.boardid = b.boardid
+where b.userid = userid;
+END$$
+DELIMITER ;
+
+CALL get_tables(0)
